@@ -1,0 +1,24 @@
+# Development Environment Configuration
+# Overrides base config.yaml values for local development
+
+app:
+  debug: true
+  environment: "development"
+
+database:
+  name: "myapp_dev"
+  # Use local development database
+  host: "localhost"
+  port: 5432
+
+logging:
+  level: "DEBUG"
+  format: "text"  # More readable for development
+  file: "logs/dev.log"
+
+features:
+  enable_caching: false  # Disable caching for easier debugging
+  enable_metrics: true   # Enable metrics in development
+  enable_tracing: true   # Enable tracing for debugging
+
+# Made with Bob

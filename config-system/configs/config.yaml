@@ -1,0 +1,33 @@
+# Base Configuration File
+# This file contains the default configuration for all environments.
+# Environment-specific files (config.dev.yaml, config.prod.yaml) will override these values.
+
+app:
+  name: "MyApp"
+  version: "1.0.0"
+  debug: false
+  environment: "production"
+
+database:
+  host: "localhost"
+  port: 5432
+  name: "myapp_db"
+  username: null  # Set via environment variable or env-specific config
+  password: null  # Set via environment variable or env-specific config
+  pool_size: 10
+
+logging:
+  level: "INFO"
+  format: "json"
+  file: "logs/app.log"
+  max_bytes: 10485760  # 10MB
+  backup_count: 5
+
+features:
+  enable_caching: true
+  cache_ttl: 3600  # 1 hour
+  enable_metrics: false
+  enable_tracing: false
+  rate_limit: null  # No rate limiting by default
+
+# Made with Bob

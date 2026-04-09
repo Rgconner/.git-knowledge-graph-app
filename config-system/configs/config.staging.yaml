@@ -1,0 +1,28 @@
+# Staging Environment Configuration
+# Overrides base config.yaml values for staging environment
+
+app:
+  debug: false
+  environment: "staging"
+
+database:
+  name: "myapp_staging"
+  host: "staging-db.example.com"
+  port: 5432
+  pool_size: 20
+
+logging:
+  level: "INFO"
+  format: "json"
+  file: "logs/staging.log"
+  max_bytes: 52428800  # 50MB for staging
+  backup_count: 10
+
+features:
+  enable_caching: true
+  cache_ttl: 1800  # 30 minutes
+  enable_metrics: true
+  enable_tracing: true
+  rate_limit: 1000  # 1000 requests per minute
+
+# Made with Bob
