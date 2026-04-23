@@ -1,0 +1,133 @@
+Bunge – IAM Discovery Call Notes
+
+4/22/26
+
+IBM Attendees: Dom , Russ, Kim 
+
+Bunge Attendee: Travis Smith – Senior Manager, Global IAM Engineering
+
+Purpose of Call
+
+Initial introductory / discovery call with Travis
+Goal was to understand his role, priorities, current initiatives, and where IBM may be relevant
+No pitch - relationship-building and context gathering only
+ 
+
+ 
+
+Travis’s Role / Background
+
+Formerly with Viterra for ~12 years; transitioned to Bunge post‑merger
+Current role: Global Manager, Identity & Access Management Engineering
+Owns: 
+SSO, MFA, Active Directory / Entra
+Privileged Access Management
+Identity & access security overall
+Previously led IBM Identity Manager (ISIM) on the Viterra side 
+That responsibility is now transitioning to a colleague (Ruben, based in Barcelona)
+Strong infrastructure background (Unix/Linux, AIX, Power, storage) 
+Long personal history with IBM technologies going back decades
+Reports up through a global org; decision-making and prioritization are centralized
+ 
+
+ 
+
+Existing IBM Relationship
+
+Longstanding relationship with IBM and IBM partners 
+Particularly Blaine Kazama (ex‑IBM, long‑time trusted partner in Canada)
+Identity Manager has been in use since ~2007
+Travis stated clearly: 
+IBM products “work as advertised”
+He values the long‑term working relationship
+IBM is consistently “in the mix” during evaluations
+Uses Gartner heavily during research and vendor evaluation 
+IBM frequently appears in the Leaders quadrant
+His direct manager is ex‑Gartner
+ 
+
+Current IAM / Security Initiatives
+
+Privileged Access Management
+
+Actively working to replace and consolidate PAM tools 
+Legacy Viterra and legacy Bunge each have their own PAM solution
+Goal is a single global PAM platform
+RFI phase completed
+Vendors narrowed to top three
+Budgetary quotes and project plans submitted internally
+Waiting on internal prioritization / funding approval
+Expectation: 
+Decision timing originally hoped for end of April
+Now more realistically late May, possibly as late as end of November depending on internal queue
+Secrets Management
+
+Currently lower priority due to resource constraints
+Likely next major initiative after PAM
+Rough timing estimate: Q1–Q2 next year
+Cloud Strategy
+
+Clear cloud‑first / SaaS‑first mandate
+On‑prem only considered if there is a specific requirement that SaaS can’t meet
+Global organization with data residency / GDPR considerations 
+Travis is not concerned about IBM’s ability to meet geo‑location or compliance needs
+These are table‑stakes expectations for vendors they consider
+ 
+
+Procurement / RFP Process
+
+Anything above roughly $150k USD must go through RFP
+Process is driven by: 
+Internal demand submission
+Legal and procurement involvement
+Procurement is centralized; spend ultimately comes out of St. Louis
+Travis does not own the RFP mechanics 
+Procurement issues the RFP once internal approval is granted
+All required planning and quotes are already submitted — currently waiting for prioritization
+ 
+
+Key Themes / Challenges
+
+Merger complexity (10k+ users moving environments)
+Resource constraints and staffing shortages
+Many parallel initiatives competing for priority
+Strong desire to modernize, but pacing dictated by internal approvals
+Open to vendor guidance, roadmap discussions, and forward‑looking perspectives
+ 
+
+IBM Discussion / Positioning
+
+Reviewed IBM’s account coverage model: 
+Dom = relationship owner
+Russ = technical lead
+Kim = automation / IAM focus
+Travis appreciated clarity and simplification of IBM engagement model
+Interest expressed in: 
+Roadmap sessions
+Topics such as: 
+Secrets management
+AI / agentic AI
+How AI impacts identity, access, and security controls
+Open to IBM sharing relevant thought leadership and updates (even if not immediately actionable)
+ 
+
+Next Steps / Follow‑Ups
+
+Schedule follow‑up check‑in for late May 
+Adjust earlier if internal approvals move faster
+IBM to: 
+Share relevant roadmap / thought leadership (esp. secrets management & AI)
+Keep Travis informed without overloading him
+Travis to: 
+Speak with Blaine and determine if a joint session makes sense
+Potential future action: 
+Intro meeting between IBM (Dom/Russ) and Blaine Kazama to align and avoid overlap
+ 
+
+Overall Takeaway
+
+Strong incumbent relationship and goodwill toward IBM
+Travis is a key technical and influencer stakeholder for IAM and PAM decisions
+Short‑term motion is PAM consolidation, with IBM in serious consideration
+Timing is driven internally; patience and steady engagement required
+Clear opportunity to reinforce IBM as a trusted long‑term partner vs. transactional vendor
