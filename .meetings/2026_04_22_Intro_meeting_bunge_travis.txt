@@ -1,3 +1,22 @@
+---
+date: 2026-04-22
+time: "14:00-15:00"
+duration_minutes: 45
+type: Intro
+attendees:
+  - connerr@us.ibm.com Russ
+  - Travis Smith – Senior Manager, Global IAM Engineering
+  - Dom Travani
+  - Kim Stethiel
+facilitator: dom travani
+project: product-roadmap
+tags:
+  - q2-intros
+  status: final
+---
+
+
+
 Bunge – IAM Discovery Call Notes
 
 4/22/26
