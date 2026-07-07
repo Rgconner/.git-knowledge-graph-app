@@ -29,10 +29,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(auth.router)
-app.include_router(documents.router)
-app.include_router(action_items.router)
-app.include_router(graph.router)
+API_PREFIX = "/api"
+
+app.include_router(auth.router, prefix=API_PREFIX)
+app.include_router(documents.router, prefix=API_PREFIX)
+app.include_router(action_items.router, prefix=API_PREFIX)
+app.include_router(graph.router, prefix=API_PREFIX)
 
 
 @app.get("/health", tags=["health"])

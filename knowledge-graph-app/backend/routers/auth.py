@@ -1,5 +1,7 @@
 """Authentication router — register and login endpoints."""
 
+import hashlib
+import base64
 import os
 from datetime import datetime, timedelta, timezone
 
@@ -18,6 +20,17 @@ ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_HOURS = 8
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+
+def _prepare_password(password: str) -> str:
+    """
+    Pre-hash the password with SHA-256 and base64-encode it before passing
+    to bcrypt.  This sidesteps bcrypt's 72-byte input limit — any password
+    of any length is safely reduced to a fixed 44-character base64 string
+    that is always well within the limit.
+    """
+    digest = hashlib.sha256(password.encode("utf-8")).digest()
+    return base64.b64encode(digest).decode("utf-8")
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -66,7 +79,7 @@ def register(body: RegisterRequest, db: Session = Depends(get_db)) -> UserSchema
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Email already registered.",
         )
-    hashed = pwd_context.hash(body.password)
+    hashed = pwd_context.hash(_prepare_password(body.password))
     user = User(name=body.name, email=body.email, hashed_password=hashed)
     db.add(user)
     db.commit()
@@ -78,7 +91,7 @@ def register(body: RegisterRequest, db: Session = Depends(get_db)) -> UserSchema
 def login(body: LoginRequest, db: Session = Depends(get_db)) -> TokenResponse:
     """Verify credentials and issue a signed JWT valid for 8 hours."""
     user = db.query(User).filter(User.email == body.email).first()
-    if not user or not pwd_context.verify(body.password, user.hashed_password):
+    if not user or not pwd_context.verify(_prepare_password(body.password), user.hashed_password):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid email or password.",
