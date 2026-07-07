@@ -1,0 +1,1407 @@
+{
+  "last_updated": "2026-04-22T21:00:34.732629400+00:00",
+  "segments": [
+    {
+      "audio_end_time": 10.06,
+      "audio_start_time": 1.86,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:33:59",
+      "duration": 8.2,
+      "id": "seg_3227",
+      "sequence_id": 3227,
+      "text": "What what do they call it Glober G glob G glob G glob G glob G global manager of identity and access management engineering?"
+    },
+    {
+      "audio_end_time": 19.93,
+      "audio_start_time": 9.84,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:34:12",
+      "duration": 10.09,
+      "id": "seg_3228",
+      "sequence_id": 3228,
+      "text": "All that me all that means is that uh I have a team of people who handle all of the uh"
+    },
+    {
+      "audio_end_time": 26.77,
+      "audio_start_time": 19.71,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:34:16",
+      "duration": 7.06,
+      "id": "seg_3229",
+      "sequence_id": 3229,
+      "text": "SSO, NFA, A A A A A A A A A Active Directory, ANTRA, Privilege Access Management."
+    },
+    {
+      "audio_end_time": 47.98,
+      "audio_start_time": 30.6,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:34:42",
+      "duration": 17.38,
+      "id": "seg_3230",
+      "sequence_id": 3230,
+      "text": "I used to do, like I said, I had all the ITIM stuff, uh or I identity manager or however you guys want to call it these days. Um I had all of that stuff on the Vicarous side and so I was kind of the idea guy on the Vicero side, but that's uh being transitioned over to somebody else um on the bungy side."
+    },
+    {
+      "audio_end_time": 69.00999999999999,
+      "audio_start_time": 48.9,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:35:04",
+      "duration": 20.11,
+      "id": "seg_3231",
+      "sequence_id": 3231,
+      "text": "Yeah. Who is that being transitioned to, Travis? It's one of my colleagues in Spain. His name is Ruben. Um he's in Barcelona. And because everything works regionally, my suspicion is he's working with people over there and I'm working with people over here, and it's just kind of not a"
+    },
+    {
+      "audio_end_time": 117.67,
+      "audio_start_time": 70.56,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:36:11",
+      "duration": 47.11,
+      "id": "seg_3232",
+      "sequence_id": 3232,
+      "text": "Yeah, unusual. Yeah. Yeah. So I actually spoke with Blaine early on, like I said, back in like January when I got the account back this year. So um it sounds like you guys have a longtime relationship. He's there local for Canada. So um and we can anything we do, we can still work with those guys. I you you know confirmed with him that he can sell in an anywhere in North America. So yeah, yeah, yeah. I've known I've known Blaine for so not only through Vitera, he was our business partner and our IBM guy when I worked at I worked at Sash Power before I worked at uh at Buggy, and he was our IBM guy. Like I've known Blaine for like 20 some years. So yeah, we kind of have uh we we we we we we we we we we we've had a working relationship for a long time."
+    },
+    {
+      "audio_end_time": 123.52,
+      "audio_start_time": 118.92,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:36:14",
+      "duration": 4.6,
+      "id": "seg_3233",
+      "sequence_id": 3233,
+      "text": "So how do you fit in with Trevor Milne?"
+    },
+    {
+      "audio_end_time": 135.31,
+      "audio_start_time": 123.69,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:36:21",
+      "duration": 11.62,
+      "id": "seg_3234",
+      "sequence_id": 3234,
+      "text": "So Trevor Millen is now he's more on the um infrastructure side and because I'm on identity and access management, I'm more on the security side. So I I I I I I I I I I I have"
+    },
+    {
+      "audio_end_time": 167.92000000000002,
+      "audio_start_time": 136.05,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:36:50",
+      "duration": 31.87,
+      "id": "seg_3235",
+      "sequence_id": 3235,
+      "text": "Trevor, Blaine, myself, we've all known each other. Like uh Trevor and I worked at Test Power together, now we were at Viteira together, now we're at Bungie together. We've been it's like 25 years that that whole thing has gone along. So um Trevor's been mainly focused on infrastructure the whole time. Uh he's like the he's like the the the global director of all things infrastructure um as far as uh as far as bungie goes and I'm in on the identity access management side on security."
+    },
+    {
+      "audio_end_time": 179.35000000000002,
+      "audio_start_time": 168.27,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:36:58",
+      "duration": 11.08,
+      "id": "seg_3236",
+      "sequence_id": 3236,
+      "text": "So identity and access, and then you I know you guys were looking at privilege and maybe now at some secret stuff. Is that all you or is some of it somebody else? That's all me. Okay. No, it's all me."
+    },
+    {
+      "audio_end_time": 181.63,
+      "audio_start_time": 179.61,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:37:00",
+      "duration": 2.02,
+      "id": "seg_3237",
+      "sequence_id": 3237,
+      "text": "Yeah, we we have"
+    },
+    {
+      "audio_end_time": 183.34,
+      "audio_start_time": 181.53,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:37:01",
+      "duration": 1.81,
+      "id": "seg_3238",
+      "sequence_id": 3238,
+      "text": "Um were"
+    },
+    {
+      "audio_end_time": 184.9,
+      "audio_start_time": 183.66,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:37:02",
+      "duration": 1.24,
+      "id": "seg_3239",
+      "sequence_id": 3239,
+      "text": "We did."
+    },
+    {
+      "audio_end_time": 212.71,
+      "audio_start_time": 185.25,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:37:32",
+      "duration": 27.46,
+      "id": "seg_3240",
+      "sequence_id": 3240,
+      "text": "Some RFP type stuff for for all of for privilege access management secrets is probably a little ways away yet. We've talked about it a couple times, but with all of the other we're still like this merger is fairly big, right? And we're talking 10 moving 10,000 users from one side to the other and resourcing is a bit limited. So we have all these fantastic ideas of all these million projects that we want to do, but we only have so many hands, right? So we're we're uh"
+    },
+    {
+      "audio_end_time": 241.0,
+      "audio_start_time": 212.49,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:38:01",
+      "duration": 28.51,
+      "id": "seg_3241",
+      "sequence_id": 3241,
+      "text": "We're running into a little bit of let's try to do all of this stuff, but we don't really have time for most of it. So we're prioritizing the things that are important right now. So secrets has kind of fallen off a little bit. Um but for the most part right now I'm focusing on privilege and and this tenant to tenant migration that we have. Secrets will probably be the next thing. So I would suspect that's early next year."
+    },
+    {
+      "audio_end_time": 244.69,
+      "audio_start_time": 241.32,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:38:03",
+      "duration": 3.37,
+      "id": "seg_3242",
+      "sequence_id": 3242,
+      "text": "Q one, Q two next year."
+    },
+    {
+      "audio_end_time": 255.85,
+      "audio_start_time": 244.86,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:38:09",
+      "duration": 10.99,
+      "id": "seg_3243",
+      "sequence_id": 3243,
+      "text": "So I know you guys did a little bit, and sorry guys, I'm just I because I I I I I I I I I I I I I I I I I I I I I have a little bit of background just from the IBM side."
+    },
+    {
+      "audio_end_time": 286.0,
+      "audio_start_time": 255.75,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:38:45",
+      "duration": 30.25,
+      "id": "seg_3244",
+      "sequence_id": 3244,
+      "text": "Um so on the um I know you guys did like more RF uh I type. Yeah, yeah, I think RFP so that is still sitting to be decided yet. Um we like I said, we have all these million projects and and the the the powers that be are we've submitted everything waiting for approvals to go to the next step is kind of where we're at right now. And um"
+    },
+    {
+      "audio_end_time": 287.74,
+      "audio_start_time": 285.72,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:38:46",
+      "duration": 2.02,
+      "id": "seg_3245",
+      "sequence_id": 3245,
+      "text": "The priorities are not."
+    },
+    {
+      "audio_end_time": 308.38,
+      "audio_start_time": 287.73,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:39:04",
+      "duration": 20.65,
+      "id": "seg_3246",
+      "sequence_id": 3246,
+      "text": "Necessarily all lining up the way I want them to. So I'm just waiting for my turn. So the process is you're submitting it internally. And does everything have to go to RFP, I assume? They're kind of putting everything out or um Yeah, when it comes to when it comes to bigger projects that are I forget what the number is. I I I want to"
+    },
+    {
+      "audio_end_time": 316.93,
+      "audio_start_time": 308.37,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:39:08",
+      "duration": 8.56,
+      "id": "seg_3247",
+      "sequence_id": 3247,
+      "text": "I feel like it's over a hundred and fifty thousand US. I think is what the number is where everything has to has to go to RFP."
+    },
+    {
+      "audio_end_time": 317.73999999999995,
+      "audio_start_time": 316.65,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:39:09",
+      "duration": 1.09,
+      "id": "seg_3248",
+      "sequence_id": 3248,
+      "text": "Okay."
+    },
+    {
+      "audio_end_time": 323.08,
+      "audio_start_time": 318.09,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:39:11",
+      "duration": 4.99,
+      "id": "seg_3249",
+      "sequence_id": 3249,
+      "text": "Uh and is that with services or would that be like broken up?"
+    },
+    {
+      "audio_end_time": 350.74,
+      "audio_start_time": 322.83,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:39:46",
+      "duration": 27.91,
+      "id": "seg_3250",
+      "sequence_id": 3250,
+      "text": "So we have a whole we have a whole we call it a demand process and we get lawyers involved and procurement involved. Like there's a whole pile of things. We've submitted all our quotes that were our working quotes and our project plans and all of that kind of stuff, and now we're just, you know, sort of waiting for go to the next step. We're allowed to spend this money, go to the next step, find out, get all your RSPs and all your other stuff in a row."
+    },
+    {
+      "audio_end_time": 357.37,
+      "audio_start_time": 350.46,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:39:49",
+      "duration": 6.91,
+      "id": "seg_3251",
+      "sequence_id": 3251,
+      "text": "Gotcha. Gotcha. So how do you guys go to RFP? Do you guys have a"
+    },
+    {
+      "audio_end_time": 375.19,
+      "audio_start_time": 357.18,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:40:06",
+      "duration": 18.01,
+      "id": "seg_3252",
+      "sequence_id": 3252,
+      "text": "Like some people use workday, which is a pain in the ass sometimes. Like do you guys have a standard process? I to be honest with you, I don't know because the RFPs actually come out of our procurement side of things. Interesting. Okay. As far as I'm aware."
+    },
+    {
+      "audio_end_time": 378.16,
+      "audio_start_time": 375.06,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:40:07",
+      "duration": 3.1,
+      "id": "seg_3253",
+      "sequence_id": 3253,
+      "text": "And is that."
+    },
+    {
+      "audio_end_time": 382.57,
+      "audio_start_time": 378.36,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:40:09",
+      "duration": 4.21,
+      "id": "seg_3254",
+      "sequence_id": 3254,
+      "text": "Is that based in St. Louis? Like is that procurement team? Okay."
+    },
+    {
+      "audio_end_time": 384.49,
+      "audio_start_time": 382.29,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:40:10",
+      "duration": 2.2,
+      "id": "seg_3255",
+      "sequence_id": 3255,
+      "text": "Yeah, I think I believe."
+    },
+    {
+      "audio_end_time": 386.14,
+      "audio_start_time": 384.54,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:40:12",
+      "duration": 1.6,
+      "id": "seg_3256",
+      "sequence_id": 3256,
+      "text": "It's hard to say."
+    },
+    {
+      "audio_end_time": 411.91,
+      "audio_start_time": 385.95,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:40:51",
+      "duration": 25.96,
+      "id": "seg_3257",
+      "sequence_id": 3257,
+      "text": "Because you you get on every team you get one person in St. Louis and then 10 people throughout the rest of the world. So whether it's based there, right, it's hard to say. I guess where were the the the the the the the the the the the buying would be out of St. Louis though like all the all the I believe all the dollars come out of the St. Louis office. Okay. And that'll just help us from how we service you perspective. Um, you know, how things uh"
+    },
+    {
+      "audio_end_time": 413.44,
+      "audio_start_time": 411.81,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:40:52",
+      "duration": 1.63,
+      "id": "seg_3258",
+      "sequence_id": 3258,
+      "text": "Anyway."
+    },
+    {
+      "audio_end_time": 446.68,
+      "audio_start_time": 413.25,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:41:26",
+      "duration": 33.43,
+      "id": "seg_3259",
+      "sequence_id": 3259,
+      "text": "So I know it's all awkward and complicated and weird. I know. And I want to keep the customer out of it as much as possible and just give you guys we just want to give you guys the best service and be the best partner in all of this. So I've not ever wanted to like come in and be like, oh, you can't deal with such and such anymore. Yeah. But it's funny because before you had spoken, I think with a lawn, I was talking to Alec. Is it Alex that you have met with as well from our worldwide team. Yeah. So"
+    },
+    {
+      "audio_end_time": 493.15,
+      "audio_start_time": 446.82,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:42:19",
+      "duration": 46.33,
+      "id": "seg_3260",
+      "sequence_id": 3260,
+      "text": "Anyway, so I've kind of kept it kept in touch with it in the background because I don't know where it's gonna land and I want to make sure that if I need to jump in, I can wherever um we need to. So um and sorry, these are more probably more directed questions than you were you're expecting. It's totally fine. Um I know I have a meeting with Blaine coming up right away, too, because he wants an update on almost exactly the same things. So right, right, gotcha. Gotcha. Well, how can we help, I guess, in this? Is there anybody we can meet with or talk to? Or we're you know, Russ is in St. Louis, Dom and I are there all the time. There really isn't. We're just really waiting for the next step. Um"
+    },
+    {
+      "audio_end_time": 501.52,
+      "audio_start_time": 493.11,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:42:23",
+      "duration": 8.41,
+      "id": "seg_3261",
+      "sequence_id": 3261,
+      "text": "Once once that next once we get the approval to move forward and then make our decisions, then we'll find out, you know."
+    },
+    {
+      "audio_end_time": 516.25,
+      "audio_start_time": 501.84,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:42:30",
+      "duration": 14.41,
+      "id": "seg_3262",
+      "sequence_id": 3262,
+      "text": "And then th th th th th th th th th those are the kinds of conversations and once the the you know the contracts start getting done then we'll have some people that you know we can use to expedite processes and stuff like that. But right now it's just it's really waiting internally for"
+    },
+    {
+      "audio_end_time": 517.57,
+      "audio_start_time": 516.36,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:42:31",
+      "duration": 1.21,
+      "id": "seg_3263",
+      "sequence_id": 3263,
+      "text": "For"
+    },
+    {
+      "audio_end_time": 523.09,
+      "audio_start_time": 517.35,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:42:34",
+      "duration": 5.74,
+      "id": "seg_3264",
+      "sequence_id": 3264,
+      "text": "prioritization. Like it's there. It's been submitted. It's waiting. So it's just a"
+    },
+    {
+      "audio_end_time": 543.64,
+      "audio_start_time": 522.93,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:42:56",
+      "duration": 20.71,
+      "id": "seg_3265",
+      "sequence_id": 3265,
+      "text": "It's our way. We got just gotta wait for our turn on the runway. Yeah, yeah, no, I get it. Um Okay. So are you guys looking at doing this? I know you guys had looked at SaaS at one point. Are you looking at trying to do most things SaaS or on prem? Yeah. Our our our our our our our our our our our uh company mandate is cloud first."
+    },
+    {
+      "audio_end_time": 544.51,
+      "audio_start_time": 543.51,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:42:57",
+      "duration": 1.0,
+      "id": "seg_3266",
+      "sequence_id": 3266,
+      "text": "Okay."
+    },
+    {
+      "audio_end_time": 548.53,
+      "audio_start_time": 545.1,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:42:59",
+      "duration": 3.43,
+      "id": "seg_3267",
+      "sequence_id": 3267,
+      "text": "Everything every the idea is to"
+    },
+    {
+      "audio_end_time": 553.0300000000001,
+      "audio_start_time": 548.82,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:43:01",
+      "duration": 4.21,
+      "id": "seg_3268",
+      "sequence_id": 3268,
+      "text": "Go cloud first, if possible. Unless for some"
+    },
+    {
+      "audio_end_time": 557.86,
+      "audio_start_time": 552.78,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:43:03",
+      "duration": 5.08,
+      "id": "seg_3269",
+      "sequence_id": 3269,
+      "text": "whacked out reason the on premise version is"
+    },
+    {
+      "audio_end_time": 560.92,
+      "audio_start_time": 558.03,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:43:05",
+      "duration": 2.89,
+      "id": "seg_3270",
+      "sequence_id": 3270,
+      "text": "Suits our our requirements better."
+    },
+    {
+      "audio_end_time": 565.3000000000001,
+      "audio_start_time": 560.94,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:43:10",
+      "duration": 4.36,
+      "id": "seg_3271",
+      "sequence_id": 3271,
+      "text": "Sure. SaaS first is typically where we're going."
+    },
+    {
+      "audio_end_time": 595.9,
+      "audio_start_time": 565.26,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:44:02",
+      "duration": 30.64,
+      "id": "seg_3272",
+      "sequence_id": 3272,
+      "text": "And then do you guys have any requirements, obviously being a worldwide um vendor? We obviously IBM is as well a global, um, so we're up on GDPR and all the different things in all the different places. Um, but as you look at this in the countries that you guys serve, have you and it might have already been part of the RFI process, but are you guys looking at having to have um instances in different data centers depending like from our perspective?"
+    },
+    {
+      "audio_end_time": 604.78,
+      "audio_start_time": 595.62,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:44:07",
+      "duration": 9.16,
+      "id": "seg_3273",
+      "sequence_id": 3273,
+      "text": "Yeah, yeah, yeah, there is um definitely some of that. Um geo location um is is is is is is is is is is is important."
+    },
+    {
+      "audio_end_time": 605.92,
+      "audio_start_time": 604.77,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:44:08",
+      "duration": 1.15,
+      "id": "seg_3274",
+      "sequence_id": 3274,
+      "text": "Um"
+    },
+    {
+      "audio_end_time": 625.39,
+      "audio_start_time": 606.3,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:44:28",
+      "duration": 19.09,
+      "id": "seg_3275",
+      "sequence_id": 3275,
+      "text": "I think and so I mean and I I I know IBM has data centers all over the place, so I'm not worried about you being able to support those requirements at all. Um honestly any of the any of the vendors that we talk to about any of the products are in the same boat. They all understand the same thing. Specifically around security, um all"
+    },
+    {
+      "audio_end_time": 633.1,
+      "audio_start_time": 625.53,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:44:36",
+      "duration": 7.57,
+      "id": "seg_3276",
+      "sequence_id": 3276,
+      "text": "All of the requirements around GDPR and all of the other uh types of things like that are taken into account."
+    },
+    {
+      "audio_end_time": 636.9100000000001,
+      "audio_start_time": 632.82,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:44:41",
+      "duration": 4.09,
+      "id": "seg_3277",
+      "sequence_id": 3277,
+      "text": "Probably wouldn't even interview somebody that's not a good idea."
+    },
+    {
+      "audio_end_time": 638.0500000000001,
+      "audio_start_time": 636.72,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:44:42",
+      "duration": 1.33,
+      "id": "seg_3278",
+      "sequence_id": 3278,
+      "text": "Handle that."
+    },
+    {
+      "audio_end_time": 649.75,
+      "audio_start_time": 638.58,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:44:52",
+      "duration": 11.17,
+      "id": "seg_3279",
+      "sequence_id": 3279,
+      "text": "Gotcha. So you guys are looking at an expansion on identity and then also for something um to replace for privilege. Is that right? Or"
+    },
+    {
+      "audio_end_time": 656.62,
+      "audio_start_time": 650.07,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:44:56",
+      "duration": 6.55,
+      "id": "seg_3280",
+      "sequence_id": 3280,
+      "text": "Yeah. Yeah, we're replacing our privilege because b b b b b b b b b both legacy brigitar and legacy bundie have"
+    },
+    {
+      "audio_end_time": 667.8100000000001,
+      "audio_start_time": 657.69,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:45:01",
+      "duration": 10.12,
+      "id": "seg_3281",
+      "sequence_id": 3281,
+      "text": "On offering and now we just wanna merge that into one global platform. So it it's kind of the right time for us to go to the market and find the best candidate."
+    },
+    {
+      "audio_end_time": 669.58,
+      "audio_start_time": 668.13,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:45:02",
+      "duration": 1.45,
+      "id": "seg_3282",
+      "sequence_id": 3282,
+      "text": "Go from there."
+    },
+    {
+      "audio_end_time": 706.66,
+      "audio_start_time": 669.3,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:45:51",
+      "duration": 37.36,
+      "id": "seg_3283",
+      "sequence_id": 3283,
+      "text": "Well we would love to Yeah. We so honestly so we've went through all the demos, all of the like with all the big players and the heavy hitters, we've gone through all of that kind of stuff. We've done our own sort of internal scoring as did to what we would prefer and what we would not prefer. We've gotten all of the sort of uh the budgetary quotes, which obviously we don't hold anybody, you know. Sure. We don't hold anybody to, but we've gotten all those budgetary quotes and and uh you know narrowed it down to our top three, and those are the ones that are sitting sort of waiting for."
+    },
+    {
+      "audio_end_time": 710.59,
+      "audio_start_time": 706.62,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:45:53",
+      "duration": 3.97,
+      "id": "seg_3284",
+      "sequence_id": 3284,
+      "text": "Where do we go to the next steps, right? Um and"
+    },
+    {
+      "audio_end_time": 713.26,
+      "audio_start_time": 710.37,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:45:55",
+      "duration": 2.89,
+      "id": "seg_3285",
+      "sequence_id": 3285,
+      "text": "I've we've had IBM."
+    },
+    {
+      "audio_end_time": 722.23,
+      "audio_start_time": 713.37,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:46:00",
+      "duration": 8.86,
+      "id": "seg_3286",
+      "sequence_id": 3286,
+      "text": "identity products for since two thousand and seven, I think, is when we first got identity manager. And so"
+    },
+    {
+      "audio_end_time": 724.66,
+      "audio_start_time": 722.16,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:46:02",
+      "duration": 2.5,
+      "id": "seg_3287",
+      "sequence_id": 3287,
+      "text": "We have a long history in the"
+    },
+    {
+      "audio_end_time": 734.02,
+      "audio_start_time": 724.62,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:46:08",
+      "duration": 9.4,
+      "id": "seg_3288",
+      "sequence_id": 3288,
+      "text": "Uh I and I've stated this to Blaine before. It it's like we have a long history with IBM. It works good, it does what it's advertised and"
+    },
+    {
+      "audio_end_time": 747.1600000000001,
+      "audio_start_time": 734.46,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:46:19",
+      "duration": 12.7,
+      "id": "seg_3289",
+      "sequence_id": 3289,
+      "text": "I I I mean I like the the the longstanding working relationship that's what I like to to go by. So uh I I mean I try uh I'm trying to do put as much influence as I can internally uh to go that way."
+    },
+    {
+      "audio_end_time": 779.56,
+      "audio_start_time": 747.0,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:47:03",
+      "duration": 32.56,
+      "id": "seg_3290",
+      "sequence_id": 3290,
+      "text": "Sure. We love that. Oh yeah. Absolutely love that. So it might just be me that's waving that flag, but at least you got somebody, right? Thank you. Yeah, and thank you. And I and Blaine had had kind of expressed that to me, so it's good to hear it from the horse's mouth, if you will. Yeah, I could tell you guys had a long good good good relationship there. I I've so I I I I I I I I I I I've when I was with Sash Power, I was an infrastructure guy. I was uh um a Unix Linux um,"
+    },
+    {
+      "audio_end_time": 789.79,
+      "audio_start_time": 779.61,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:47:09",
+      "duration": 10.18,
+      "id": "seg_3291",
+      "sequence_id": 3291,
+      "text": "admin for years and we had power systems and all the IBM storage and all of like we have I personally have had IBM stuff"
+    },
+    {
+      "audio_end_time": 792.01,
+      "audio_start_time": 789.54,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:47:10",
+      "duration": 2.47,
+      "id": "seg_3292",
+      "sequence_id": 3292,
+      "text": "in my work life."
+    },
+    {
+      "audio_end_time": 799.1800000000001,
+      "audio_start_time": 792.09,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:47:13",
+      "duration": 7.09,
+      "id": "seg_3293",
+      "sequence_id": 3293,
+      "text": "Like as long as I can remember."
+    },
+    {
+      "audio_end_time": 810.0699999999999,
+      "audio_start_time": 799.17,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:47:18",
+      "duration": 10.9,
+      "id": "seg_3294",
+      "sequence_id": 3294,
+      "text": "Yeah. Yeah. Solaris, Py uh uh Sco, Linux, you name it."
+    },
+    {
+      "audio_end_time": 821.77,
+      "audio_start_time": 809.91,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:47:29",
+      "duration": 11.86,
+      "id": "seg_3295",
+      "sequence_id": 3295,
+      "text": "That honestly I thought I was gonna die a Unix admin, that's been my s sort of passion since I was since I started in IT and then somehow"
+    },
+    {
+      "audio_end_time": 824.35,
+      "audio_start_time": 821.61,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:47:31",
+      "duration": 2.74,
+      "id": "seg_3296",
+      "sequence_id": 3296,
+      "text": "Once upon a time."
+    },
+    {
+      "audio_end_time": 845.74,
+      "audio_start_time": 824.1,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:48:00",
+      "duration": 21.64,
+      "id": "seg_3297",
+      "sequence_id": 3297,
+      "text": "Identity Manager was on my resume because I managed the backend AIX systems with the databases that ran identity manager. And when we moved over to Vitara, everybody was like, Well, that says do you know what you're doing on there, so now you're an identity guy. That's how I became an identity guy."
+    },
+    {
+      "audio_end_time": 852.82,
+      "audio_start_time": 845.7,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:48:03",
+      "duration": 7.12,
+      "id": "seg_3298",
+      "sequence_id": 3298,
+      "text": "It was never it was never a goal of mine. It was never like a career aspiration. It just kind of fell in my lap."
+    },
+    {
+      "audio_end_time": 897.6400000000001,
+      "audio_start_time": 853.44,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:49:08",
+      "duration": 44.2,
+      "id": "seg_3299",
+      "sequence_id": 3299,
+      "text": "Yeah. So um you might have already heard this speed a little bit, but Dom, do you want to kind of go through how our new model this year and how we have and sorry because I kind of hijacked the call early on, but um I really actually like the way that we're set up now to take care of you guys from an account perspective. And Dom is the leader of that. So I'll let Dom talk about it, but if you want to just kind of tell him so that he understands. Yeah. Yeah, absolutely. And Kim, you didn't hijack anything. Uh this was great context that we needed to hear, and uh I'm glad you're able to lead it. Um but Travis, no, this is set up uh uh uh uh uh uh uh a little bit differently this year. Um Russ and I, again, we're we're counterparts on more of the relationship side, and Russ is that technical side. Um and we are"
+    },
+    {
+      "audio_end_time": 933.88,
+      "audio_start_time": 897.51,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:49:37",
+      "duration": 36.37,
+      "id": "seg_3300",
+      "sequence_id": 3300,
+      "text": "Dedicated to you. We are dedicated to Bungy. We have one other account that we work with. It's also in St. Louis, so it kind of works perfectly for us. But we are a sole source for you to come to for any questions, any comments, any concerns whatsoever. Kim has uh a few more accounts, but she's again still in the same region and works very closely with us. So again, Russ, technical guy on more of the relationship side, and then Kim is focused solely on the automation piece. So all these, you know."
+    },
+    {
+      "audio_end_time": 938.89,
+      "audio_start_time": 933.63,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:49:40",
+      "duration": 5.26,
+      "id": "seg_3301",
+      "sequence_id": 3301,
+      "text": "products and offerings that we're talking about. That's that's kind of her focus. Um so"
+    },
+    {
+      "audio_end_time": 940.42,
+      "audio_start_time": 938.82,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:49:41",
+      "duration": 1.6,
+      "id": "seg_3302",
+      "sequence_id": 3302,
+      "text": "And and like Kim said."
+    },
+    {
+      "audio_end_time": 948.01,
+      "audio_start_time": 940.14,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:49:48",
+      "duration": 7.87,
+      "id": "seg_3303",
+      "sequence_id": 3303,
+      "text": "I really like the way this is set up this year. I think it's a lot better than what we had in the past. Um, this way you kinda have a very"
+    },
+    {
+      "audio_end_time": 959.59,
+      "audio_start_time": 949.08,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:49:56",
+      "duration": 10.51,
+      "id": "seg_3304",
+      "sequence_id": 3304,
+      "text": "narrow channel to come to if you have any questions uh again or concerns or comments. So um you know we're really looking forward to working with you. Um"
+    },
+    {
+      "audio_end_time": 966.73,
+      "audio_start_time": 959.37,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:50:01",
+      "duration": 7.36,
+      "id": "seg_3305",
+      "sequence_id": 3305,
+      "text": "And you have my my my email, my phone number along with Ross and Kim's and uh we just wanna make this uh very clear path."
+    },
+    {
+      "audio_end_time": 970.9,
+      "audio_start_time": 966.48,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:50:05",
+      "duration": 4.42,
+      "id": "seg_3306",
+      "sequence_id": 3306,
+      "text": "Um very easy for you and going forward."
+    },
+    {
+      "audio_end_time": 976.54,
+      "audio_start_time": 970.77,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:50:11",
+      "duration": 5.77,
+      "id": "seg_3307",
+      "sequence_id": 3307,
+      "text": "I appreciate that. Um IBM's notoriously sometimes hard to"
+    },
+    {
+      "audio_end_time": 989.02,
+      "audio_start_time": 976.5,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:50:21",
+      "duration": 12.52,
+      "id": "seg_3308",
+      "sequence_id": 3308,
+      "text": "was hard to track down the right people. Um but it is over the years has always gotten it's it's better and better all the time. So that's always that's always a bonus."
+    },
+    {
+      "audio_end_time": 1041.61,
+      "audio_start_time": 989.1,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:51:46",
+      "duration": 52.51,
+      "id": "seg_3309",
+      "sequence_id": 3309,
+      "text": "Great. Yeah. So I've been here 10 years. And so it was like, you know, sometimes you'll like have clear sailing for a few years and then all of a sudden they're gonna change it up. And those thing those dang uh people, consultants, consultants that come in and say, Oh, you need to do it this way. That's the stuff that I'm like, oh, can we just never talk to consultants again. Yeah, we I we we we we we we we we we we've gone through the similar things in our companies too. You get these um management consultants that come in and tell you how to reorganize your whole company and your whole everything, and it just turns everything upside down for five years. Yeah, yeah. Well, just so you see what we're talking about with Trevor, too, um, I just wanted to show you, and you know, certainly our security is always at the forefront of everything, but I just thought real quick, let me share. Um, since you're an infrastructure guy."
+    },
+    {
+      "audio_end_time": 1058.5,
+      "audio_start_time": 1041.42,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:52:01",
+      "duration": 17.08,
+      "id": "seg_3310",
+      "sequence_id": 3310,
+      "text": "Um, you know, we went through some things with him because I know they're looking at consolidating um networks and everything else. And we've got some security stuff in here as well. Um, and I think if I was to advance the slides, I think verify is in there as well. But um"
+    },
+    {
+      "audio_end_time": 1097.02,
+      "audio_start_time": 1058.97,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:52:25",
+      "duration": 38.05,
+      "id": "seg_3311",
+      "sequence_id": 3311,
+      "text": "Just so you know, we are, you know, we want to partner with you guys in any way possible or you know, that can really help you. We know you have some things that are working really well. Thankfully, Verify is one of them. Um, but anywhere that you're not, you know, IBM has, you know, I just I have 120 products just in my portfolio to help you. And then we've got a whole data site and we've got Red Hat. Um, so if you ever need anything or have, you know, you guys are kicking the tires on stuff, we're welcome. We brought in somebody to give us this point of view that created this whole deck surrounding um."
+    },
+    {
+      "audio_end_time": 1112.23,
+      "audio_start_time": 1097.16,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:52:36",
+      "duration": 15.07,
+      "id": "seg_3312",
+      "sequence_id": 3312,
+      "text": "You know, surrounding Bungi, looking at what you guys currently have. Um, but that is absolutely what we're here for is to partner to make your job easier, um, and not, you know, in g g g g g g g g g give a point of view and if it's something that you're like, nope."
+    },
+    {
+      "audio_end_time": 1117.24,
+      "audio_start_time": 1112.1,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:52:42",
+      "duration": 5.14,
+      "id": "seg_3313",
+      "sequence_id": 3313,
+      "text": "Not not the direction we're going. That's great too. We just want to be able to to have that partnership."
+    },
+    {
+      "audio_end_time": 1143.13,
+      "audio_start_time": 1117.14,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:53:01",
+      "duration": 25.99,
+      "id": "seg_3314",
+      "sequence_id": 3314,
+      "text": "Yeah. One of the things I always I always s s s s s s s s s sort of do when we're doing research on new capabilities and new things that we're we're looking for. I end up leveraging we have a we have a f f f f f f f f f fairly deep relationship with Gartner as well, so I end up leveraging some of their resources and IBM's always in that upper right hand quadrant, right. And so we use a lot of that to to start our conversations to figure out where to go."
+    },
+    {
+      "audio_end_time": 1161.64,
+      "audio_start_time": 1143.39,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:53:18",
+      "duration": 18.25,
+      "id": "seg_3315",
+      "sequence_id": 3315,
+      "text": "Hey Tom. That's where I came from. I was gonna say where where where where where'd you come from before I So I'm I'm very familiar with the quadrant um and where IBM sits, and probably one of the reasons why I'm here is because IBM was in that top right corner where where I like to look. So and and so my my my my my my my my my my my"
+    },
+    {
+      "audio_end_time": 1174.81,
+      "audio_start_time": 1161.72,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:53:27",
+      "duration": 13.09,
+      "id": "seg_3316",
+      "sequence_id": 3316,
+      "text": "My direct the person I report to, Patricia, she is also an ex-gardener person. She was a researcher from uh and she's in she's a lives in Spain. So we have"
+    },
+    {
+      "audio_end_time": 1197.13,
+      "audio_start_time": 1175.16,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:53:55",
+      "duration": 21.97,
+      "id": "seg_3317",
+      "sequence_id": 3317,
+      "text": "Close, direct, easy access to to some of that stuff. And so it always um when we end up evaluating things, IBM is always in the mix, almost always in the mix. I ha I I I I I I I I I I I I I I I I I I I I I don't know that I have evaluated any piece of software, any capability that we've decided we wanted uh in the last ten years that IBM hasn't been in the mix somewhere."
+    },
+    {
+      "audio_end_time": 1203.34,
+      "audio_start_time": 1196.91,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:54:00",
+      "duration": 6.43,
+      "id": "seg_3318",
+      "sequence_id": 3318,
+      "text": "Yeah, it's it's hard to ignore when it's in that top right corner um for almost every you know."
+    },
+    {
+      "audio_end_time": 1222.54,
+      "audio_start_time": 1203.12,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:54:15",
+      "duration": 19.42,
+      "id": "seg_3319",
+      "sequence_id": 3319,
+      "text": "product or function area. So uh yeah that's great to hear. That means you guys are uh are are are are are are are are are are are looking at the right resources and I'm glad Patricia probably can you know talk more about it as well and uh uh uh uh uh uh uh uh uh uh you know make sure everyone's looking at the right place. But uh that's that's great to hear from yeah."
+    },
+    {
+      "audio_end_time": 1250.59,
+      "audio_start_time": 1222.53,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:54:54",
+      "duration": 28.06,
+      "id": "seg_3320",
+      "sequence_id": 3320,
+      "text": "Awesome. Um well, Travis, I know I know you mentioned, you know, you're kind of sitting on the runway now. We're we're waiting, we're in a bit of a limbo period here. Um and if there's any questions or any other things that we can help out with, we are here for you. Um but in terms of you know this this this focus, uh is there a timeline? Maybe you mentioned it earlier and I I I I I I I I I I I I I I I I I I I I I didn't hear it, but is there uh a timeline when that ends? Um where we can look at"
+    },
+    {
+      "audio_end_time": 1253.65,
+      "audio_start_time": 1250.34,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:54:56",
+      "duration": 3.31,
+      "id": "seg_3321",
+      "sequence_id": 3321,
+      "text": "I know I know that there's two initiatives in"
+    },
+    {
+      "audio_end_time": 1259.68,
+      "audio_start_time": 1254.21,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:00",
+      "duration": 5.47,
+      "id": "seg_3322",
+      "sequence_id": 3322,
+      "text": "In front of the the privilege one, um specifically right now."
+    },
+    {
+      "audio_end_time": 1260.79,
+      "audio_start_time": 1259.58,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:02",
+      "duration": 1.21,
+      "id": "seg_3323",
+      "sequence_id": 3323,
+      "text": "Um"
+    },
+    {
+      "audio_end_time": 1264.09,
+      "audio_start_time": 1261.38,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:04",
+      "duration": 2.71,
+      "id": "seg_3324",
+      "sequence_id": 3324,
+      "text": "And I would expect"
+    },
+    {
+      "audio_end_time": 1266.88,
+      "audio_start_time": 1263.96,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:07",
+      "duration": 2.92,
+      "id": "seg_3325",
+      "sequence_id": 3325,
+      "text": "I would expect to have a"
+    },
+    {
+      "audio_end_time": 1267.69,
+      "audio_start_time": 1266.63,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:09",
+      "duration": 1.06,
+      "id": "seg_3326",
+      "sequence_id": 3326,
+      "text": "That's the"
+    },
+    {
+      "audio_end_time": 1276.15,
+      "audio_start_time": 1267.86,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:14",
+      "duration": 8.29,
+      "id": "seg_3327",
+      "sequence_id": 3327,
+      "text": "prioritization or decision making piece um in the pipeline by the end of November or the end of May."
+    },
+    {
+      "audio_end_time": 1278.43,
+      "audio_start_time": 1277.25,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:14",
+      "duration": 1.18,
+      "id": "seg_3328",
+      "sequence_id": 3328,
+      "text": "Sorry."
+    },
+    {
+      "audio_end_time": 1283.02,
+      "audio_start_time": 1278.84,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:16",
+      "duration": 4.18,
+      "id": "seg_3329",
+      "sequence_id": 3329,
+      "text": "Yeah. I'm I'm honestly hoping for it a little bit earlier than that. Um"
+    },
+    {
+      "audio_end_time": 1284.85,
+      "audio_start_time": 1283.13,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:16",
+      "duration": 1.72,
+      "id": "seg_3330",
+      "sequence_id": 3330,
+      "text": "I was"
+    },
+    {
+      "audio_end_time": 1289.5,
+      "audio_start_time": 1284.93,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:18",
+      "duration": 4.57,
+      "id": "seg_3331",
+      "sequence_id": 3331,
+      "text": "I was actually expecting it by the end of this month, but then I was in a meeting with"
+    },
+    {
+      "audio_end_time": 1292.11,
+      "audio_start_time": 1290.12,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:19",
+      "duration": 1.99,
+      "id": "seg_3332",
+      "sequence_id": 3332,
+      "text": "With uh"
+    },
+    {
+      "audio_end_time": 1298.47,
+      "audio_start_time": 1291.98,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:23",
+      "duration": 6.49,
+      "id": "seg_3333",
+      "sequence_id": 3333,
+      "text": "with the higher ups and they're like well we've got we've got one or two things that jump to queue and have to go first. So"
+    },
+    {
+      "audio_end_time": 1301.74,
+      "audio_start_time": 1298.7,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:25",
+      "duration": 3.04,
+      "id": "seg_3334",
+      "sequence_id": 3334,
+      "text": "Every once in a while that happens to you, so"
+    },
+    {
+      "audio_end_time": 1304.8,
+      "audio_start_time": 1301.46,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:27",
+      "duration": 3.34,
+      "id": "seg_3335",
+      "sequence_id": 3335,
+      "text": "In the meantime, if there's any um"
+    },
+    {
+      "audio_end_time": 1305.85,
+      "audio_start_time": 1304.82,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:28",
+      "duration": 1.03,
+      "id": "seg_3336",
+      "sequence_id": 3336,
+      "text": "You know."
+    },
+    {
+      "audio_end_time": 1316.05,
+      "audio_start_time": 1305.99,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:42",
+      "duration": 10.06,
+      "id": "seg_3337",
+      "sequence_id": 3337,
+      "text": "areas you would like to have like say a roadmap review or you know what's you know what's next for IBM where we're going"
+    },
+    {
+      "audio_end_time": 1319.9499999999998,
+      "audio_start_time": 1315.83,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:45",
+      "duration": 4.12,
+      "id": "seg_3338",
+      "sequence_id": 3338,
+      "text": "We we'd love to arrange that for you and your people if that's possible."
+    },
+    {
+      "audio_end_time": 1323.97,
+      "audio_start_time": 1319.82,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:48",
+      "duration": 4.15,
+      "id": "seg_3339",
+      "sequence_id": 3339,
+      "text": "Uh that is something that um"
+    },
+    {
+      "audio_end_time": 1329.76,
+      "audio_start_time": 1324.17,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:55:53",
+      "duration": 5.59,
+      "id": "seg_3340",
+      "sequence_id": 3340,
+      "text": "I would be interested in for sure. I'll just have to figure out um"
+    },
+    {
+      "audio_end_time": 1350.6699999999998,
+      "audio_start_time": 1330.08,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:56:24",
+      "duration": 20.59,
+      "id": "seg_3341",
+      "sequence_id": 3341,
+      "text": "Which capabilities and which things fall into that roadmap that we need to worry about. Sure. And if you know, and even if it's stuff outside of your like immediate Yeah, you want one of them, you want one on AI, you want one on whatever, just for your own, you know, broaden your your your team's uh horizons a little bit."
+    },
+    {
+      "audio_end_time": 1374.04,
+      "audio_start_time": 1350.69,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:56:51",
+      "duration": 23.35,
+      "id": "seg_3342",
+      "sequence_id": 3342,
+      "text": "J just let us rearrange that. I'm thinking specifically around um secrets management and um like you said AI and agentic AI and stuff like that is probably where my head's at right now and how all the AI stuff fits into um the the the capabilities that we already have or we're working towards."
+    },
+    {
+      "audio_end_time": 1399.7199999999998,
+      "audio_start_time": 1373.85,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:57:18",
+      "duration": 25.87,
+      "id": "seg_3343",
+      "sequence_id": 3343,
+      "text": "Um, you know, IBM's recently acquired uh Vault from and well, HashiCorp and Vault under your own. So the you know and the changes to coming up to uh coming up to the way certificates re need to be renewed. And then when you start getting into AI now, you've got a lot more of those sort of um application uh you know."
+    },
+    {
+      "audio_end_time": 1411.7800000000002,
+      "audio_start_time": 1400.4,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:57:26",
+      "duration": 11.38,
+      "id": "seg_3344",
+      "sequence_id": 3344,
+      "text": "uh security that you gotta have to worry about passing the keys around who's got access to what. Treating them treating them almost like a persona as opposed to some application that just runs. Yeah."
+    },
+    {
+      "audio_end_time": 1419.31,
+      "audio_start_time": 1412.01,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:57:30",
+      "duration": 7.3,
+      "id": "seg_3345",
+      "sequence_id": 3345,
+      "text": "Yeah. Yeah, and actually we just had a um sorry sorry, go ahead, Travis. No, no, go ahead."
+    },
+    {
+      "audio_end_time": 1430.8,
+      "audio_start_time": 1419.36,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:57:37",
+      "duration": 11.44,
+      "id": "seg_3346",
+      "sequence_id": 3346,
+      "text": "Um, we just had a something that came out because of some of the stuff that's going on with Anthropic and some of the other Claude um that we're actually doing some"
+    },
+    {
+      "audio_end_time": 1450.8100000000002,
+      "audio_start_time": 1430.88,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:58:01",
+      "duration": 19.93,
+      "id": "seg_3347",
+      "sequence_id": 3347,
+      "text": "No charge expert labs gap assessment stuff as well. So I mean literally that was caught off the press this morning, Tom. I think you were on that email from our boss to nominate clients for that and stuff too. So as we get a little bit more information, are you okay with us just feeding that to you so that you can kind of see it?"
+    },
+    {
+      "audio_end_time": 1457.65,
+      "audio_start_time": 1451.85,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:58:05",
+      "duration": 5.8,
+      "id": "seg_3348",
+      "sequence_id": 3348,
+      "text": "I the more information I get, the better. Sometimes I don't have time to digest it all, but I do my best."
+    },
+    {
+      "audio_end_time": 1458.5800000000002,
+      "audio_start_time": 1457.4,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:58:06",
+      "duration": 1.18,
+      "id": "seg_3349",
+      "sequence_id": 3349,
+      "text": "Uh."
+    },
+    {
+      "audio_end_time": 1461.85,
+      "audio_start_time": 1458.36,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:58:08",
+      "duration": 3.49,
+      "id": "seg_3350",
+      "sequence_id": 3350,
+      "text": "It's um."
+    },
+    {
+      "audio_end_time": 1480.39,
+      "audio_start_time": 1461.81,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:58:30",
+      "duration": 18.58,
+      "id": "seg_3351",
+      "sequence_id": 3351,
+      "text": "It's a busy time for us right now and it it's with this merger and like I said, we're you know short staffed all over the place or shorthanded all over the place. So some of some of the stuff that we look at also um revolves around um services and um that kind of stuff as well. So"
+    },
+    {
+      "audio_end_time": 1500.37,
+      "audio_start_time": 1481.19,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:58:53",
+      "duration": 19.18,
+      "id": "seg_3352",
+      "sequence_id": 3352,
+      "text": "Well great. Very common themes in different different parts of Bunky. A lot going on. Yeah, we we we we we we we we we we we we we we we we we we we we we we hear it. We hear you a lot. You know what, five years from now, five years from now when all of this merger stuff has settled down and we've we're we're starting, you know, things will be"
+    },
+    {
+      "audio_end_time": 1505.44,
+      "audio_start_time": 1500.21,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:58:57",
+      "duration": 5.23,
+      "id": "seg_3353",
+      "sequence_id": 3353,
+      "text": "Well, I say things will be more calm, but they probably won't."
+    },
+    {
+      "audio_end_time": 1509.67,
+      "audio_start_time": 1508.22,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:58:59",
+      "duration": 1.45,
+      "id": "seg_3354",
+      "sequence_id": 3354,
+      "text": "Is um"
+    },
+    {
+      "audio_end_time": 1511.0800000000002,
+      "audio_start_time": 1509.63,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:59:01",
+      "duration": 1.45,
+      "id": "seg_3355",
+      "sequence_id": 3355,
+      "text": "It is"
+    },
+    {
+      "audio_end_time": 1512.31,
+      "audio_start_time": 1510.95,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:59:02",
+      "duration": 1.36,
+      "id": "seg_3356",
+      "sequence_id": 3356,
+      "text": "Uh"
+    },
+    {
+      "audio_end_time": 1526.35,
+      "audio_start_time": 1512.9,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:59:15",
+      "duration": 13.45,
+      "id": "seg_3357",
+      "sequence_id": 3357,
+      "text": "Would you want us to include Blaine in any of that conversation that we have? I just want to make sure that, you know, since he has been your trusted advisor in this space. I have a meeting with him tomorrow. I can ask him."
+    },
+    {
+      "audio_end_time": 1528.15,
+      "audio_start_time": 1526.16,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:59:17",
+      "duration": 1.99,
+      "id": "seg_3358",
+      "sequence_id": 3358,
+      "text": "And then you can go from there."
+    },
+    {
+      "audio_end_time": 1539.34,
+      "audio_start_time": 1528.17,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:59:27",
+      "duration": 11.17,
+      "id": "seg_3359",
+      "sequence_id": 3359,
+      "text": "Yeah, and I'm like I said, I met with him, but it was a few months ago. So I'll just it it it it it it it it might not be bad Dom for you to meet him as well and and Russ so that he knows who the team out of the US is."
+    },
+    {
+      "audio_end_time": 1545.25,
+      "audio_start_time": 1539.24,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:59:34",
+      "duration": 6.01,
+      "id": "seg_3360",
+      "sequence_id": 3360,
+      "text": "That'd be great. Please. We don't want to work at we don't want to you know work across purposes for sure."
+    },
+    {
+      "audio_end_time": 1549.99,
+      "audio_start_time": 1546.05,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:59:37",
+      "duration": 3.94,
+      "id": "seg_3361",
+      "sequence_id": 3361,
+      "text": "Yeah. Travis. Sorry, go ahead."
+    },
+    {
+      "audio_end_time": 1561.15,
+      "audio_start_time": 1549.92,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:59:49",
+      "duration": 11.23,
+      "id": "seg_3362",
+      "sequence_id": 3362,
+      "text": "No, you go. I was gonna say in terms of next steps, um, does it make sense to maybe set up a call towards the end of May, towards when we're you know we're coming to that decision, or it should sho sho should should earlier."
+    },
+    {
+      "audio_end_time": 1568.02,
+      "audio_start_time": 1565.91,
+      "confidence": 0.8500000238418579,
+      "display_time": "20:59:55",
+      "duration": 2.11,
+      "id": "seg_3363",
+      "sequence_id": 3363,
+      "text": "To hear what's going on and catch up."
+    },
+    {
+      "audio_end_time": 1582.57,
+      "audio_start_time": 1568.1,
+      "confidence": 0.8500000238418579,
+      "display_time": "21:00:12",
+      "duration": 14.47,
+      "id": "seg_3364",
+      "sequence_id": 3364,
+      "text": "Yeah, I think if we throw something in the calendar for the end of May, um and if something pops in earlier or things move a little bit faster, I can just contact you and schedule a little bit earlier. But if you pop something in at the end of May then then sort of covered."
+    },
+    {
+      "audio_end_time": 1590.25,
+      "audio_start_time": 1582.8,
+      "confidence": 0.8500000238418579,
+      "display_time": "21:00:20",
+      "duration": 7.45,
+      "id": "seg_3365",
+      "sequence_id": 3365,
+      "text": "Perfect. Yep. I'll shoot you a follow-up after this and you'll have all of our emails and my phone number. So just reach out if you need."
+    },
+    {
+      "audio_end_time": 1592.98,
+      "audio_start_time": 1591.08,
+      "confidence": 0.8500000238418579,
+      "display_time": "21:00:24",
+      "duration": 1.9,
+      "id": "seg_3366",
+      "sequence_id": 3366,
+      "text": "Kim Ross, anything else?"
+    }
+  ],
+  "total_segments": 140,
+  "version": "1.0"
+}

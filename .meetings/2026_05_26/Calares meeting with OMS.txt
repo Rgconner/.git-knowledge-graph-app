@@ -1,0 +1,240 @@
+# Transcript of the Meeting: meeting-6e8b2dca-6f95-4758-abfe-6bf6e8e64db7 - Meeting 2026-05-20_09-10-17
+
+## Date: 5/20/2026
+
+[00:00] Friday. But it sounds like  
+[00:04] You know, they manually edited this file to get it to work, but it's not gonna work.  
+[00:10] Go forward because as we deploy.  
+[00:13] We're not gonna be able to just go in.  
+[00:15] And manual as part of the deployment process, manually update, configure this. So uh I think we're gonna get on another call with them. Um  
+[00:22] I told the our lightwell group.  
+[00:24] If they have questions, I'm like, all right, we need to get that list of questions up that way when this time when we have everybody on the call, we can go through it and make sure we have a valid answer. But yeah, so right now it's I think  
+[00:37] They still don't have it working yet. Do we have um and I've been off for a little bit, so I apologize. Do we have Kathy or Tony joining any of those calls or is it just team and Tony's on our screen? I don't know if I don't think he's joined. Okay. I might have one of them start to PM it a little bit. Probably Kathy, actually. And I have a feeling once we get through the order up, then whatever issue it is.  
+[01:00] And hoping like next gen.  
+[01:02] Yeah, crossing our next gen will just be an easy  
+[01:05] Yeah. Yeah.  
+[01:06] Okay.  
+[01:08] But yeah, I think right now we would be worrying.  
+[01:11] Like how would we get to prod and do our normal deployment process?  
+[01:15] Yeah. And then we there were some other questions that came in that I know Tony's trying to get answered as well from Angie.  
+[01:24] Thank you.  
+[01:26] Again, this is while I was out, but this was  
+[01:32] So I'll just I'm gonna follow up tomorrow on everything and just make sure that everything's getting oh sandy.  
+[01:40] From Sandy, sorry.  
+[01:41] Um  
+[01:42] Yeah, I think Tony responded to that one.  
+[01:46] Yep. Is there any other open items?  
+[01:52] I don't think so, because it's really been focused on that. Okay. Can I think it's that in. Yeah. And I just want you to see us as your team. Like sometimes I think we just let customers go, but we're always we want to be here to support the customers. That's usually the hardest part is going through support because it's like uh  
+[02:10] Hey, try this, and then we don't hear anything for a couple days and then all right now try this. Back and forth. We just get on a call and work. If they're not getting on calls with you, I can't remember. Yeah. But yeah, well I just not around.  
+[02:26] I can rattle cages, as well. Okay.  
+[02:28] Yeah, that's that is kind of our technical. So Kathy's the technical for OMS. She's not as she's a maximum person, so that's why I have to stay more engaged. Yeah. Um because she covers both those products, and then he's for your whole account for anything technical. So we just want to make sure we're going to have to do that. Yeah, for me, it's a little bit so I can do escalations regardless of what the product is. Do you want to be on the next call we get set up? I'd like to hear what's going on. Okay, because I like the things I just heard is like, okay, I'd like to know a little more about what's yeah, it's gonna go look up the ticket. The web XML, if you're familiar with that, that's that's the file that's the problem. So  
+[03:03] That's interesting.  
+[03:06] Is it something unique to your environment then or I don't know. It's'cause it seemed like it was working until we started applying the patches and then surprised it. And something got introduced and  
+[03:17] And now the uh absolutely  
+[03:20] Okay. Yeah. But anyway, I'll uh I'll make sure you're on  
+[03:25] Yeah, I'll have to go find the T number as well.  
+[03:30] All right, so let's uh go and jump into these numbers just so we can get through it as quickly. I know you got like you said, the Memorial Day rush. So Did you need to connect in  
+[03:41] No. I'm not going to share on here right now. I'm going to whiteboard. Okay. Do you want to just kind of start an Excel spreadsheet as I'm going through these? I had started one and then I kind of gave up on it. So we can kind of you know resend it out afterwards. But I wanted because I want to make sure that we're all on the same page as the number as I go through them. Okay. If that makes sense. Okay. That's what that meant for me. Okay. Thank you.  
+[04:08] All right. See if we got some working ones here.  
+[04:13] They should that was the robot, I think. Oh this is the robot one. Okay. All right, so your renewal coming up in September.  
+[04:22] October first, September first is gonna be five  
+[04:26] Forty seven.  
+[04:30] Five fifty four seventy.  
+[04:35] That's just business as usual.  
+[04:37] Is it for new year?  
+[04:38] Services. And that's all lumped into that PPA or whatever they call it, right? Yeah. Okay. Yep.  
+[04:45] So that'll be the and that's a one year renewal for that price. I think it, you know, that's with a little uplift over last year, you were right around 500 in that.  
+[04:55] gives that uplift. So that's business as usual. So that in that's for anything sterling related. It's the whole sterling yes all three there's three part numbers for what you guys have. One's for call center forget what the other one is and then the big bulk of it though is for the space. Yep.  
+[05:15] And I think that's for 21.  
+[05:18] Million.  
+[05:19] Order lines, does that sound right? Or 20.5? Yeah, I knew it was right around 29. Yeah.  
+[05:25] Is that  
+[05:26] Seem about right for what you guys are using.  
+[05:30] I don't think we're  
+[05:32] I don't think we're close to it.  
+[05:35] More than enough. Yeah, maybe. I'll have to look back and get some new numbers, but I'll make sure I get you exactly what it's going to do. That's good for the number.  
+[05:43] The next seven weeks.  
+[05:46] Okay. So  
+[05:48] I guess the question I some questions that we have that we will dig into a little deeper if we do a formal proposal is.  
+[05:56] Um  
+[05:57] Roughly when you're going through a license and doing some stuff, like do you guys roughly know about what you're paying them?  
+[06:05] Again, a very rough number per year. Per year.  
+[06:09] Uh well this should a lot more projects, but I would say probably  
+[06:14] Very close to that number right there. Okay.  
+[06:17] Um let's just say plus five hundred K. Yeah.  
+[06:23] I can go through the um  
+[06:25] Like the last twelve months and in voices.  
+[06:28] Well, and what um  
+[06:30] What I'll say is that it would be at least that. I will say that. Okay. All right.  
+[06:36] And then we're looking at a hardware.  
+[06:40] You want to talk yeah, refresh that.  
+[06:42] May or may not include storage.  
+[06:45] With that. Right. So right now I think the numbers for to support OMS are around  
+[06:53] Two and a half to three?  
+[06:55] For five years. Yeah, for well, yeah, whatever the least term they  
+[07:01] Yeah, three to five years. It depends on what the lease terms. Okay. And then you guys also pay in Sono on top of that for  
+[07:08] To host to physically host it and manage it for you.  
+[07:12] Does that sound right?  
+[07:13] Um  
+[07:15] So this uh well so it's  
+[07:18] So that'd be the AS four hundreds with the IBM I. Yeah, I don't know.  
+[07:24] I'm trying to think, is that really part of the Stirling?  
+[07:27] Because it's all on Linux servers, so we do have, you know, on staff.  
+[07:31] Linux.  
+[07:34] Okay, so  
+[07:35] And that's for that's for OMS is on. Yeah, Linux, yeah.  
+[07:41] Linux on that.  
+[07:43] I mean everything has been we've been talking about has been  
+[07:46] They're buying this hardware.  
+[07:51] the eleven eighties to replace the ten eighties that you got. So that's our core retail so our core retail Ear key, which is different. Okay. We do have integrations that go into Sterling that live there, but um  
+[08:04] Yeah, Sterling, everything about Sterling's on it.  
+[08:07] Linux service. Okay. Okay. And that's why we wanted to take this through instead of me just putting numbers in a spreadsheet. So okay. So is there a hardware cost associated, I guess, where it maintains. I don't know what that number is. Yeah. So we'll just say put a spot here, right? So that you have hardware costs. Is it in cloud or is it on prem? On prem.  
+[08:32] Yeah, because we have our um.  
+[08:35] In house and structure team.  
+[08:40] Yeah, because we have like an in-house infrastructure team that  
+[08:43] Supports that.  
+[08:45] So  
+[08:46] Whatever that costs.  
+[08:48] And I don't know.  
+[08:50] Yeah.  
+[08:53] So you know I think we're still doing okay as far as what So let me um and then I guess  
+[08:59] F T E so you have  
+[09:02] Um  
+[09:04] My God, it just blanked on his name and Lim. Yeah. Uh-huh. And then we have Sandy and um and Sean is learning it as well. So they're more on the business side, right? So they would still have to be engaged. No, they're just they're functional analysts. Yeah. Okay. So functional analysts really are responsible for the application itself. Okay. And for the functionality and knowing the functionality, and then engaging with our business partners to make sure that they're using the system the way that it should be used. Okay. So you'd still need some, but maybe not as much FTE if you move to a SaaS solution.  
+[09:39] So like a sand Sandy and Sean on my team would be the same. Like it would it would change nothing in terms of their world, right? Because they really are just about the functionality of the system and configuration setup or business. So where it might create more for them would be  
+[09:56] you know, if we are able to pull back some of the customizations and now we don't need light well.  
+[10:01] To make a lot of those and it'll be.  
+[10:03] I would take it. Like we don't we're not looking to honestly, but like yeah, for them. We have things for them to do. We're not getting rid of an FTE, so like nothing you put on there will ever reduce FTE. No, that's right.  
+[10:18] There wasn't even that. It was like do you guys have support from overseas or anything that gets pulled in at any point to help with upgrades, or is there a cost to the upgrade or anything like that that you would figure in?  
+[10:30] It would really be the library partner. Yeah, right. Yeah, so it's all in this partner support. Yeah, you know, so if we include that.  
+[10:40] Um, and there's some other soft, I don't love getting into the soft, mushy things. I just want it to be like a real number, and then those other things kinda are extra, but you know what I'm saying? Like if we if there's things that we think will actually be hard cost-coded, we could do that, but I just want to see software licensing infrastructure.  
+[11:00] Um  
+[11:01] Cost of major upgrade annually is in in that light well number.  
+[11:05] And then we didn't actually put I didn't put FTE stuff in anyway. Because we knew that you guys were pretty skinny with white in there.  
+[11:15] Um would you still need some partner support potentially?  
+[11:19] Will it be light well or something that's your guys' choice at that point, right? Right. Yeah, because I think the question would be  
+[11:25] Is there maybe another option, but we would still need something because there's probably still  
+[11:30] Gonna be some customization, so  
+[11:32] Some customizations and honestly like somebody who implements it often will help guide it how we could configure it to work in some. So the implementation costs are gonna be pretty high to get  
+[11:46] You started. So that you know first year. So let's just talk about that. So all right. So the figure that I have that I have not gotten approved or anything, but that I have seen with other deals that have gone through is if I take this number and I uplift it by about 50%. So it's not  
+[12:03] Like crazy, but your yearly costs would be around.  
+[12:10] Um eight hundred and twenty five thousand, I believe.  
+[12:16] So you're taking this one.  
+[12:18] And then  
+[12:19] replacing it over here with a higher cost because it is a SaaS hosted environment, right? But you take out on your hardware and that kind of stuff. Um the implementation cost is gonna be  
+[12:32] And I've got we really have to do some research to understand. I was thinking it was going to be around a million. They said it can be between one and two, because you guys are already upgraded to where you are today. Um, I'm just gonna use 1.5, thinking that it's that that's a high number. We would scope it all out. But the initial implementation and it's a three to six month implementation, and that's where it also, this isn't something we plan for. So is it something that you could do? But um, so let's just call it one.  
+[13:03] Just to be on the safe side.  
+[13:06] Tony thinks it's going to be a lot less than that, too. So these are going to be this is your yearly costs.  
+[13:13] And then this is a one time.  
+[13:16] But maybe take some of these folks that we use, whether it's a partner to do the implementation or IBM expert labs, if we take some of those folks and just say we break them off, or like we do.  
+[13:31] Do you guys do extra support for your busy times right now?  
+[13:37] No, I mean.  
+[13:39] Like from our operation side of it, uh they can scale up because they use a partner, TCS. Okay. But um  
+[13:48] Yeah, not from our side of it. So what um  
+[13:52] Fast Pro is an OMS customer. And so I know that they in their last three year deal they set aside  
+[13:59] Uh  
+[14:00] For three years, 300,000 in the first year for their busy period now there's just different you guys have many. But um I think they use 40.  
+[14:10] Thirty like thirty eight thousand of that.  
+[14:13] just as extra in case we need it to help during, you know, Black Friday or you know, whatever.  
+[14:19] So  
+[14:20] Um, so you know, you may have some additional, what's this called? Maybe a hundred thousand in partner costs. I think that would be high.  
+[14:28] But  
+[14:29] In switching, you're going to assess that we're doing all the upgrades, we're getting you to order, you know, whatever the case might be. And as we do that, and why we have this number higher than a million is because we know you have some kind of customizations that we want to untangle. Yeah.  
+[14:45] Yeah, the interesting thing too is we untangle those, they may  
+[14:49] impact other systems and how things uh yeah so we need to and there still can be a lot of it's not  
+[14:59] Ricky I'm gonna put one hundred thousand uh  
+[15:02] Yeah.  
+[15:03] We'll call it partner possible.  
+[15:05] Just to do it.  
+[15:08] So  
+[15:09] I guess I couldn't really do this in the right order, but  
+[15:11] Let's call your yearly cost at nine twenty-five.  
+[15:18] Okay, so this would be year.  
+[15:21] And again, we have to really ask the lot of questions and do some deeper dive and like  
+[15:25] Are um  
+[15:27] expert labs team would have to spend time with Jim to really understand the environment.  
+[15:31] um to scope out what that would be. And it would be, you know, there's different ways to do it, but we would want to  
+[15:39] In an executable. Like it's done at the time. It's done.  
+[15:44] Okay. So  
+[15:46] If you're at nine twenty five here.  
+[15:48] Yearly.  
+[15:50] And we're taking this cost less the hardware we're already  
+[15:54] In a savings of about what, one twenty five per year.  
+[16:00] Not including this number, sorry, this is not linear right now. The way I drew this out, but I think you're probably doing it linear relatively.  
+[16:08] So if we're at one  
+[16:15] Only five.  
+[16:18] Yeah, and I guess where I struggle with that is um  
+[16:21] Because we s you know probably spend  
+[16:24] Two hundred and thirty K a year. It's like that's the support hours for  
+[16:28] For light well.  
+[16:29] No, and we get a lot of  
+[16:31] questions or we have to have them dig into the inner parts of  
+[16:35] Stirling some kind of  
+[16:37] And that I feel like that should not like I feel like most of the questions we should not be answered to. I really like I would I would really hope that it when we like when we're doing part of the project, and I think that's really key, and I just want to call out like there's Jim from the technical side. There should never be a conversation that does not involve the functional analyst because that is the key to not having that part like to reducing the partner support if we don't get them up to speed on exactly how it works, then we keep relying on a partner. They should be a point for film. The customization should be yeah, yeah.  
+[17:13] Because th because you know, with the service you would get with that, you would be able to call up, I zoom IBM and have some.  
+[17:20] They look at the Sterling pickets coming in and they're asking, you know.  
+[17:24] S selling tickets support for sterling.  
+[17:28] They're asking functional questions like how do I do X? And the IBM support answers those questions for you.  
+[17:37] So  
+[17:38] So this is only this up here, just so you know, is only you know that's that doesn't look great.  
+[17:43] Because you're that's going to take a long time to pay this off. Right. Yeah. But I think that this number is much greater if we get the real number here and what the R  
+[17:54] Um, and we were figuring in some stuff that we shouldn't have on the hardware where I was like, this seems like a little bit of a.  
+[18:03] Less the fact that we you guys have to take the time.  
+[18:06] to get switched over in a, like I said, a project you didn't necessarily anticipate. And how we do our  
+[18:13] When we switch people to cloud, we actually give a year where your on premise environment is at no basically no charge. So it's  
+[18:21] The cloud adoption is basically what we do. So you wouldn't have to pay this price and this price at the same time.  
+[18:29] Does that make sense? Yeah. And if at the end of a year you guys are like, this is not  
+[18:35] This won't work.  
+[18:37] at the end of three months or whatever the case might be, then you go back to this.  
+[18:41] You don't.  
+[18:43] You don't have to like  
+[18:45] Yeah, you're at the level of effort and everything is lost, but you can go back to the on-prem.  
+[18:51] If that's  
+[18:53] What needs to happen.  
+[18:54] And then as pretty as I want it to be because I don't have all the information, but I wanted you to see the logic and the numbers very rough.  
+[19:04] to what I was getting to. And if you want to explore this.  
+[19:08] then we really put some meat into it. Right.  
+[19:11] And that five forty seven number, that was uh that was based on twenty two million.  
+[19:18] uh transactions in twenty point five I think.  
+[19:21] Okay, so yeah, to make it look well. Because we're I think we're gonna repool our numbers again for  
+[19:27] So if that goes down, that number goes down.  
+[19:31] Well this number they would probably keep because it's in S. This number this number might go down. Yeah, and then yeah, the year. Yeah, but  
+[19:40] Well.  
+[19:41] The eight twenty five. Okay.  
+[19:42] And that's high, I think, from what I think I can get out of it.  
+[19:46] Again, I don't ever want.  
+[19:48] I'm an underpromise, overdeliver kind of person. I don't ever want to say this is what you're gonna do and then it  
+[19:53] You get surprised by something.  
+[19:57] That was messier than I thought it was gonna be. Sorry. Do you understand the logic? No, that was very that was very helpful. Yeah, okay. I think it was very helpful.  
+[20:05] See.  
+[20:06] So the real question is what do you value that?  
+
+# Transcript of the Meeting: meeting-fded69c4-39d1-4f63-a969-1c30c7b4b62f - Meeting 2026-05-20_09-59-58
+
+## Date: 5/20/2026
+
+[00:00] And I think we just call it store. But honestly, I think if you had that, because that would also handle like potentially you could do HD orders, lots more flexibility around HD orders. And I know that that's gonna like unwrap a bunch of conversations, but I figure like if we sell it at the high level, like you could have a lot of nice functionality that we transition there. So let's scrap the sip part of this. Yeah.  
+[00:22] And talk about the store part instead. And that is a separate module we have to purchase because not part of it. Okay. It is. Yeah. But if I'm gonna if I'm going back to product management saying, okay, they're gonna pay the increase, but we wanna try and get another module in here for it because they're not necessarily  
+[00:40] the way because we're  
+[00:42] This is a really probably too much information, but  
+[00:47] you know, the S and S piece is annuity base. So we can't take that number down too much, but if I could just say, well let's get something else with it, then that  
+[00:56] It's better for us to pitch to the annuity. I think I could sell that much better than the I'm a saying only for the fact that like the promising we'd have to get too many people aligned. Right. It would be. It might be something you do after you guys are stabilized. Correct. Yeah. They're not gonna do it right now. They're gonna want it on their new platform. Honestly, the promising piece. Yeah. We can do that a year or two later if we need to or six months. You know, whatever the case might be. When I was looking at the history of  
+[01:27] IBM Z interaction declares.  
+[01:30] that Sib is in there every single year.  
+[01:33] And lots of information about how you guys want to do it.  
+[01:36] But it never actually like  
+[01:38] Happens. So it's kind of interesting, you know. Obviously, there's demand for it. It's like one of the only things that's consistent year to year.  
+[01:46] If SIP is in there, people are talking about doing it, but  
+[01:49] In the end, it's like it's too much or it's too difficult or what you know. It's part of that too is that intelligent promising that only comes in the cloud, so it have to connect into  
+[02:00] Or on prem.  
+[02:02] And so now because you're in the cloud anyway, it's less of an issue. Yeah. Yeah, so I I think there was  
+[02:07] Some more complications there. But  
+[02:10] Our merchandising team a few years back they were  
+[02:13] really big on we should be looking into this and then um  
+[02:17] kind of shifted focus. So now it hasn't been as big of a thing. Although I'm surprised even from an e commerce that they're talking about all the different, you know, features that they would like and  
+[02:26] I haven't heard much about the like knowing when you could have it.  
+[02:31] Like an expected arrival date. Um  
+[02:34] But I haven't heard them really talk about it lately. Yeah. Sure.  
+[02:40] Well, if you hear it resurfacing. I mean it just gives me an idea of where to go. It's a weird internal IBM thing. But it's just you know for that cloud adoption piece of it. Yeah. I'd like to try and get you guys a little bit more something to  
+[02:58] Okay. Yeah. Cool.  
+[06:03] Thank you. All right. Well worth the time, thank you. Yes, there you go. Thursday or Friday.  
