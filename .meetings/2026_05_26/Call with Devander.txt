@@ -1,0 +1,220 @@
+# Transcript of the Meeting: meeting-d9c7264c-16cb-427d-a459-7471102d7b95 - Meeting 2026-07-07_11-05-02
+
+## Date: 7/7/2026
+
+[00:00] Client working with um  
+[00:03] The telecom providers, uh NPLS bringing in the MPLS circuits into the connectivity the way they need. So that's just uh uh a flavor of some of the uh capabilities that we can do. Okay. Um Russ. And then um I think the other one that was Well the other piece that I know will be important to them will be uh data um  
+[00:35] Now I remember the old days of of CMS and and  
+[00:40] two point oh and three point oh that we did not charge for um  
+[00:47] Now,  
+[00:50] I understand that's still generally true, with some exceptions, like if you're actually buying or or provisioning  
+[00:57] Say S3 storage from us. You do pay in that case. But from pulling data from an app, specifically SAP SAP we would not charge for the data that flowed from SAP back to the client.  
+[01:16] So here's how I would answer that, right? Again, going back to the network connectivity, there's a way that um those network connectivity components can be solutioned. So the direct link connection that's coming from on premises into IBM Cloud, number one can be unmetered, meaning unlimited amount of data then can be sent back and forth. Ingress is always free. Egress, depending on where it's exiting from, where it is starting from, there might be charges. But if it's going to go through a private dedicated drack link, then the those won't be uh there won't be any charges. Right. So if they're using one of these exchanges, the exchange may trigger car charges. The fact that it's going through the exchange. Yeah. So if they um prov they basically subscribe to a solution called unmetered reclink between us and them, there won't be um there would be a cap of um there would be unlimited for uh certain charge, right? So that's all you can eat kind of. Yeah, all you can eat buffet, right? Um or you can do metered and say, hey, I am going to uh take a two GPPS line, um but guess what, I am going to basically subscribe to only one terabyte of data that's going to go egress. But um technically uh one terabyte might not be enough, and let's say they end up consuming ten terabytes, then they would get charged for ten terabytes, which is nine terabytes. So if they think they're gonna need more, it's better to subscribe for uh unmetered. Right. And there's uh a way to calculate um uh the sizing wise.  
+[03:25] Okay, good. Okay. So I think that I think what we put in there because we know from historically that so some of the background on this is they attempted to do this in Google Cloud.  
+[03:40] They tend to do rise in Google Cloud. They were eaten alive by the egress charges.  
+[03:45] And then how we solution is going to be important. Right. Okay, good. Okay. So that would be sort of a a uh the assumptions around that would be we would we would do an analysis and then of your flows and tell you which is the best.  
+[04:12] Correct. Okay. We would need to know for example your speeds and feeds that are required. And the data so if uh bulk of the data that's going into uh from a transaction perspective or moving and all the workloads are going to s the surround workloads that need to work with SAP, let's say they need to they will end up moving right to uh IBM Cloud, then uh within the local region there is nothing, right? If you're moving data for replication perspective, some solutions um don't charge. Like for example, Power VS a replic from sand to sand, but we don't charge for the egress. Right, right. But we can replicate the data. So uh those are s definitely options that can be uh baked into uh what they uh want to see. I am going to just uh flash my screen uh just to show you as an example for networking, right? Here are the firewalls examples, right? So there might be firewall requirement that they might have to consider. Um client sometimes when they're going to they might be already in multiple clouds, by the way, right? Um Bunji is not exception, sometimes they already have started this journey before. Um if they are coming to IBM Cloud, they might need another firewall as well. Which is basically a front end. Directly for internet users to make sure they're going to be directed, they can come in through either VPN or they're coming in, they're uh definitely have um a front end validated. So there are definitely options there that they can uh consume. Juniper, Fortinet, uh 40 gate, or they can bring in their own flavor of uh firewall. Um  
+[06:21] Pala Alto might be an example that here and these are appliances that are classic, but uh in uh VPC we have limited number of uh appliances that are available. So that's one option. When it comes to the direct link, as you can see, the top ones are unmetered right here. So and then these are metered. So if I do sometimes, I mean, especially for a customer like this, let's say you need five G BPS, and I want a pair of them, right? So that's going to be seven um and uh seven thousand eight hundred dollars, right? Right. So then if they want dedicated direct link, they can establish that as well. And um again for production purposes, always recommend pairs um for a large customer which is um going to potentially need to use uh similar type of feeds and uh throughput, um then recommend the same thing even for DR. Otherwise DR, you can go into do a metered two pairs and then say, okay, I'm going to expect about five terabytes.  
+[07:38] Right. Um terabytes.  
+[07:48] Oh so that's the idea.  
+[07:59] If it is unmeter, it's almost close to eight grand. If I meter and I say I'm going to s push only about five terabytes, it's about two and a half. So here up to 100 terabytes is a break even for uh this thing to end up uh consuming all the way up to eight terabytes. So if I were to increase this by another go up halfway, right? 50 terabytes, and look, it goes up to three thousand eight hundred. So that's the metered option. Right. Yeah, and I know that the the the key is a  
+[08:40] The key issue was is that they're querying against the the SAP database.  
+[08:45] from ancillary systems and pulling that data across was  
+[08:50] Right. If the a ancillary systems are within the  
+[08:54] So this is a sample um  
+[08:57] architecture, right? If the ancillary systems are all in VPC and they're going from Power VS to there, we would go through it. We would go through our transit gateway, and then so the local transit gateway will not charge from power to VS to VPC. And if uh again it also depends on so based on  
+[09:23] If the customer wants to come in, lift and shift and run them as is, and then go into SAP um rise accounts, right?  
+[09:37] Then SAP will own the child accounts for the customers, and they will end up provisioning whatever the infrastructure that is required in Power VS, whatever infrastructure that's uh required from a X86 in BPC, whatever um services that they need, cloud object storage, IAM, security, logging, monitoring, all these services will be consumed by SAP through that child account for Bungee. Gotcha. Right? That's how the RISE construct will work. Because they will um charge one basically uh send one invoice for the customers that includes all the infrastructure, SAP software, SAP services, everything, right? So underneath there might be uh provider like IBM consulting for some of the services, too. Or there might be customer that might say, okay, there are certain services that um IBM consulting we want you to do, right? Whether it's migration services, whether it is ongoing management services, uh for application management, all those parts, client has the option to do some of that outside of this uh entire core SAP application. Then the surround application could be as um uh uh like a a tax software, right? Open text as an example. Um their uh document management could be again them, taxware. So whatever the surround applications, there might be a warehouse that that needs to be talking to. All those they can come to either Power VS if it they are already using power, or they can come to VPC. So there's a Okay.  
+[11:34] So then that can be on living in um I in customers own account.  
+[11:42] And then SAP will um they can grant uh uh connectivity and uh privileges going uh across accounts. Okay, right. Okay. So there's a couple more questions here that I want to touch on. One is um,  
+[12:01] Well I'm not sure if this one but we'll come back to it. So what is the protocol for handling  
+[12:06] I am synchronizations between A D, hyperscalers A D, and the Rise environment. I assume that that's pretty straightforward.  
+[12:14] Um I mean the the  
+[12:17] Typical protocols are available, right? Standard.  
+[12:21] Um SSL um the uh for basically setting up IAM are available, so they shouldn't have um an issue. I wonder if what they mean what they really mean is um you know how do you handle the your trees and their trees and the other and the you know probably Google's tree, right? Normally what happens is um the way I have seen these implemented, Russ, um from a IAM perspective. There's uh going to be one central.  
+[13:03] Truth in terms of the IAM um.  
+[13:09] And we'll subscribe. Yeah, subscribe. And all we are making sure is we are one of the trusted subscribers and anybody that wants to consume any of the resources would get first authenticated from them.  
+[13:29] And gets uh authorization token and based on that we will have get the actual privileges that are associated to that uh uh authorization. Authentication happens, yes, this is the person, and then based on that authentication, yes, these are the authorizations that this person is eligible for. Once that authorization comes in, then knows okay this is the person's role, and that role might mean something in uh IAM in our thing from a mapping perspective.  
+[14:03] Which is what typically have to be done up front.  
+[14:06] Um so whoever goes through that entire initial setting up of the landing zones and  
+[14:13] creating all these um would end up taking that responsibility.  
+[14:18] And then um  
+[14:21] There's a question about the approach to disaster recovery testing.  
+[14:26] Uh specifically within Rise private cloud framework.  
+[14:30] Mm.  
+[14:32] So the answer there is um the  
+[14:37] I mean uh it'll be typical.  
+[14:40] Um  
+[14:46] Um I guess um  
+[14:49] When we um started the journey for certification, DR was not available, but that was in the works. So and we already have about seven six, seven, eight clients.  
+[15:02] So that whatever is the SAP recommended practices are for um  
+[15:13] should be um  
+[15:16] Support it.  
+[15:17] So if we need um any validation in terms of hey hey, um are these uh supported  
+[15:30] Um so let me ask you, these requirements, right? Um  
+[15:37] IBM consulting started answering these. Some of them. Yeah. Yeah they've they've already answering some of them. Okay I'm trying to track down ones that were specific to Power V C which  
+[15:50] They have a blind spot when it comes to power V C.  
+[15:53] Okay, Power V S. No, it's uh it's okay.  
+[15:59] I think we can we can drag them down, Russ. And then the last one is kind of the same  
+[16:05] And I again I don't know if this is you or not, but I'm gonna read it to you anyway. So detail your experience with Cloud ALM versus solution manager for monitoring the overall performance.  
+[16:17] of the application solution in a rise environment.  
+[16:21] Yeah. So that goes to I think um  
+[16:26] So monitoring tools that SAP has. Okay. So it's SAP's tools.  
+[16:34] And that kinda the same uh in that same line is describe your strategy for managing latency and bandwidth requirements for our most remote global  
+[16:43] manufacturing sites to ensure peak  
+[16:46] functional performance across Bung Ji's enterprise. And I think you've kind of already answered that, which is  
+[16:52] They would want to use one of these if they really, really wanted to be sure, they would want to use one of these sort of frameworks that allows  
+[16:59] Remote.  
+[17:02] Sites to have local pops.  
+[17:05] Yeah.  
+[17:06] Typically um they they already have MPless net network if this is complex, right? Um the way  
+[17:13] It looks like they have a complex manufacturing setup, number one. Number two is there might be data flows that are going back and forth between these regions. Mothership could be in the U.S. and um Brazil might be feeding some of the data um into um the mothership from um reporting purposes or even um uh depending on warehouses and whatnot, right? It's the warehousing docks and um  
+[17:45] And as you said, manufacturing plants which of course  
+[17:48] Like here in the US, they're in the middle of a cornfield a hundred miles from anything else, right?  
+[17:53] And in Brazil and around the world, it could be anywhere. So their three biggest zones are the US  
+[18:00] Brazil.  
+[18:01] Well I say US, but US, Canada, Brazil and then is separate and then EU. And then kinda the fourth one is  
+[18:09] Scattered through Africa, through Indonesia, China.  
+[18:13] all over the place. So they've got these little ones that are out in the middle of  
+[18:16] And I think that's the ones they're concerned about.  
+[18:21] But it I think it's kind of  
+[18:23] I think it's it was a  
+[18:27] You're gonna work with all the major  
+[18:29] Exchanges, if that's the way they want to go.  
+[18:34] the consulting group to say this is how we recommend to do it.  
+[18:38] So basically.  
+[18:39] Yeah. So we all at the end of the day um  
+[18:51] um have ability to connect to the rest of the world in the in the pops. Points of present like you mentioned, Russ. So based on  
+[19:01] where they want connectivity or how they want connectivity, option one could be bringing that dedicated lines into that pop.  
+[19:11] Um or if they already are are using a standard path.  
+[19:16] with uh a standard providers.  
+[19:20] I mean almost seventy to eighty percent of the uh internet lines are flowing through, we can leverage th those paths as well.  
+[19:31] as a way to interconnect and um  
+[19:34] Provide those um data flows.  
+[19:38] Okay.  
+[19:40] Uh there's one last question here that I think since we have time that I think is again kinda split.  
+[19:46] But  
+[19:48] How do you manage the handshake, and that's in quotes, between Bungi's legacy environments and the SAP managed rise  
+[19:56] Cloud to ensure efficient functional performance.  
+[20:00] in each situation.  
+[20:02] That is incredibly vague to my mind because that could be either  
+[20:06] You're talking about  
+[20:08] Yeah.  
+[20:10] Or are you talking about networking, which  
+[20:16] Yeah, it is both. So um I I think networking component um could be answered in networking section and then when it comes to answering this question  
+[20:31] Please uh refer to the network.  
+[20:34] Connectivity and um requirements and flow in the network section.  
+[20:40] And then when it comes to data flow.  
+[20:43] um between the legacy system and SAP  
+[20:48] um customers end up using BAPEs, right? The APIs um that are being supported um or common integration mechanisms in terms of how data needs to go from I mean the source system to  
+[21:08] There's definitely a lot of customers that will be in that  
+[21:12] Uh boat.  
+[21:14] In terms of  
+[21:15] Um doing a phased approach, right?  
+[21:22] being able to jump onto the rise with  
+[21:25] SAP coming with a uh clean core.  
+[21:29] Um and there's gonna be so many surround modules and applications that need to continue to work.  
+[21:37] and exist because them might  
+[21:40] be a need for them to uh be there and it might take time for them to  
+[21:44] Right.  
+[21:50] So  
+[21:51] For that for that purposes I think we should be um  
+[21:55] I mean they would be answering that from a  
+[21:58] using standard BAPI whatever available um business um application programming interfaces or um mean the modern APIs or um uh  
+[22:14] Legacy uh integration mechanisms.  
+[22:19] Okay. So those are uh I think again standard approaches in how they would do it.  
+[22:26] Um  
+[22:30] Whatever is the preferred mechanism that is again should be answered by a consulting.  
+[22:39] For from our perspective, infrastructure perspective.  
+[22:42] Um as long as all the requirements, uh network requirements are satisfied.  
+[22:50] uh in terms of the types um the speeds, feeds, mechanisms to connect, um then we're we're covered.  
+[23:01] All right. I think that answers all the key ones. Um  
+[23:06] If you have any any assets, um you know PowerPoint type thing that would uh  
+[23:15] Um  
+[23:18] There would be useful. I don't know. I I I will see um where we can scavenge and um I'll also uh ping around. Um but um  
+[23:32] I mean, I'm  
+[23:35] Um as things uh progress and let's stay in touch.  
+[23:48] Okay.  
+[23:49] I know uh  
+[23:51] We've we've all gone through some of these RFPs. I know. Always end up coming in the last minute. I understand. Their schedule is just insane.  
+[24:02] And some of this it could be literally to uh uh invite to check the boxes. They already have these pre-uh plan this thing. And it could be even our our teams. They might have um I mean a pretty good structure uh from a consulting perspective. They um maybe have ninety, ninety-five percent of the stuff um worked out.  
+[24:29] But wherever they need specific answers we can track them.  
+[24:33] Yeah.  
+[24:37] You know, that they've made a decision.  
+[24:41] they're trying to salvage  
+[24:44] a three year effort that completely collapsed when s when uh  
+[24:48] key executive left and now they're trying to like salvage what they can.  
+[25:00] Sap Rise.  
+[25:05] Okay.  
+[25:06] Okay.  
+[25:08] Okay.  
+[25:10] So there is some history here. And they have history? No. No, it's Saprise itself was the one doing it. It was three year effort and  
+[25:24] Okay.  
+[25:25] They never moved a lot of it off. And they're they're up against the wall'cause they're still on um  
+[25:32] I want to say Oracle or B two.  
+[25:34] And so they're running up against the you gotta get off the relational database.  
+[25:38] Tahana.  
+[25:40] Right.  
+[25:41] Yeah, that's the first step um in the process.  
+[25:45] So for a lot of these.  
+[25:47] Right. So and they there's a um uh a process even for that um data migration DMO um uh option, right? So basically it's the tooling that um consulting has used. They've been using this probably I would say for the past m more than a decade or uh close to even two decades. It's uh  
+[26:17] uh a migration uh approach and tooling that basically gives goes from version to version and they have the same tooling to go from relational db to HANA as well.  
+[26:31] So and they the consulting team. I worked with um in twenty eighteen. Uh  
+[26:41] Twenty nineteen.  
+[26:46] Um NBCU for migrating their on-prem to AWS.  
+[26:52] And we did s similar for Deluxe, uh to Azure back in the GTS days, for us. Okay. I was part of the managed services infrastructure managed services, so help manage on our part. And just being um uh SAP basis guy, I was able to uh understand and help facilitate navigate uh what needs to be done on our pieces and make sure that we're answering everything. Yeah, I spent from two thousand and ten to two thousand and  
+[27:27] Seventeen or eight. Well and they closed CMS too. I was part of that.  
+[27:31] I was part of cloud, doing migrations and and you know, like when we moved Whirlpool in and it didn't work right. Yep. Figuring out why why it didn't work right in our environment. And uh and um couple of other companies too. You know, there's a few there over the time over the time period. So yeah, familiar with I've just been out of it. I've been out of it for like three or four years, so I don't know all the details anymore.  
+[27:58] Yeah, so one question. Um I know um IBM C of course is going to be  
+[28:05] Um  
+[28:06] Cloud neutral.  
+[28:08] Right.  
+[28:11] Where are I mean what are the feelers is that  
+[28:14] Yeah they won't be able to do it.  
+[28:18] They want power. So IBM C is the one that's pushing power, VS.  
+[28:23] Yeah, we and because  
+[28:25] They're looking at as a as a as a play that nobody else can do.  
+[28:29] We can handle it from  
+[28:31] Hardware all the way up through SAPRIS.  
+[28:47] Hey, if you want to do some  
+[28:50] Yeah,'cause there there's a little piece in there about well, what else can you do? And the things they talk about is AI and stuff. It's kinda leaning into that procurement.  
+[29:01] Um  
+[29:06] for them. And um there's another one I can't think of the off  
+[29:09] From our clients. H R is the other big one.  
+[29:13] So I I did paste uh the regions, cloud regions, uh in the chat.  
+[29:18] I'll let me uh put it on our uh I saw the Slack and uh let me put it there as well. So um  
+[29:26] You can see um we have um data centers and regions in  
+[29:32] Um  
+[29:32] North America.  
+[29:34] Then um South America, Sao Paulo.  
+[29:37] Brazil, right? Those are uh we have three data centers there.  
+[29:43] Um  
+[29:44] V R S  
+[29:48] Um four and uh five for power virtual servers.  
+[29:52] So they should be good there in terms of  
+[29:58] And there's one more thing that uh might I want to share as well. Yeah, it looks like Australia  
+[30:06] Yeah.  
+[30:08] And India as well. So that'd be the two most like and Mumbai. So the y yeah, they're they're covered wherever this wherever maybe this fourth small  
+[30:18] Right now they're talking only about three instances, but  
+[30:22] They're gonna need one for Indochina.  
+[30:25] So  
+[30:26] I also will tell you I mean uh Ping do second.  
+[30:30] Link.  
+[30:32] Um  
+[30:33] that is for our um replication between the regions.  
+[30:43] going from S A zero one to S A four, that's the pair that we support.  
+[30:48] In Montreal we support uh in uh Canada we support Montreal and Toronto.  
+[30:55] And um in Europe, London or four to  
+[30:59] Oh six, we also have uh Madrid  
+[31:03] Yeah.  
+[31:04] Right, Madrid to Frankfurt, Madrid to Frankfurt O five.  
+[31:09] So there's definitely multiple uh pairs there. Yeah, yeah, there's plenty there. So  
+[31:14] Okay.  
+[31:16] Um those are the things that we're gonna do.  
+[31:21] What you need, we can  
+[31:23] Um certainly uh find the answers.  
+[31:31] There'll be another round of this.  
+[31:33] Yeah, absolutely. No problem. We can continue to  
+[31:38] Cool.  
+[31:39] Sure.  
+[31:40] Appreciate the extra time.  
