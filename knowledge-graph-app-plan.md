@@ -231,7 +231,7 @@ Build a web application that ingests unstructured documents of any type, uses an
 - Use native HTML5 drag events — do not add a third-party upload library
 - Polling is sufficient for local dev; websocket upgrade can come later
 
-**Status:** [ ] pending
+**Status:** [x] done
 
 ---
 
@@ -268,7 +268,7 @@ Build a web application that ingests unstructured documents of any type, uses an
 - Re-fetch graph data after a weight hint is submitted and re-run the simulation with new data
 - Node `size` signal: keyword nodes smallest, idea/project nodes medium, person nodes largest (also scaled by connection count)
 
-**Status:** [ ] pending
+**Status:** [x] done
 
 ---
 
@@ -296,7 +296,7 @@ Build a web application that ingests unstructured documents of any type, uses an
 - Do not add OAuth, SSO, or password reset flows in v1 — keep scope minimal
 - JWT expiry: 8 hours for local dev
 
-**Status:** [ ] pending
+**Status:** [x] done
 
 ---
 

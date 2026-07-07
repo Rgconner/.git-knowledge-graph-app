@@ -1,0 +1,41 @@
+services:
+
+  # ── Backend: FastAPI + uvicorn ──────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      # Override DATABASE_URL to write SQLite into the named volume
+      DATABASE_URL: sqlite:////data/knowledge_graph.db
+    volumes:
+      - db-data:/data
+    # Backend is only reachable from within the compose network.
+    # The frontend Nginx container proxies /api → backend:8000.
+    expose:
+      - "8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # ── Frontend: Nginx serving the Vite build ──────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  db-data:
+    driver: local

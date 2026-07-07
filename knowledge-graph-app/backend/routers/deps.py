@@ -1,18 +1,58 @@
-"""FastAPI dependencies shared across routers.
+"""FastAPI dependencies shared across routers."""
 
-get_current_user is a placeholder that returns a hardcoded user dict with id=1.
-It will be replaced in Sub-Task 9 with real JWT validation.
-"""
-
+import os
 from typing import Annotated
 
-from fastapi import Depends
+from fastapi import Depends, HTTPException, status
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from jose import JWTError, jwt
+from sqlalchemy.orm import Session
+
+from db.session import get_db
+from models.models import User
+
+SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key-change-in-production")
+ALGORITHM = "HS256"
+
+_bearer_scheme = HTTPBearer(auto_error=False)
 
 
-def _placeholder_current_user() -> dict:
-    """Temporary stub — always returns user id=1.  Replaced in Sub-Task 9."""
-    return {"id": 1}
+def get_current_user(
+    credentials: Annotated[HTTPAuthorizationCredentials | None, Depends(_bearer_scheme)],
+    db: Session = Depends(get_db),
+) -> dict:
+    """Validate a Bearer JWT and return the authenticated user as a plain dict.
+
+    Raises HTTP 401 if the token is missing, invalid, or the user no longer exists.
+    """
+    if credentials is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Not authenticated.",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    try:
+        payload = jwt.decode(credentials.credentials, SECRET_KEY, algorithms=[ALGORITHM])
+        user_id: str | None = payload.get("sub")
+        if user_id is None:
+            raise ValueError("Missing sub claim")
+    except (JWTError, ValueError):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid or expired token.",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+    user = db.query(User).filter(User.id == int(user_id)).first()
+    if user is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="User not found.",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+    return {"id": user.id, "email": user.email, "name": user.name}
 
 
 # Convenient type alias so routers can write: user: CurrentUser
-CurrentUser = Annotated[dict, Depends(_placeholder_current_user)]
+CurrentUser = Annotated[dict, Depends(get_current_user)]
