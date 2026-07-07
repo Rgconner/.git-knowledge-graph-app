@@ -56,18 +56,45 @@ class OpenAIProvider(AIProvider):
 
     def _chat_json(self, system: str, user: str) -> Any:
         """
-        Call the chat-completions API in JSON mode and return the parsed
-        response object.  Always raises on API errors (let them propagate).
+        Call the chat-completions API and return a parsed JSON object.
+
+        Does NOT use response_format — many self-hosted servers only support
+        "text" or "json_schema" and reject "json_object".  Instead we instruct
+        the model via the system prompt and extract the JSON from the response
+        text ourselves, stripping any markdown code fences the model may add.
         """
+        # Append a firm JSON-only instruction to the system prompt so the
+        # model knows to return raw JSON regardless of its default behaviour.
+        system_with_json_hint = (
+            system
+            + "\n\nIMPORTANT: Your entire response must be valid JSON only. "
+            "Do not include markdown, code fences, explanations, or any text "
+            "outside the JSON object."
+        )
+
         response = self._client.chat.completions.create(
             model=self._model,
-            response_format={"type": "json_object"},
             messages=[
-                {"role": "system", "content": system},
+                {"role": "system", "content": system_with_json_hint},
                 {"role": "user", "content": user},
             ],
         )
-        return json.loads(response.choices[0].message.content)
+
+        raw = response.choices[0].message.content or ""
+
+        # Strip markdown code fences if the model wrapped the JSON anyway
+        # e.g. ```json\n{...}\n```  or  ```\n{...}\n```
+        raw = raw.strip()
+        if raw.startswith("```"):
+            # Remove opening fence line and closing fence
+            lines = raw.splitlines()
+            # Drop first line (```json or ```) and last line (```)
+            inner = lines[1:] if lines[-1].strip() == "```" else lines[1:]
+            if inner and inner[-1].strip() == "```":
+                inner = inner[:-1]
+            raw = "\n".join(inner).strip()
+
+        return json.loads(raw)
 
     # ------------------------------------------------------------------
     # AIProvider interface
