@@ -1,0 +1,134 @@
+# Transcript of the Meeting: meeting-981a0016-fb36-42bc-8b0a-dee3d887700d - Meeting 2026-05-26_14-34-40
+
+## Date: 5/26/2026
+
+[00:00] I honestly don't know what to tell you. So all the people that I was working with pretty much weekly all have new roles or have been  
+[00:12] Retired from the company. Um and if there's you know a another direction that you know maybe you can push us into that that that's just the way it'll go. Um I think I I think there's I think  
+[00:28] where I'd like to go, honestly. So I'm on just, you know, I'm on the road almost all of June.  
+[00:32] Uh, but for good reason I'm going out to the HQ for a week and then I'll be in Europe. So I should  
+[00:38] come away at the end of June with a better understanding of  
+[00:43] What they want me to do in my role. Uh  
+[00:46] Uh if anything. Yeah. As you can tell from from  
+[00:51] my demeanor, which is a little different, is I I'm not sure if I'm gonna have a role.  
+[00:56] In the coming months because that of the changes they're making. So um that worries me a little bit, obviously.  
+[01:05] That radical. That radical would change.  
+[01:11] Well I mean I think it I think part of it and  
+[01:14] Uh I know Russia and Jason will appreciate this. I call it FOMO.  
+[01:18] I think a lot of our our our AI and a lot of the stuff they're trying to do is all FOMO, fear of missing out. So they get the the the executives in there get it, well I was talking with Tommy and Tommy and his company are doing this, and I was talking with Jane and Jane and her company are doing this, and what are we doing? You know, it's like it's the it's this true like high school fear of missing out type stuff, and it's like  
+[01:39] So you're just doing it because everybody everybody else is doing it and you want to be able to say that you're doing it too, right?  
+[01:47] Pretty much. Okay.  
+[01:49] That's not what a data protection officer really wants to hear.  
+[01:55] But  
+[01:58] So anyway, it's a rat I mean  
+[02:02] It's a radical change because I think it's also changing the culture and how we do things. I mean  
+[02:07] You know, Russia at at at at at at at at at at at at at the end of the day what I  
+[02:10] And I've said and I've said this a number of times is like I just I'm trying to wrap my hands around what we're doing as a manufacturer.  
+[02:18] Because what we do at Bungie is relatively simple.  
+[02:21] You know, we buy  
+[02:23] commodities from a farmer.  
+[02:25] We put it into some kind of transportation modality and it either goes as  
+[02:31] direct product to a a a a a a a a a a a purchaser or it goes to one of our plants and we process it into oil or into grain, we mill it we mill it or we crush it.  
+[02:40] You know, and then we saw that. And I'm just like, you know, and obviously there's logistical support along the way, but I'm just kind of  
+[02:48] Yeah.  
+[02:49] When I talk about generative AI with people, I'm like.  
+[02:53] We're not creating content. I mean if if if if if if if if if if if if Jen AI could create seeds and plants and railroad cars, we'd be having a bunch of different conversations.  
+[03:06] Yeah, we're not.  
+[03:07] Right. Yeah, it's more of  
+[03:10] I mean, have you seen IBM's uh Client Zero?  
+[03:15] Stuff.  
+[03:17] I don't think I have. That might be good to take a look at. I mean because I mean that and that's the other thing too. That could help me point out who  
+[03:25] in the new war to do it. So what I will tell you, and you probably already know this, Dallas, is they've tried to sort of pull in  
+[03:32] This is in what I call business intelligence and analytics together with architecture.  
+[03:37] Um  
+[03:39] I'm not a big fan of of combining those two.  
+[03:44] From my prior experiences, I think that's a  
+[03:47] That's not gonna end well. Um it works if it works, but sometimes they don't.  
+[03:53] Exactly. I mean exactly. It's like one of those things if if it works, it's it's you you you you you you you you you you you you're a miracle maker. If it doesn't work, you know, oh my God, you know. So  
+[04:01] Yeah climate their stories are are our story of how we  
+[04:07] met these challenges.  
+[04:11] We don't do it. It's not about us like writing code with something. It's like us improving procurement.  
+[04:17] Something you guys do. A lot of.  
+[04:19] HR, IT, those kind of things. So  
+[04:22] Yeah, kind of.  
+[04:24] Uh if you will, but improving the back office piece.  
+[04:26] More than  
+[04:29] You know.  
+[04:30] Like you said, producing content.  
+[04:33] And that might and that and that's probably a road for us to think about. I mean, I I'd love to see it because and actually I you know, I can take some meetings, I've got some  
+[04:42] You know the I'm not I'm I'm in place somewhere else, but I can certainly do something on the eighth or ninth of June the rest of the month. I literally I mean either in a plane or in meetings for the rest of the month, but um  
+[04:54] I'd love to see it, because that's part of it too, is I think they're looking at, you know, how do we, you know, how do you implement, how do you do some of this stuff, and that's  
+[05:02] Yeah, I've we've hit every lawn, you know, pothole and landmine.  
+[05:07] Along the road.  
+[05:09] Why not learn from  
+[05:11] us and you know what we've done.  
+[05:17] Let's let's set that up. I mean if if nothing else it'll give me something to distract me away from  
+[05:21] Yeah. From life right now.  
+[05:26] And sometimes I find too when people get new roles, like if they're getting new roles in an area, maybe they're not  
+[05:31] as familiar with, that's maybe an opportunity for us to come in and educate him a little bit on that topic area. So as you figure out  
+[05:38] You know, we're  
+[05:41] More than willing to come in and have  
+[05:44] Data architecture kind of discussion, AI architecture kind of discussion, and then we can combine that, like Ross said, with the stories of of how we've done that internally.  
+[05:55] That'd be great. Yeah.  
+[05:57] And and Bob wanted to uh introduce you uh briefly to uh Lauren.  
+[06:02] Um so as a background, we Russ and I kind of oversee Bungie more broadly. Lauren's our data and AI lead um who works closely with us. So you know, she's focused around things like data foundation and and governance topics that we've been discussing.  
+[06:18] Um but wanted to to bring her into the picture now. I uh you know, I know things might  
+[06:23] change in in a few weeks or or a month. Um we don't really know yet, but wanted to at least, you know, get her into these conversations and uh introduce you to her.  
+[06:32] Um Lauren, I'll let you uh  
+[06:34] Uh introduce yourself. Yeah. No, thanks, Dom. And uh Bob, it's really nice to connect with you as you were talking through the the organizational changes and a lot of the fucks that's going on your side. It sounds familiar. I've been at IBM for seven years now, so I've definitely seen my fair share of similar situations. So I know how you're feeling. Um but thanks for keeping us in the loop, you know, as there's ongoing changes. I know it's you gotta take it just day, day by day with that sort of thing.  
+[07:02] Um, but excited to get to know you a little bit better. You know, Dom and Russ have  
+[07:07] uh kept me up to date on, you know, some of the conversations that you've been having, some of the topics that are top of mind. So I can work with them along with Jason, you know, and the wider team here as things continue to develop to support you, you know, as as you explore different avenues and, you know, you adjust to the changes. So looking forward to continuing those conversations when the timing is right.  
+[07:29] Thank you. Nice to meet you too. Yeah. Welcome, welcome to the party.  
+[07:33] It's a fun party. Thanks for inviting me.  
+[07:37] Yeah. Yeah, well we're you know we're we're we're here to pivot with you, Bob.  
+[07:42] Let's get something set up on uh I think it was you said it was the eighth or or ninth. Yeah, the eighth and ninth are pretty good, wide open for me. I'm heading into the  
+[07:52] Um  
+[07:54] I know P  
+[07:55] I'm a a a board member on it's called the Future of Privacy Forum. I've heard of that, but that's Jules Pullett and Jules is a friend and so  
+[08:03] Um he's got a we've got a big thing going in D C on the tenth, eleventh, and twelfth um annual meeting and some other stuff. So eighth and ninth are pr pretty much wide open now. Um  
+[08:17] So um  
+[08:20] And then yeah, the rest and then the rest of the rest of the month, like I said, it's a little it's crazy. I'm in back to back meetings.  
+[08:27] in St. Louis for like four days.  
+[08:30] And then uh and then off to Europe. So  
+[08:33] All right.  
+[08:35] Does he monk? Well, I guess he's gonna miss the baseball game.  
+[08:39] Yeah. Yeah. If you happen to be in in in in in in in in in in in uh in in in in in in in in in in in  
+[08:42] St. Louis on the twenty fifth we're we're having a big bunky group come out to a Cardinals game, but uh  
+[08:48] Will you be in Europe or will you be back in Atlanta?  
+[08:53] In Urick. Yeah. I'm sorry. I'll be in Rotterdam to be specific, I think on the twenty fifth. Yeah. I I I would take that over a baseball game. There's there's many other baseball games you do attack. I think they're middle of the pack right now. They have an opportunity.  
+[09:09] For it It's better than where they were last year. So let me just let's put it that way.  
+[09:15] Yeah.  
+[09:16] Yeah, well that'll I mean that that sounds great. Uh  
+[09:21] Do a separate if you don't mind if there's a button here if you send me a note on it. I've got a gentleman on my team who's our global um manager for global records and information management. So he's been doing a lot of work. He's on the AI working group with me and things like that. I brought him on.  
+[09:38] to help us around this sort of data management.  
+[09:42] area or records management or information, however you want to call it.  
+[09:45] But he's he's um lives in St. Louis.  
+[09:48] So um he might if he if you wanted to  
+[09:52] Make some additional connections inside Bungie. I'm it's okay with you, I'd have him take my place.  
+[09:57] Absolutely. Yeah. And you know, happy to meet with him beforehand or  
+[10:01] Or whatever, and we can look at the chain. Yeah, we can we can invite him to the demo on the eighth or ninth and kinda kill two birds.  
+[10:08] Perfect.  
+[10:09] I love it.  
+[10:11] Great, I'll set that up. Um  
+[10:13] Let me look at my calendar first, but I'll you know, just let us know. We'll keep it tentative.  
+[10:19] Um  
+[10:20] And yeah, we'll uh uh  
+[10:21] We'll work to adjust and and pivot and you know, excited for what the future holds.  
+[10:26] No matter what, we're you know, we're we're here to Bobs. Oh no, I yeah, no, I I think we're all there. It's just it's it's just you know, you know. And I I I and I do apologize for my uh uh deppy downer attitude, but it's just it's it's just  
+[10:38] We've all been there.  
+[10:40] Yeah, I know. It's just but it's just ten months for us. We've been doing this since July of last year, and it's just all right, guys, you know, can we  
+[10:47] One one year I had three different jobs.  
+[10:51] Completely different jobs. Yeah.  
+[10:53] I mean the good news my job isn't changing, I don't think.  
+[10:56] But it's as you know, it's building up it's building up the  
+[11:00] Um  
+[11:02] Your connections and the people you go to to help you sort of get you data to do your job. That's I think people forget sometimes just how key that is.  
+[11:15] Yeah.  
+[11:16] Well looking forward to adapting with you.  
+[11:19] And uh  
+[11:20] And yeah, we'll we'll get that set up on the uh on the eighth or ninth.  
+[11:23] Um I'll shoot you an email and uh if if if if if if if if if if if you want to  
+[11:28] C  
+[11:29] Um your colleague. Yeah, John. C John. Yeah. Okay. Perfect. C C John, invite him to the uh the demo and uh we'll we'll we'll speak with him then.  
+[11:39] Lauren nice to meet you, Dom as always, thank you so much. Jason, good to see you too soon.  
+[11:44] Take care. Yeah, thanks so much, Bob. Appreciate your time. Good afternoon. We'll talk soon.  
+[
