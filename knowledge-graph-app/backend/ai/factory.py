@@ -8,8 +8,18 @@ Usage::
     provider = get_ai_provider()
     result = provider.extract_entities(text)
 
-Configuration (via environment variable):
-  AI_PROVIDER — one of "openai" (default), "anthropic", "watsonx"
+Configuration (via environment variables):
+  AI_PROVIDER  — one of "openai" (default), "custom", "anthropic", "watsonx"
+
+  For AI_PROVIDER=custom:
+    AI_BASE_URL — base URL of the OpenAI-compatible endpoint
+                  e.g. https://my-server:8080/api/v1
+    AI_API_KEY  — API key or any non-empty string if auth is not required
+    AI_MODEL    — model name the server expects, e.g. "llama3", "granite-13b-chat"
+
+  For AI_PROVIDER=openai:
+    AI_API_KEY    — OpenAI API key
+    OPENAI_MODEL  — model name (default: gpt-4o)
 
 The provider instance is cached at module level (singleton) so the client
 is constructed only once per process.
@@ -43,6 +53,9 @@ def get_ai_provider() -> AIProvider:
     if provider_name == "openai":
         from ai.providers.openai_provider import OpenAIProvider
         _provider_instance = OpenAIProvider()
+    elif provider_name == "custom":
+        from ai.providers.custom_openai_provider import CustomOpenAIProvider
+        _provider_instance = CustomOpenAIProvider()
     elif provider_name == "anthropic":
         from ai.providers.anthropic_provider import AnthropicProvider
         _provider_instance = AnthropicProvider()
@@ -52,7 +65,7 @@ def get_ai_provider() -> AIProvider:
     else:
         raise ValueError(
             f"Unknown AI_PROVIDER value: '{provider_name}'. "
-            "Supported values are: 'openai', 'anthropic', 'watsonx'."
+            "Supported values are: 'openai', 'custom', 'anthropic', 'watsonx'."
         )
 
     return _provider_instance
