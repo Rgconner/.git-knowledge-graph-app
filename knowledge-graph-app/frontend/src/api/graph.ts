@@ -11,11 +11,16 @@ export interface GraphNode {
     | "organization"
     | "location"
     | "date"
-    | "action_item";
+    | "action_item"
+    | "document";
   sentiment_color: string;
   size: number;
   layer: "team" | "personal";
-  status?: "open" | "in_progress" | "closed" | null;
+  status?: string | null;
+  // Document-view only
+  document_id?: number | null;
+  entity_count?: number | null;
+  ai_category?: string | null;
 }
 
 export interface GraphEdge {
@@ -53,6 +58,15 @@ export async function fetchPersonalGraph(): Promise<GraphPayload> {
   if (!res.ok) {
     const text = await res.text();
     throw new Error(`Fetch personal graph failed (${res.status}): ${text}`);
+  }
+  return res.json();
+}
+
+export async function fetchDocumentGraph(): Promise<GraphPayload> {
+  const res = await fetch("/api/graph/documents", { headers: getAuthHeader() });
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Fetch document graph failed (${res.status}): ${text}`);
   }
   return res.json();
 }

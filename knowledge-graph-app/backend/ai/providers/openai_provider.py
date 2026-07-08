@@ -11,8 +11,11 @@ JSON objects — no free-form prose parsing.
 from __future__ import annotations
 
 import json
+import logging
 import os
 from typing import Any
+
+logger = logging.getLogger(__name__)
 
 from openai import OpenAI
 
@@ -37,6 +40,58 @@ _VALID_ENTITY_TYPES = {
 }
 
 
+def _repair_truncated_json(raw: str) -> Any | None:
+    """
+    Attempt to repair a truncated JSON string by closing unclosed brackets.
+
+    Works by tracking open braces/brackets and appending the required closing
+    tokens.  Returns the parsed object on success, or None if repair fails.
+    """
+    # Walk the string tracking open structures (ignoring content inside strings)
+    stack: list[str] = []
+    in_string = False
+    escape_next = False
+
+    for ch in raw:
+        if escape_next:
+            escape_next = False
+            continue
+        if ch == "\\" and in_string:
+            escape_next = True
+            continue
+        if ch == '"':
+            in_string = not in_string
+            continue
+        if in_string:
+            continue
+        if ch in ("{", "["):
+            stack.append("}" if ch == "{" else "]")
+        elif ch in ("}", "]"):
+            if stack and stack[-1] == ch:
+                stack.pop()
+
+    if not stack:
+        # Nothing to close — raw was already structurally complete but still
+        # failed to parse (e.g. trailing comma).  Try stripping the last
+        # incomplete element.
+        try:
+            # Remove everything after the last complete value by finding
+            # the last } or ] and truncating there.
+            last_close = max(raw.rfind("}"), raw.rfind("]"))
+            if last_close > 0:
+                return json.loads(raw[: last_close + 1])
+        except json.JSONDecodeError:
+            pass
+        return None
+
+    # Append closing tokens in reverse order
+    candidate = raw.rstrip().rstrip(",") + "".join(reversed(stack))
+    try:
+        return json.loads(candidate)
+    except json.JSONDecodeError:
+        return None
+
+
 class OpenAIProvider(AIProvider):
     """AIProvider backed by the OpenAI chat-completions API."""
 
@@ -49,6 +104,7 @@ class OpenAIProvider(AIProvider):
             )
         self._client = OpenAI(api_key=api_key)
         self._model = os.environ.get("OPENAI_MODEL", "gpt-4o")
+        self._max_tokens = int(os.environ.get("AI_MAX_TOKENS", "4096"))
 
     # ------------------------------------------------------------------
     # Internal helper
@@ -62,9 +118,10 @@ class OpenAIProvider(AIProvider):
         "text" or "json_schema" and reject "json_object".  Instead we instruct
         the model via the system prompt and extract the JSON from the response
         text ourselves, stripping any markdown code fences the model may add.
+
+        Handles truncated responses by attempting to close any unclosed JSON
+        structures before parsing.
         """
-        # Append a firm JSON-only instruction to the system prompt so the
-        # model knows to return raw JSON regardless of its default behaviour.
         system_with_json_hint = (
             system
             + "\n\nIMPORTANT: Your entire response must be valid JSON only. "
@@ -74,6 +131,7 @@ class OpenAIProvider(AIProvider):
 
         response = self._client.chat.completions.create(
             model=self._model,
+            max_tokens=self._max_tokens,
             messages=[
                 {"role": "system", "content": system_with_json_hint},
                 {"role": "user", "content": user},
@@ -82,19 +140,44 @@ class OpenAIProvider(AIProvider):
 
         raw = response.choices[0].message.content or ""
 
-        # Strip markdown code fences if the model wrapped the JSON anyway
-        # e.g. ```json\n{...}\n```  or  ```\n{...}\n```
+        # Log finish reason so truncation is visible in the logs
+        finish_reason = response.choices[0].finish_reason
+        if finish_reason == "length":
+            logger.warning(
+                "_chat_json: response was truncated (finish_reason=length). "
+                "Consider increasing AI_MAX_TOKENS (currently %d).",
+                self._max_tokens,
+            )
+
+        # Strip markdown code fences
         raw = raw.strip()
         if raw.startswith("```"):
-            # Remove opening fence line and closing fence
             lines = raw.splitlines()
-            # Drop first line (```json or ```) and last line (```)
-            inner = lines[1:] if lines[-1].strip() == "```" else lines[1:]
+            inner = lines[1:]
             if inner and inner[-1].strip() == "```":
                 inner = inner[:-1]
             raw = "\n".join(inner).strip()
 
-        return json.loads(raw)
+        # First attempt — parse as-is
+        try:
+            return json.loads(raw)
+        except json.JSONDecodeError:
+            pass
+
+        # Second attempt — try to repair a truncated JSON object/array by
+        # closing any unclosed brackets.  This recovers partial responses
+        # where the model was cut off mid-output.
+        repaired = _repair_truncated_json(raw)
+        if repaired is not None:
+            logger.warning("_chat_json: used truncation repair to parse response.")
+            return repaired
+
+        # Give up — re-raise with the original content for debugging
+        raise json.JSONDecodeError(
+            f"Could not parse model response as JSON. "
+            f"First 200 chars: {raw[:200]!r}",
+            raw, 0,
+        )
 
     # ------------------------------------------------------------------
     # AIProvider interface
@@ -354,7 +437,7 @@ class OpenAIProvider(AIProvider):
 
         system = (
             "You are a knowledge graph scoring engine. "
-            "You will be given the current state of a knowledge graph (nodes connected by weighted relationships) "
+            "You will be given a batch of relationships from a knowledge graph "
             "together with qualitative user hints. "
             "Your task is to review every relationship and return a refined base_weight in [0.0, 1.0] for each one. "
             "Apply the qualitative user hints as natural-language context when adjusting weights — "
@@ -367,21 +450,32 @@ class OpenAIProvider(AIProvider):
             "Every relationship present in the input MUST appear in the output. "
             "Do not include any explanation outside the JSON object."
         )
-        user = (
-            f"Current graph snapshot:\n{json.dumps(graph_snapshot, indent=2)}\n\n"
-            f"Qualitative user hints:\n{hints_block}"
-        )
 
-        data = self._chat_json(system, user)
+        # Process in batches of 25 relationships to avoid hitting token limits
+        all_relationships = graph_snapshot.get("relationships", [])
+        batch_size = int(os.environ.get("AI_RESCORE_BATCH_SIZE", "25"))
         updated: list[_UpdatedRelationship] = []
-        for item in data.get("updated_relationships", []):
-            weight = float(item.get("new_base_weight", 0.5))
-            weight = max(0.0, min(1.0, weight))
-            updated.append(
-                _UpdatedRelationship(
-                    entity_a_canonical_name=item["entity_a_canonical_name"],
-                    entity_b_canonical_name=item["entity_b_canonical_name"],
-                    new_base_weight=weight,
-                )
+
+        for i in range(0, max(len(all_relationships), 1), batch_size):
+            batch = all_relationships[i : i + batch_size]
+            batch_snapshot = {"relationships": batch}
+
+            user = (
+                f"Current relationships batch ({i+1}–{i+len(batch)} of {len(all_relationships)}):\n"
+                f"{json.dumps(batch_snapshot, indent=2)}\n\n"
+                f"Qualitative user hints:\n{hints_block}"
             )
+
+            data = self._chat_json(system, user)
+            for item in data.get("updated_relationships", []):
+                weight = float(item.get("new_base_weight", 0.5))
+                weight = max(0.0, min(1.0, weight))
+                updated.append(
+                    _UpdatedRelationship(
+                        entity_a_canonical_name=item["entity_a_canonical_name"],
+                        entity_b_canonical_name=item["entity_b_canonical_name"],
+                        new_base_weight=weight,
+                    )
+                )
+
         return GraphScoreResult(updated_relationships=updated)

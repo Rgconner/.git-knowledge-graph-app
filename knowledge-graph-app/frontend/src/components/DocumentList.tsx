@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { DocumentRecord } from "../api/documents";
+import React, { useEffect, useRef, useState } from "react";
+import { DocumentRecord, deleteDocument } from "../api/documents";
 
 interface DocumentListProps {
   documents: DocumentRecord[];
@@ -42,6 +42,24 @@ export default function DocumentList({
 }: DocumentListProps) {
   const onRefreshRef = useRef(onRefresh);
   onRefreshRef.current = onRefresh;
+
+  const [deletingId, setDeletingId] = useState<number | null>(null);
+  const [confirmId, setConfirmId] = useState<number | null>(null);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
+
+  async function handleDelete(id: number) {
+    setDeletingId(id);
+    setDeleteError(null);
+    try {
+      await deleteDocument(id);
+      onRefreshRef.current();
+    } catch (err: unknown) {
+      setDeleteError(err instanceof Error ? err.message : "Delete failed.");
+    } finally {
+      setDeletingId(null);
+      setConfirmId(null);
+    }
+  }
 
   useEffect(() => {
     const hasPending = documents.some(
@@ -104,11 +122,12 @@ export default function DocumentList({
       >
         <thead>
           <tr>
-            <th style={{ ...thStyle, width: "30%" }}>Filename</th>
-            <th style={{ ...thStyle, width: "10%" }}>Type</th>
-            <th style={{ ...thStyle, width: "25%" }}>Category</th>
-            <th style={{ ...thStyle, width: "20%" }}>Uploaded</th>
-            <th style={{ ...thStyle, width: "15%" }}>Status</th>
+            <th style={{ ...thStyle, width: "28%" }}>Filename</th>
+            <th style={{ ...thStyle, width: "9%" }}>Type</th>
+            <th style={{ ...thStyle, width: "23%" }}>Category</th>
+            <th style={{ ...thStyle, width: "18%" }}>Uploaded</th>
+            <th style={{ ...thStyle, width: "12%" }}>Status</th>
+            <th style={{ ...thStyle, width: "10%" }}>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -141,11 +160,67 @@ export default function DocumentList({
                     {BADGE_LABEL[status]}
                   </span>
                 </td>
+                <td style={tdStyle}>
+                  {confirmId === doc.id ? (
+                    // Confirmation row
+                    <span style={{ display: "flex", gap: "4px", alignItems: "center" }}>
+                      <button
+                        onClick={() => handleDelete(doc.id)}
+                        disabled={deletingId === doc.id}
+                        style={{
+                          padding: "2px 8px",
+                          fontSize: "12px",
+                          backgroundColor: "#dc2626",
+                          color: "#fff",
+                          border: "none",
+                          borderRadius: "4px",
+                          cursor: "pointer",
+                        }}
+                      >
+                        {deletingId === doc.id ? "…" : "Yes"}
+                      </button>
+                      <button
+                        onClick={() => setConfirmId(null)}
+                        style={{
+                          padding: "2px 8px",
+                          fontSize: "12px",
+                          backgroundColor: "#e5e7eb",
+                          color: "#374151",
+                          border: "none",
+                          borderRadius: "4px",
+                          cursor: "pointer",
+                        }}
+                      >
+                        No
+                      </button>
+                    </span>
+                  ) : (
+                    <button
+                      onClick={() => setConfirmId(doc.id)}
+                      style={{
+                        padding: "2px 8px",
+                        fontSize: "12px",
+                        backgroundColor: "transparent",
+                        color: "#dc2626",
+                        border: "1px solid #dc2626",
+                        borderRadius: "4px",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Remove
+                    </button>
+                  )}
+                </td>
               </tr>
             );
           })}
         </tbody>
       </table>
+      {deleteError && (
+        <p style={{ color: "#dc2626", fontSize: "13px", marginTop: "0.5rem" }}>
+          {deleteError}
+        </p>
+      )}
     </div>
   );
 }

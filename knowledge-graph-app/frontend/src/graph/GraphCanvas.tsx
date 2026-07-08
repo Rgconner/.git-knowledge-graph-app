@@ -118,7 +118,20 @@ export default function GraphCanvas({
       parent: d3.Selection<SVGGElement, SimNode, SVGGElement, unknown>,
       node: SimNode
     ) {
-      if (node.type === "action_item") {
+      if (node.type === "document") {
+        // Hexagon shape for document nodes
+        const r = node.size;
+        const hexPoints = Array.from({ length: 6 }, (_, i) => {
+          const angle = (Math.PI / 3) * i - Math.PI / 6;
+          return `${r * Math.cos(angle)},${r * Math.sin(angle)}`;
+        }).join(" ");
+        parent
+          .append("polygon")
+          .attr("points", hexPoints)
+          .attr("fill", node.sentiment_color)
+          .attr("stroke", "#555")
+          .attr("stroke-width", 2);
+      } else if (node.type === "action_item") {
         // Diamond = rotated rect
         const s = node.size * 1.4;
         parent

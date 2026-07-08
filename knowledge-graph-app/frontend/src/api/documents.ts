@@ -1,5 +1,16 @@
 import { getAuthHeader } from "./auth";
 
+export interface DuplicateMatch {
+  document_id: number;
+  filename: string;
+  similarity: number; // 0.0–1.0
+}
+
+export interface DuplicateCheckResponse {
+  has_duplicates: boolean;
+  matches: DuplicateMatch[];
+}
+
 export interface DocumentRecord {
   id: number;
   uploader_user_id: number;
@@ -49,4 +60,32 @@ export async function getDocument(id: number): Promise<DocumentDetailRecord> {
     throw new Error(`Get document failed (${res.status}): ${text}`);
   }
   return res.json();
+}
+
+export async function checkDuplicate(
+  file: File
+): Promise<DuplicateCheckResponse> {
+  const form = new FormData();
+  form.append("file", file);
+  const res = await fetch("/api/documents/check-duplicate", {
+    method: "POST",
+    headers: getAuthHeader(),
+    body: form,
+  });
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Duplicate check failed (${res.status}): ${text}`);
+  }
+  return res.json();
+}
+
+export async function deleteDocument(id: number): Promise<void> {
+  const res = await fetch(`/api/documents/${id}`, {
+    method: "DELETE",
+    headers: getAuthHeader(),
+  });
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Delete failed (${res.status}): ${text}`);
+  }
 }

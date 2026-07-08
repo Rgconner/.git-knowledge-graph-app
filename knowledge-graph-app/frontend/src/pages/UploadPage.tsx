@@ -4,7 +4,9 @@ import DocumentList from "../components/DocumentList";
 import {
   listDocuments,
   uploadDocument,
+  checkDuplicate,
   DocumentRecord,
+  DuplicateMatch,
 } from "../api/documents";
 
 export default function UploadPage() {
@@ -13,6 +15,11 @@ export default function UploadPage() {
     kind: "success" | "error";
     text: string;
   } | null>(null);
+
+  // Duplicate warning state
+  const [pendingFile, setPendingFile] = useState<File | null>(null);
+  const [duplicateMatches, setDuplicateMatches] = useState<DuplicateMatch[]>([]);
+  const [checking, setChecking] = useState(false);
 
   const refresh = useCallback(async () => {
     try {
@@ -28,8 +35,10 @@ export default function UploadPage() {
     refresh();
   }, [refresh]);
 
-  async function handleFileSelected(file: File) {
+  async function doUpload(file: File) {
     setMessage(null);
+    setPendingFile(null);
+    setDuplicateMatches([]);
     try {
       const newDoc = await uploadDocument(file);
       setDocuments((prev) => [newDoc, ...prev]);
@@ -41,6 +50,38 @@ export default function UploadPage() {
       const msg = err instanceof Error ? err.message : String(err);
       setMessage({ kind: "error", text: `Upload failed: ${msg}` });
     }
+  }
+
+  async function handleFileSelected(file: File) {
+    setMessage(null);
+    setDuplicateMatches([]);
+    setPendingFile(null);
+    setChecking(true);
+    try {
+      const result = await checkDuplicate(file);
+      if (result.has_duplicates) {
+        // Show warning — wait for user to confirm or cancel
+        setPendingFile(file);
+        setDuplicateMatches(result.matches);
+      } else {
+        await doUpload(file);
+      }
+    } catch {
+      // If duplicate check itself fails, proceed with upload anyway
+      await doUpload(file);
+    } finally {
+      setChecking(false);
+    }
+  }
+
+  function handleConfirmUpload() {
+    if (pendingFile) doUpload(pendingFile);
+  }
+
+  function handleCancelUpload() {
+    setPendingFile(null);
+    setDuplicateMatches([]);
+    setMessage({ kind: "error", text: "Upload cancelled." });
   }
 
   const pageStyle: React.CSSProperties = {
@@ -91,6 +132,75 @@ export default function UploadPage() {
       </p>
 
       <DropZone onFileSelected={handleFileSelected} />
+
+      {checking && (
+        <p style={{ fontSize: "14px", color: "#57606a", marginTop: "0.75rem" }}>
+          ⏳ Checking for duplicates…
+        </p>
+      )}
+
+      {/* Duplicate warning banner */}
+      {duplicateMatches.length > 0 && pendingFile && (
+        <div
+          style={{
+            marginTop: "0.75rem",
+            padding: "1rem",
+            backgroundColor: "#fffbeb",
+            border: "1px solid #f59e0b",
+            borderRadius: "6px",
+            fontSize: "14px",
+          }}
+        >
+          <p style={{ margin: "0 0 0.5rem 0", fontWeight: 600, color: "#92400e" }}>
+            ⚠️ Possible duplicate detected
+          </p>
+          <p style={{ margin: "0 0 0.75rem 0", color: "#78350f" }}>
+            <strong>"{pendingFile.name}"</strong> is highly similar to{" "}
+            {duplicateMatches.length === 1 ? "an existing document" : "existing documents"}:
+          </p>
+          <ul style={{ margin: "0 0 0.75rem 1.25rem", padding: 0, color: "#78350f" }}>
+            {duplicateMatches.map((m) => (
+              <li key={m.document_id} style={{ marginBottom: "2px" }}>
+                <strong>{m.filename}</strong> —{" "}
+                <span style={{ color: "#b45309" }}>
+                  {(m.similarity * 100).toFixed(1)}% identical
+                </span>
+              </li>
+            ))}
+          </ul>
+          <div style={{ display: "flex", gap: "0.5rem" }}>
+            <button
+              onClick={handleConfirmUpload}
+              style={{
+                padding: "6px 16px",
+                backgroundColor: "#d97706",
+                color: "#fff",
+                border: "none",
+                borderRadius: "4px",
+                fontSize: "13px",
+                fontWeight: 600,
+                cursor: "pointer",
+              }}
+            >
+              Upload Anyway
+            </button>
+            <button
+              onClick={handleCancelUpload}
+              style={{
+                padding: "6px 16px",
+                backgroundColor: "#e5e7eb",
+                color: "#374151",
+                border: "none",
+                borderRadius: "4px",
+                fontSize: "13px",
+                cursor: "pointer",
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
 
       {message && <p style={messageStyle}>{message.text}</p>}
 

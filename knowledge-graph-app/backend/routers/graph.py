@@ -2,9 +2,11 @@
 
 Endpoints
 ---------
-GET  /graph/team      — full shared team graph (all entities + relationships)
-GET  /graph/personal  — current user's personal graph layer merged with team graph
-POST /graph/hints     — submit a weight hint for a relationship, trigger re-score
+GET  /graph/team       — full shared team graph (all entities + relationships)
+GET  /graph/personal   — current user's personal graph layer merged with team graph
+GET  /graph/documents  — document-level graph: each document is a node, edges are
+                         shared entities between documents
+POST /graph/hints      — submit a weight hint for a relationship, trigger re-score
 """
 
 from __future__ import annotations
@@ -208,6 +210,162 @@ def get_personal_graph(
         for rel in relationships
         if rel.entity_a_id in personal_entity_ids or rel.entity_b_id in personal_entity_ids
     ]
+
+    return GraphPayload(nodes=nodes, edges=edges)
+
+
+# ---------------------------------------------------------------------------
+# GET /graph/documents
+# ---------------------------------------------------------------------------
+
+
+@router.get("/documents", response_model=GraphPayload, summary="Document-level graph")
+def get_document_graph(
+    db: Annotated[Session, Depends(get_db)],
+) -> GraphPayload:
+    """Return a graph where every node is a document.
+
+    Two document nodes are connected by an edge when they share one or more
+    extracted entities.  Edge weight reflects the number and importance of
+    shared entities; heat color reflects the recency of the more recent document.
+
+    Node color encodes the document's AI sentiment (average sentiment of all
+    entities extracted from it).  Node size encodes the number of distinct
+    entities extracted from the document.
+    """
+    from collections import defaultdict
+    import math
+
+    # Load all documents
+    documents = db.query(Document).all()
+    if not documents:
+        return GraphPayload(nodes=[], edges=[])
+
+    doc_map = {doc.id: doc for doc in documents}
+
+    # Build doc_id → set of entity_ids
+    mentions = db.query(
+        EntityDocumentMention.document_id,
+        EntityDocumentMention.entity_id,
+    ).all()
+
+    doc_entities: dict[int, set[int]] = defaultdict(set)
+    for doc_id, entity_id in mentions:
+        doc_entities[doc_id].add(entity_id)
+
+    # Build entity_id → avg sentiment from NodeDisplay cache
+    display_map: dict[int, NodeDisplay] = {
+        nd.entity_id: nd for nd in db.query(NodeDisplay).all()
+    }
+
+    # Compute per-document average sentiment (from entities with NodeDisplay)
+    def _doc_avg_sentiment(doc_id: int) -> float:
+        scores = [
+            display_map[eid].display_weight  # display_weight is 0–1, sentiment_color encodes sign
+            for eid in doc_entities.get(doc_id, set())
+            if eid in display_map
+        ]
+        return sum(scores) / len(scores) if scores else 0.5
+
+    # Compute per-document average sentiment color properly from sentiment_color hex
+    def _doc_sentiment_color(doc_id: int) -> str:
+        colors = [
+            display_map[eid].sentiment_color
+            for eid in doc_entities.get(doc_id, set())
+            if eid in display_map
+        ]
+        if not colors:
+            return "#999999"
+        # Average RGB channels
+        rs, gs, bs = [], [], []
+        for hex_color in colors:
+            c = hex_color.lstrip("#")
+            if len(c) == 6:
+                rs.append(int(c[0:2], 16))
+                gs.append(int(c[2:4], 16))
+                bs.append(int(c[4:6], 16))
+        if not rs:
+            return "#999999"
+        r = int(sum(rs) / len(rs))
+        g = int(sum(gs) / len(gs))
+        b = int(sum(bs) / len(bs))
+        return f"#{r:02x}{g:02x}{b:02x}"
+
+    # Corpus date range for recency normalisation
+    dates = [doc.created_at for doc in documents if doc.created_at]
+    min_date = min(dates).timestamp() if dates else 0.0
+    max_date = max(dates).timestamp() if dates else 1.0
+    date_range = max(max_date - min_date, 1.0)
+
+    # --- Build document nodes ---
+    # Node ID space: use doc.id offset by 2_000_000 to avoid collisions with
+    # entity node IDs (offset 1_000_000 is already used by action items).
+    DOC_NODE_OFFSET = 2_000_000
+
+    nodes: list[Node] = []
+    for doc in documents:
+        entity_count = len(doc_entities.get(doc.id, set()))
+        # Size: log scale so documents with many entities don't dominate
+        size = 12.0 + min(20.0, math.log1p(entity_count) * 5)
+        nodes.append(
+            Node(
+                id=doc.id + DOC_NODE_OFFSET,
+                label=doc.filename,
+                type="document",
+                sentiment_color=_doc_sentiment_color(doc.id),
+                size=size,
+                layer="team",
+                status=doc.ai_category,     # reuse status slot to carry category
+                document_id=doc.id,
+                entity_count=entity_count,
+                ai_category=doc.ai_category,
+            )
+        )
+
+    # --- Build document-to-document edges via shared entities ---
+    # For each pair of documents, compute:
+    #   shared_weight = |shared entities| / max_possible_shared
+    #   heat = recency of more recent document (normalised)
+    doc_ids = list(doc_entities.keys())
+    edges: list[Edge] = []
+    edge_id = 1  # synthetic edge ids (no DB row)
+
+    # Pre-compute max entity count for normalisation
+    max_shared = 1
+
+    # First pass: find all pairs with shared entities
+    pairs: list[tuple[int, int, int]] = []  # (doc_a, doc_b, shared_count)
+    for i, da in enumerate(doc_ids):
+        for db_id in doc_ids[i + 1 :]:
+            shared = doc_entities[da] & doc_entities[db_id]
+            if shared:
+                count = len(shared)
+                if count > max_shared:
+                    max_shared = count
+                pairs.append((da, db_id, count))
+
+    # Second pass: build edges with normalised weights
+    for da, db_id, count in pairs:
+        base_weight = count / max_shared          # 0.0–1.0
+        stroke = weight_to_stroke(base_weight)
+
+        # Heat: recency of the newer document
+        da_ts = doc_map[da].created_at.timestamp() if doc_map[da].created_at else min_date
+        db_ts = doc_map[db_id].created_at.timestamp() if doc_map[db_id].created_at else min_date
+        recency = (max(da_ts, db_ts) - min_date) / date_range
+        heat_color = heat_to_color(recency)
+
+        edges.append(
+            Edge(
+                id=edge_id,
+                source=da + DOC_NODE_OFFSET,
+                target=db_id + DOC_NODE_OFFSET,
+                weight=stroke,
+                heat_score=recency,
+                heat_color=heat_color,
+            )
+        )
+        edge_id += 1
 
     return GraphPayload(nodes=nodes, edges=edges)
 

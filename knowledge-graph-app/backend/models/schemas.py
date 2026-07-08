@@ -161,11 +161,15 @@ class Node(BaseModel):
 
     id: int
     label: str
-    type: str  # EntityType value or "action_item"
+    type: str  # EntityType value, "action_item", or "document"
     sentiment_color: str  # hex color
     size: float  # maps to SVG circle radius
     layer: str  # "team" | "personal"
     status: Optional[str] = None  # only set for action_item nodes
+    # Document-view metadata (only set for type="document" nodes)
+    document_id: Optional[int] = None
+    entity_count: Optional[int] = None
+    ai_category: Optional[str] = None
 
 
 class Edge(BaseModel):

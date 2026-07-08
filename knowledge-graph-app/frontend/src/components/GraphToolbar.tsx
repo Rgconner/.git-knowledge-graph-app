@@ -1,8 +1,12 @@
 import React from "react";
 
+export type ViewMode = "team" | "personal" | "documents";
+
 interface Props {
   layer: "team" | "personal";
+  viewMode: ViewMode;
   onLayerChange: (layer: "team" | "personal") => void;
+  onViewModeChange: (mode: ViewMode) => void;
   onResetZoom: () => void;
 }
 
@@ -12,7 +16,7 @@ const LEGEND_ITEMS = [
   { label: "Node color = sentiment", swatch: "linear-gradient(to right, #D94A4A, #999999, #4AD94A)", description: "Red (negative) → Grey → Green (positive)" },
 ];
 
-const SHAPE_LEGEND = [
+const SHAPE_LEGEND_ENTITY = [
   { shape: "circle", stroke: "2px solid #000", dash: false, label: "Person" },
   { shape: "circle", stroke: "1.5px dashed #555", dash: true, label: "Idea" },
   { shape: "circle-double", stroke: "2px solid", dash: false, label: "Project" },
@@ -21,7 +25,11 @@ const SHAPE_LEGEND = [
   { shape: "circle", stroke: "none", dash: false, label: "Keyword / Location / Date" },
 ];
 
-export default function GraphToolbar({ layer, onLayerChange, onResetZoom }: Props) {
+const SHAPE_LEGEND_DOCUMENT = [
+  { shape: "hexagon", label: "Document" },
+];
+
+export default function GraphToolbar({ layer, viewMode, onLayerChange, onViewModeChange, onResetZoom }: Props) {
   return (
     <div
       style={{
@@ -38,7 +46,7 @@ export default function GraphToolbar({ layer, onLayerChange, onResetZoom }: Prop
         overflow: "visible",
       }}
     >
-      {/* Layer toggle */}
+      {/* View mode toggle */}
       <div
         style={{
           display: "flex",
@@ -47,22 +55,22 @@ export default function GraphToolbar({ layer, onLayerChange, onResetZoom }: Prop
           overflow: "hidden",
         }}
       >
-        {(["team", "personal"] as const).map((l) => (
+        {(["team", "personal", "documents"] as const).map((m) => (
           <button
-            key={l}
-            onClick={() => onLayerChange(l)}
+            key={m}
+            onClick={() => m === "documents" ? onViewModeChange("documents") : (onViewModeChange(m), onLayerChange(m))}
             style={{
               padding: "5px 14px",
               fontSize: 13,
-              fontWeight: layer === l ? 600 : 400,
-              background: layer === l ? "#3b82d4" : "#fff",
-              color: layer === l ? "#fff" : "#57606a",
+              fontWeight: viewMode === m ? 600 : 400,
+              background: viewMode === m ? "#3b82d4" : "#fff",
+              color: viewMode === m ? "#fff" : "#57606a",
               border: "none",
               cursor: "pointer",
               outline: "none",
             }}
           >
-            {l === "team" ? "Team Graph" : "Personal Graph"}
+            {m === "team" ? "Team Graph" : m === "personal" ? "Personal Graph" : "📄 Documents"}
           </button>
         ))}
       </div>
@@ -111,9 +119,18 @@ export default function GraphToolbar({ layer, onLayerChange, onResetZoom }: Prop
       {/* Divider */}
       <div style={{ width: 1, height: 32, background: "#e5e7eb" }} />
 
-      {/* Shape legend */}
+      {/* Shape legend — changes based on view mode */}
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-        {SHAPE_LEGEND.map((s) => (
+        {viewMode === "documents" ? (
+          // Document view legend
+          <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+            <svg width={14} height={14} viewBox="0 0 14 14">
+              <polygon points="7,1 13,4.5 13,9.5 7,13 1,9.5 1,4.5" fill="#ccc" stroke="#555" strokeWidth={1} />
+            </svg>
+            <span style={{ fontSize: 10, color: "#57606a", whiteSpace: "nowrap" }}>Document</span>
+          </div>
+        ) : (
+        SHAPE_LEGEND_ENTITY.map((s) => (
           <div key={s.label} style={{ display: "flex", alignItems: "center", gap: 4 }}>
             {s.shape === "diamond" ? (
               <svg width={14} height={14} viewBox="0 0 14 14">
