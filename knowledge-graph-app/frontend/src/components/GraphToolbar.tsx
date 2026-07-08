@@ -130,44 +130,45 @@ export default function GraphToolbar({ layer, viewMode, onLayerChange, onViewMod
             <span style={{ fontSize: 10, color: "#57606a", whiteSpace: "nowrap" }}>Document</span>
           </div>
         ) : (
-        SHAPE_LEGEND_ENTITY.map((s) => (
-          <div key={s.label} style={{ display: "flex", alignItems: "center", gap: 4 }}>
-            {s.shape === "diamond" ? (
-              <svg width={14} height={14} viewBox="0 0 14 14">
-                <rect
-                  x={2}
-                  y={2}
-                  width={10}
-                  height={10}
-                  transform="rotate(45 7 7)"
-                  fill="#ccc"
-                  stroke="#333"
-                  strokeWidth={1}
-                />
-              </svg>
-            ) : s.shape === "circle-double" ? (
-              <svg width={14} height={14} viewBox="0 0 14 14">
-                <circle cx={7} cy={7} r={6} fill="none" stroke="#888" strokeWidth={1} />
-                <circle cx={7} cy={7} r={4} fill="#ccc" stroke="#888" strokeWidth={1} />
-              </svg>
-            ) : (
-              <svg width={14} height={14} viewBox="0 0 14 14">
-                <circle
-                  cx={7}
-                  cy={7}
-                  r={5}
-                  fill="#ccc"
-                  stroke={s.stroke === "none" ? "none" : "#555"}
-                  strokeWidth={s.stroke.includes("4px") ? 3 : s.stroke === "none" ? 0 : 1.5}
-                  strokeDasharray={s.dash ? "3,2" : undefined}
-                />
-              </svg>
-            )}
-            <span style={{ fontSize: 10, color: "#57606a", whiteSpace: "nowrap" }}>
-              {s.label}
-            </span>
-          </div>
-        ))}
+          SHAPE_LEGEND_ENTITY.map((s) => (
+            <div key={s.label} style={{ display: "flex", alignItems: "center", gap: 4 }}>
+              {s.shape === "diamond" ? (
+                <svg width={14} height={14} viewBox="0 0 14 14">
+                  <rect
+                    x={2}
+                    y={2}
+                    width={10}
+                    height={10}
+                    transform="rotate(45 7 7)"
+                    fill="#ccc"
+                    stroke="#333"
+                    strokeWidth={1}
+                  />
+                </svg>
+              ) : s.shape === "circle-double" ? (
+                <svg width={14} height={14} viewBox="0 0 14 14">
+                  <circle cx={7} cy={7} r={6} fill="none" stroke="#888" strokeWidth={1} />
+                  <circle cx={7} cy={7} r={4} fill="#ccc" stroke="#888" strokeWidth={1} />
+                </svg>
+              ) : (
+                <svg width={14} height={14} viewBox="0 0 14 14">
+                  <circle
+                    cx={7}
+                    cy={7}
+                    r={5}
+                    fill="#ccc"
+                    stroke={s.stroke === "none" ? "none" : "#555"}
+                    strokeWidth={s.stroke.includes("4px") ? 3 : s.stroke === "none" ? 0 : 1.5}
+                    strokeDasharray={s.dash ? "3,2" : undefined}
+                  />
+                </svg>
+              )}
+              <span style={{ fontSize: 10, color: "#57606a", whiteSpace: "nowrap" }}>
+                {s.label}
+              </span>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
