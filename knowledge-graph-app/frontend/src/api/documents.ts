@@ -25,9 +25,18 @@ export interface DocumentDetailRecord extends DocumentRecord {
   raw_text: string;
 }
 
-export async function uploadDocument(file: File): Promise<DocumentRecord> {
+export async function uploadDocument(
+  file: File,
+  overrideName?: string
+): Promise<DocumentRecord> {
   const form = new FormData();
-  form.append("file", file);
+  // If a rename was provided, create a new File with the override name so
+  // the multipart field carries the correct filename to the server.
+  const uploadFile =
+    overrideName && overrideName.trim() && overrideName !== file.name
+      ? new File([file], overrideName.trim(), { type: file.type })
+      : file;
+  form.append("file", uploadFile);
   const res = await fetch("/api/documents/upload", {
     method: "POST",
     headers: getAuthHeader(),
