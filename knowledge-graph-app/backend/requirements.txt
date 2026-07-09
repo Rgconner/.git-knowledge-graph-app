@@ -16,3 +16,4 @@ pypdf
 pdfminer.six
 docx2txt
 extract-msg
+requests==2.32.3

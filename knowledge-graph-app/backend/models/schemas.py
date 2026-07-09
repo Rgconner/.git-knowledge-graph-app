@@ -12,7 +12,7 @@ from typing import Optional
 
 from pydantic import BaseModel, ConfigDict
 
-from models.models import ActionItemStatus, EntityType
+from models.models import ActionItemStatus, EntityType, WatchSourceType, WatchedFileStatus
 
 
 # ---------------------------------------------------------------------------
@@ -188,3 +188,86 @@ class GraphPayload(BaseModel):
 
     nodes: list[Node]
     edges: list[Edge]
+
+
+# ---------------------------------------------------------------------------
+# Watch Sources
+# ---------------------------------------------------------------------------
+
+
+class WatchSourceCreate(BaseModel):
+    name: str
+    source_type: WatchSourceType
+    # Filesystem
+    fs_path: Optional[str] = None
+    file_glob: Optional[str] = "**/*"
+    # GitHub
+    github_repo: Optional[str] = None
+    github_branch: Optional[str] = "main"
+    github_path: Optional[str] = ""
+    github_token: Optional[str] = None
+    enabled: bool = True
+
+
+class WatchSourceUpdate(BaseModel):
+    name: Optional[str] = None
+    fs_path: Optional[str] = None
+    file_glob: Optional[str] = None
+    github_repo: Optional[str] = None
+    github_branch: Optional[str] = None
+    github_path: Optional[str] = None
+    github_token: Optional[str] = None
+    enabled: Optional[bool] = None
+
+
+class WatchSourceSchema(BaseModel):
+    model_config = _from_orm
+
+    id: int
+    owner_user_id: int
+    name: str
+    source_type: WatchSourceType
+    fs_path: Optional[str] = None
+    file_glob: Optional[str] = None
+    github_repo: Optional[str] = None
+    github_branch: Optional[str] = None
+    github_path: Optional[str] = None
+    # github_token intentionally omitted from responses
+    enabled: bool
+    last_scanned_at: Optional[datetime] = None
+    created_at: datetime
+    updated_at: datetime
+
+
+# ---------------------------------------------------------------------------
+# Watched Files
+# ---------------------------------------------------------------------------
+
+
+class WatchedFileSchema(BaseModel):
+    model_config = _from_orm
+
+    id: int
+    source_id: int
+    file_key: str
+    filename: str
+    relative_path: Optional[str] = None
+    file_size_bytes: Optional[int] = None
+    status: WatchedFileStatus
+    document_id: Optional[int] = None
+    review_note: Optional[str] = None
+    discovered_at: datetime
+    reviewed_at: Optional[datetime] = None
+
+
+class WatchedFileReview(BaseModel):
+    """Body for PATCH /watch/files/{id}/review"""
+    status: WatchedFileStatus   # approved | rejected
+    review_note: Optional[str] = None
+
+
+class ScanResultSchema(BaseModel):
+    source_id: int
+    new_files_found: int
+    already_known: int
+    errors: list[str] = []

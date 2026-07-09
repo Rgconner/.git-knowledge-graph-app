@@ -41,6 +41,19 @@ class ActionItemStatus(str, enum.Enum):
     closed = "closed"
 
 
+class WatchSourceType(str, enum.Enum):
+    filesystem = "filesystem"
+    github = "github"
+
+
+class WatchedFileStatus(str, enum.Enum):
+    pending = "pending"      # discovered, awaiting user decision
+    approved = "approved"    # user approved — ingested into the graph
+    rejected = "rejected"    # user rejected — will not be ingested
+    ingesting = "ingesting"  # currently running through the pipeline
+    failed = "failed"        # pipeline error after approval
+
+
 # ---------------------------------------------------------------------------
 # Tables
 # ---------------------------------------------------------------------------
@@ -171,3 +184,69 @@ class NodeDisplay(Base):
     last_computed = Column(DateTime, default=func.now(), onupdate=func.now(), nullable=False)
 
     entity = relationship("Entity", back_populates="node_display")
+
+
+# ---------------------------------------------------------------------------
+# Watch Sources & Watched Files
+# ---------------------------------------------------------------------------
+
+
+class WatchSource(Base):
+    """A filesystem path or GitHub repo that is polled for new documents."""
+
+    __tablename__ = "watch_sources"
+
+    id = Column(Integer, primary_key=True, index=True)
+    owner_user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+    name = Column(String(255), nullable=False)                  # human label
+    source_type = Column(Enum(WatchSourceType), nullable=False)
+
+    # Filesystem fields
+    fs_path = Column(String(1024), nullable=True)               # absolute path
+    file_glob = Column(String(255), nullable=True, default="**/*")  # glob pattern
+
+    # GitHub fields
+    github_repo = Column(String(512), nullable=True)            # owner/repo
+    github_branch = Column(String(255), nullable=True, default="main")
+    github_path = Column(String(512), nullable=True, default="")  # sub-directory
+    github_token = Column(String(512), nullable=True)           # PAT (stored encrypted in prod)
+
+    # Polling
+    enabled = Column(Integer, default=1, nullable=False)        # 0/1 bool
+    last_scanned_at = Column(DateTime, nullable=True)
+    created_at = Column(DateTime, default=func.now(), nullable=False)
+    updated_at = Column(DateTime, default=func.now(), onupdate=func.now(), nullable=False)
+
+    owner = relationship("User", backref="watch_sources")
+    watched_files = relationship(
+        "WatchedFile", back_populates="source", cascade="all, delete-orphan"
+    )
+
+
+class WatchedFile(Base):
+    """A single file discovered by a WatchSource, awaiting approval/rejection."""
+
+    __tablename__ = "watched_files"
+
+    id = Column(Integer, primary_key=True, index=True)
+    source_id = Column(Integer, ForeignKey("watch_sources.id"), nullable=False, index=True)
+    # Unique identity key — filesystem absolute path OR GitHub blob SHA
+    file_key = Column(String(1024), nullable=False)
+    filename = Column(String(512), nullable=False)
+    relative_path = Column(String(1024), nullable=True)         # path within source root/repo
+    file_size_bytes = Column(Integer, nullable=True)
+    status = Column(
+        Enum(WatchedFileStatus),
+        default=WatchedFileStatus.pending,
+        nullable=False,
+        index=True,
+    )
+    # Set once the file is approved and ingested
+    document_id = Column(Integer, ForeignKey("documents.id"), nullable=True)
+    # Human notes / reason for rejection (optional)
+    review_note = Column(Text, nullable=True)
+    discovered_at = Column(DateTime, default=func.now(), nullable=False)
+    reviewed_at = Column(DateTime, nullable=True)
+
+    source = relationship("WatchSource", back_populates="watched_files")
+    document = relationship("Document", backref="watched_file_entry")

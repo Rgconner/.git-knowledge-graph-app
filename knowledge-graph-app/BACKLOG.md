@@ -33,6 +33,28 @@ Items are not prioritized — order within each section is for readability only.
 
 ---
 
+## File Sources (Watch Sources)
+
+- [x] **Filesystem watcher** — Point a source at a local directory path with a configurable file glob; scan discovers new supported files and adds them to the approval inbox.
+- [x] **GitHub watcher** — Point a source at a GitHub repo (public or private via PAT); the GitHub REST API tree endpoint is used — no `git clone` required. Filters by sub-directory.
+- [x] **Pending inbox** — All discovered files appear in the Sources tab with status `pending`, awaiting user approval or rejection.
+- [x] **Approve** — Approving a file reads the raw bytes (filesystem) or downloads the blob (GitHub), extracts text, creates a Document record, and runs the full AI pipeline in the background.
+- [x] **Reject** — Rejecting marks the file and skips ingestion; the rejection is stored with an optional note.
+- [x] **Reversible decisions** — Approved files can be rejected retroactively; rejected files can be approved (and will be ingested). Failed ingestions can be retried.
+- [x] **Scan on demand** — Each source has a "Scan Now" button that immediately triggers a fresh discovery scan; new files found are added to the pending inbox.
+- [x] **Source CRUD** — Sources can be added, edited (name, path, glob, token, enabled), and deleted (cascades to all watched file records).
+- [ ] **Scheduled polling** — Add a background scheduler (APScheduler or Celery beat) to automatically scan enabled sources on a configurable interval (e.g., every 15 minutes) without user interaction.
+- [ ] **GitHub webhook** — Instead of polling, receive a GitHub `push` event webhook to trigger an immediate scan when files are committed to the watched branch.
+- [ ] **GitLab / Bitbucket support** — Extend the watcher to support GitLab projects and Bitbucket repos using their respective REST APIs.
+- [ ] **S3 / object storage source** — Watch an AWS S3 bucket (or compatible object store) prefix for new objects.
+- [ ] **SharePoint / OneDrive source** — Watch a SharePoint document library or OneDrive folder via Microsoft Graph API.
+- [ ] **Secure token storage** — Encrypt GitHub PATs and other secrets at rest (e.g., using Fernet symmetric encryption keyed from an environment secret) rather than storing as plain text.
+- [ ] **Per-file re-scan detection** — Detect when a previously-approved file has been modified (by comparing file mtime or GitHub blob SHA) and queue it for re-review as a new version.
+- [ ] **Bulk approve / reject** — Checkbox multi-select in the inbox with "Approve selected" / "Reject selected" batch actions.
+- [ ] **Approval notifications** — When a scan discovers new pending files, send an in-app notification (or email) to the source owner.
+
+---
+
 ## Document Management
 
 - [ ] **Document versioning** — When a newer version of a document is uploaded, link it to the previous version and diff the extracted entities/relationships.

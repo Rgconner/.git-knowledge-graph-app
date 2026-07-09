@@ -5,8 +5,9 @@ import GraphPage from "./pages/GraphPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ChatWindow from "./components/ChatWindow";
+import WatchInbox from "./components/WatchInbox";
 
-type Tab = "documents" | "graph";
+type Tab = "documents" | "graph" | "sources";
 type AuthView = "login" | "register";
 
 function MainApp() {
@@ -41,7 +42,7 @@ function MainApp() {
           zIndex: 1000,
         }}
       >
-        {(["documents", "graph"] as Tab[]).map((t) => (
+        {(["documents", "graph", "sources"] as Tab[]).map((t) => (
           <button
             key={t}
             onClick={() => setTab(t)}
@@ -58,7 +59,7 @@ function MainApp() {
               outline: "none",
             }}
           >
-            {t === "documents" ? "Documents" : "Knowledge Graph"}
+            {t === "documents" ? "Documents" : t === "graph" ? "Knowledge Graph" : "Sources"}
           </button>
         ))}
 
@@ -91,7 +92,9 @@ function MainApp() {
 
       {/* Page content — offset by tab bar height */}
       <div style={{ paddingTop: 44 }}>
-        {tab === "documents" ? <UploadPage /> : <GraphPage />}
+        {tab === "documents" && <UploadPage />}
+        {tab === "graph" && <GraphPage />}
+        {tab === "sources" && <WatchInbox />}
       </div>
 
       {/* Floating AI chat — persists across tab switches */}
