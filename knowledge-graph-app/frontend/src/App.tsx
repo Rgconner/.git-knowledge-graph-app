@@ -4,6 +4,7 @@ import UploadPage from "./pages/UploadPage";
 import GraphPage from "./pages/GraphPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import ChatWindow from "./components/ChatWindow";
 
 type Tab = "documents" | "graph";
 type AuthView = "login" | "register";
@@ -92,6 +93,9 @@ function MainApp() {
       <div style={{ paddingTop: 44 }}>
         {tab === "documents" ? <UploadPage /> : <GraphPage />}
       </div>
+
+      {/* Floating AI chat — persists across tab switches */}
+      <ChatWindow />
     </div>
   );
 }

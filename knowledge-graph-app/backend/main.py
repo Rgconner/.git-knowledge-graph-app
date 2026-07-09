@@ -12,7 +12,7 @@ import models.models  # noqa: F401
 # Alembic handles schema migrations in production.
 Base.metadata.create_all(bind=engine)
 
-from routers import documents, action_items, graph, auth  # noqa: E402
+from routers import documents, action_items, graph, auth, chat  # noqa: E402
 
 app = FastAPI(
     title="Knowledge Graph API",
@@ -35,6 +35,7 @@ app.include_router(auth.router, prefix=API_PREFIX)
 app.include_router(documents.router, prefix=API_PREFIX)
 app.include_router(action_items.router, prefix=API_PREFIX)
 app.include_router(graph.router, prefix=API_PREFIX)
+app.include_router(chat.router, prefix=API_PREFIX)
 
 
 @app.get("/health", tags=["health"])
