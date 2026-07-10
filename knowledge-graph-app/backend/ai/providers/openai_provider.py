@@ -104,7 +104,7 @@ class OpenAIProvider(AIProvider):
             )
         self._client = OpenAI(api_key=api_key)
         self._model = os.environ.get("OPENAI_MODEL", "gpt-4o")
-        self._max_tokens = int(os.environ.get("AI_MAX_TOKENS", "4096"))
+        self._max_tokens = int(os.environ.get("AI_MAX_TOKENS", "8192"))
 
     # ------------------------------------------------------------------
     # Internal helper

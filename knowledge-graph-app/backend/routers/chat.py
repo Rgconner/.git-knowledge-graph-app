@@ -183,7 +183,7 @@ def chat_message(
         # Access the underlying OpenAI client directly
         client = getattr(provider, "_client", None)
         model = getattr(provider, "_model", None)
-        max_tokens = getattr(provider, "_max_tokens", 2048)
+        max_tokens = getattr(provider, "_max_tokens", 8192)
 
         if client is None or model is None:
             raise HTTPException(

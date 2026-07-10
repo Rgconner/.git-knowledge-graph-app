@@ -65,4 +65,4 @@ class CustomOpenAIProvider(OpenAIProvider):
         # can pass base_url to the OpenAI client.
         self._client = OpenAI(api_key=api_key, base_url=base_url)
         self._model = model
-        self._max_tokens = int(os.environ.get("AI_MAX_TOKENS", "4096"))
+        self._max_tokens = int(os.environ.get("AI_MAX_TOKENS", "8192"))
