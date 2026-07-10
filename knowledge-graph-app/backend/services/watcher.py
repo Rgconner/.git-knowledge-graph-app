@@ -10,6 +10,10 @@ Supported source types:
   github      — uses the GitHub REST API (no git clone required) to list
                 tree entries under the configured path.
 
+All files (regardless of extension) are surfaced in the pending inbox.
+The user decides at approval time whether to ingest a file; the AI
+extractor will handle or reject unsupported formats at that point.
+
 This module is intentionally side-effect free with respect to the AI pipeline;
 it only creates WatchedFile rows.  The approval endpoint in the router drives
 actual ingestion.
@@ -19,26 +23,15 @@ from __future__ import annotations
 
 import fnmatch
 import logging
-import os
 from datetime import datetime
 from pathlib import Path
-from typing import TYPE_CHECKING
 
 import requests
 from sqlalchemy.orm import Session
 
 from models.models import WatchSource, WatchSourceType, WatchedFile, WatchedFileStatus
 
-if TYPE_CHECKING:
-    pass
-
 logger = logging.getLogger(__name__)
-
-# File extensions we are willing to ingest.
-SUPPORTED_EXTENSIONS = {
-    ".txt", ".md", ".pdf", ".docx", ".doc",
-    ".eml", ".msg", ".pst", ".csv", ".rtf",
-}
 
 
 # ---------------------------------------------------------------------------
@@ -93,8 +86,6 @@ def _scan_filesystem(source: WatchSource, db: Session) -> dict:
 
     for fpath in all_paths:
         if not fpath.is_file():
-            continue
-        if fpath.suffix.lower() not in SUPPORTED_EXTENSIONS:
             continue
         # Apply glob filter (match against the relative path string)
         rel = fpath.relative_to(root).as_posix()
@@ -184,9 +175,6 @@ def _scan_github(source: WatchSource, db: Session) -> dict:
             continue
 
         filename = item_path.split("/")[-1]
-        ext = os.path.splitext(filename)[1].lower()
-        if ext not in SUPPORTED_EXTENSIONS:
-            continue
 
         # file_key = SHA of the blob (stable identifier across re-scans)
         file_key = item.get("sha", item_path)
