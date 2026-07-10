@@ -142,7 +142,7 @@ def update_source(
     return WatchSourceSchema.model_validate(src)
 
 
-@router.delete("/sources/{source_id}", status_code=204)
+@router.delete("/sources/{source_id}", status_code=204, response_model=None)
 def delete_source(
     source_id: int,
     current_user: CurrentUser,

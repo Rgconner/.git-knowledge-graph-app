@@ -153,7 +153,7 @@ def get_document(
     return DocumentDetailSchema.model_validate(doc)
 
 
-@router.delete("/{doc_id}", status_code=204)
+@router.delete("/{doc_id}", status_code=204, response_model=None)
 def delete_document(
     doc_id: int,
     current_user: CurrentUser,
