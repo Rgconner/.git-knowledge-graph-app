@@ -98,6 +98,12 @@ def login(body: LoginRequest, db: Session = Depends(get_db)) -> TokenResponse:
             headers={"WWW-Authenticate": "Bearer"},
         )
     expire = datetime.now(timezone.utc) + timedelta(hours=ACCESS_TOKEN_EXPIRE_HOURS)
-    payload = {"sub": str(user.id), "email": user.email, "name": user.name, "exp": expire}
+    payload = {
+        "sub": str(user.id),
+        "email": user.email,
+        "name": user.name,
+        "is_admin": bool(user.is_admin),
+        "exp": expire,
+    }
     token = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
     return TokenResponse(access_token=token, token_type="bearer")

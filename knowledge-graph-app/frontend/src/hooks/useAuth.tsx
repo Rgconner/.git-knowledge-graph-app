@@ -7,6 +7,7 @@ interface AuthUser {
   id: number;
   email: string;
   name: string;
+  is_admin: boolean;
 }
 
 interface AuthContextValue {
@@ -22,7 +23,12 @@ const AuthContext = createContext<AuthContextValue | null>(null);
 function decodeToken(token: string): AuthUser | null {
   try {
     const payload = JSON.parse(atob(token.split(".")[1]));
-    return { id: Number(payload.sub), email: payload.email, name: payload.name };
+    return {
+      id: Number(payload.sub),
+      email: payload.email,
+      name: payload.name,
+      is_admin: Boolean(payload.is_admin),
+    };
   } catch {
     return null;
   }

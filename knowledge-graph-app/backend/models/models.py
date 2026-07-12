@@ -66,6 +66,7 @@ class User(Base):
     name = Column(String(255), nullable=False)
     email = Column(String(255), unique=True, index=True, nullable=False)
     hashed_password = Column(String(255), nullable=False)
+    is_admin = Column(Integer, default=0, nullable=False)  # 0 = regular, 1 = admin
     created_at = Column(DateTime, default=func.now(), nullable=False)
 
     documents = relationship("Document", back_populates="uploader")

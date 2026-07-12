@@ -51,8 +51,22 @@ def get_current_user(
             headers={"WWW-Authenticate": "Bearer"},
         )
 
-    return {"id": user.id, "email": user.email, "name": user.name}
+    return {"id": user.id, "email": user.email, "name": user.name, "is_admin": bool(user.is_admin)}
 
 
 # Convenient type alias so routers can write: user: CurrentUser
 CurrentUser = Annotated[dict, Depends(get_current_user)]
+
+
+def require_admin(current_user: CurrentUser) -> dict:
+    """Dependency that raises HTTP 403 unless the authenticated user is an admin."""
+    if not current_user.get("is_admin"):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Administrator access required.",
+        )
+    return current_user
+
+
+# Convenient type alias so routers can write: user: AdminUser
+AdminUser = Annotated[dict, Depends(require_admin)]

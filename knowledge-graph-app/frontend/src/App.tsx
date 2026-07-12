@@ -4,10 +4,11 @@ import UploadPage from "./pages/UploadPage";
 import GraphPage from "./pages/GraphPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import AdminPage from "./pages/AdminPage";
 import ChatWindow from "./components/ChatWindow";
 import WatchInbox from "./components/WatchInbox";
 
-type Tab = "documents" | "graph" | "sources";
+type Tab = "documents" | "graph" | "sources" | "admin";
 type AuthView = "login" | "register";
 
 function MainApp() {
@@ -63,6 +64,26 @@ function MainApp() {
           </button>
         ))}
 
+        {currentUser?.is_admin && (
+          <button
+            onClick={() => setTab("admin")}
+            style={{
+              padding: "0 18px",
+              height: 44,
+              fontSize: 14,
+              fontWeight: tab === "admin" ? 600 : 400,
+              color: tab === "admin" ? "#b91c1c" : "#57606a",
+              background: "none",
+              border: "none",
+              borderBottom: tab === "admin" ? "2px solid #b91c1c" : "2px solid transparent",
+              cursor: "pointer",
+              outline: "none",
+            }}
+          >
+            Admin
+          </button>
+        )}
+
         {/* Spacer */}
         <div style={{ flex: 1 }} />
 
@@ -95,6 +116,7 @@ function MainApp() {
         {tab === "documents" && <UploadPage />}
         {tab === "graph" && <GraphPage />}
         {tab === "sources" && <WatchInbox />}
+        {tab === "admin" && <AdminPage />}
       </div>
 
       {/* Floating AI chat — persists across tab switches */}
