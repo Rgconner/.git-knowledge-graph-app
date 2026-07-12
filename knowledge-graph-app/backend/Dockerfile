@@ -1,9 +1,10 @@
 FROM python:3.12-slim
 
-# Install OS packages needed by some Python deps (bcrypt, cryptography)
+# Install OS packages needed by some Python deps (bcrypt, cryptography, psycopg2)
 RUN apt-get update && apt-get install -y --no-install-recommends \
         gcc \
         libffi-dev \
+        libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -14,9 +15,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application source
 COPY . .
-
-# Create the data directory that SQLite will write to
-RUN mkdir -p /data
 
 EXPOSE 8000
 

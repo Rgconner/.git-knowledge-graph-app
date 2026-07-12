@@ -2,7 +2,7 @@
 
 A web application that ingests unstructured documents, extracts entities and relationships using an AI pipeline, and renders an interactive visual knowledge graph.
 
-**Stack:** Python + FastAPI · React + Vite + TypeScript + D3.js · SQLite (local dev) · Docker
+**Stack:** Python + FastAPI · React + Vite + TypeScript + D3.js · PostgreSQL · Docker
 
 ---
 
@@ -15,6 +15,7 @@ A web application that ingests unstructured documents, extracts entities and rel
 | Python | 3.11+ |
 | Node.js | 20+ |
 | npm | 10+ |
+| PostgreSQL | 14+ |
 
 ### Docker (recommended)
 
@@ -57,10 +58,25 @@ knowledge-graph-app/
 git clone <repo-url>
 cd knowledge-graph-app
 cp .env.example .env
-# Edit .env — set AI_API_KEY and, if needed, change AI_PROVIDER
+# Edit .env — set AI_API_KEY, SECRET_KEY, and POSTGRES_PASSWORD
 ```
 
-### 2 — Backend
+### 2 — Create the PostgreSQL database
+
+You need a running PostgreSQL 14+ instance. Create the database and user:
+
+```sql
+CREATE USER kg_user WITH PASSWORD 'kg_password';
+CREATE DATABASE knowledge_graph OWNER kg_user;
+```
+
+Then set `DATABASE_URL` in your `.env`:
+
+```
+DATABASE_URL=postgresql://kg_user:kg_password@localhost:5432/knowledge_graph
+```
+
+### 3 — Backend
 
 ```bash
 cd backend
@@ -75,6 +91,9 @@ source .venv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 
+# Run database migrations
+alembic upgrade head
+
 # Start the development server (auto-reload enabled)
 uvicorn main:app --reload --port 8000
 ```
@@ -82,7 +101,7 @@ uvicorn main:app --reload --port 8000
 The API will be available at `http://localhost:8000`.  
 Interactive docs: `http://localhost:8000/docs`
 
-### 3 — Frontend
+### 4 — Frontend
 
 ```bash
 # In a second terminal, from the repo root:
@@ -103,7 +122,8 @@ API requests to `/api/*` are proxied to `http://localhost:8000` via the Vite dev
 |----------|-------------|---------|
 | `AI_PROVIDER` | AI backend to use (`openai`, `anthropic`, `watsonx`) | `openai` |
 | `AI_API_KEY` | API key for the selected AI provider | — |
-| `DATABASE_URL` | SQLAlchemy database URL | `sqlite:///./knowledge_graph.db` |
+| `DATABASE_URL` | PostgreSQL connection URL | `postgresql://kg_user:kg_password@localhost:5432/knowledge_graph` |
+| `POSTGRES_PASSWORD` | Password for the `kg_user` DB user (used by Docker Compose) | `kg_password` |
 | `SECRET_KEY` | Secret used to sign JWTs | — |
 
 ---
@@ -123,17 +143,17 @@ npx concurrently \
 
 ## Docker
 
-Docker is the easiest way to run the full application. Both the backend and frontend are containerised and wired together with `docker-compose.yml`.
+Docker is the easiest way to run the full application. The Compose file starts three containers: **PostgreSQL**, the **FastAPI backend**, and the **React/Nginx frontend**.
 
 ### 1 — Configure environment
 
 ```bash
 cd knowledge-graph-app
 cp .env.example .env
-# Edit .env — at minimum set AI_API_KEY and SECRET_KEY
+# Edit .env — at minimum set AI_API_KEY, SECRET_KEY, and POSTGRES_PASSWORD
 ```
 
-> **Note:** When running via Docker, `DATABASE_URL` is automatically overridden to `sqlite:////data/knowledge_graph.db` (a named volume). You do not need to set it in `.env`.
+> **Note:** `DATABASE_URL` is automatically set by `docker-compose.yml` to point at the Postgres container. You do not need to set it in `.env` when using Docker.
 
 ### 2 — Build and start
 
@@ -143,9 +163,11 @@ docker compose up --build
 ```
 
 This will:
-1. Build the backend image (`python:3.12-slim`, installs all Python deps)
-2. Build the frontend image (Node 20 builds the React app, Nginx serves it)
-3. Start both containers; the frontend waits for the backend health check to pass
+1. Pull the `postgres:16-alpine` image and start the database container
+2. Build the backend image (`python:3.12-slim`, installs all Python deps)
+3. Build the frontend image (Node 20 builds the React app, Nginx serves it)
+4. The backend waits for Postgres to pass its health check before starting
+5. The frontend waits for the backend health check to pass
 
 ### 3 — Open the application
 
@@ -157,7 +179,7 @@ This will:
 ### Stopping
 
 ```bash
-docker compose down          # stop containers
+docker compose down          # stop containers (database volume is preserved)
 docker compose down -v       # stop AND delete the database volume
 ```
 
@@ -169,7 +191,7 @@ docker compose up --build
 
 ### Data persistence
 
-The SQLite database is stored in a named Docker volume `db-data`. It survives `docker compose down` but is deleted by `docker compose down -v`.
+The PostgreSQL data directory is stored in a named Docker volume `db-data`. It survives `docker compose down` but is deleted by `docker compose down -v`.
 
 ### Individual image builds (without Compose)
 
@@ -180,6 +202,25 @@ docker build -t kg-backend ./backend
 # Frontend only
 docker build -t kg-frontend ./frontend
 ```
+
+---
+
+## Database Migrations
+
+Migrations are managed with [Alembic](https://alembic.sqlalchemy.org/).
+
+```bash
+# Apply all pending migrations (run from backend/)
+alembic upgrade head
+
+# Generate a new migration after changing models
+alembic revision --autogenerate -m "describe your change"
+
+# Check current migration state
+alembic current
+```
+
+When running via Docker, migrations are applied automatically at container startup via `main.py`'s `Base.metadata.create_all()` call. For production use, run `alembic upgrade head` explicitly before starting the backend.
 
 ---
 

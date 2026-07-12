@@ -1,5 +1,22 @@
 services:
 
+  # ── PostgreSQL database ─────────────────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: knowledge_graph
+      POSTGRES_USER: kg_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-kg_password}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kg_user -d knowledge_graph"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
   # ── Backend: FastAPI + uvicorn ──────────────────────────────────────────────
   backend:
     build:
@@ -9,10 +26,10 @@ services:
     env_file:
       - .env
     environment:
-      # Override DATABASE_URL to write SQLite into the named volume
-      DATABASE_URL: sqlite:////data/knowledge_graph.db
-    volumes:
-      - db-data:/data
+      DATABASE_URL: postgresql://kg_user:${POSTGRES_PASSWORD:-kg_password}@postgres:5432/knowledge_graph
+    depends_on:
+      postgres:
+        condition: service_healthy
     # Backend is only reachable from within the compose network.
     # The frontend Nginx container proxies /api → backend:8000.
     expose:
