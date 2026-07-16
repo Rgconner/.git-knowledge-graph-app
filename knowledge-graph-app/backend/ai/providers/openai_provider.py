@@ -328,13 +328,21 @@ class OpenAIProvider(AIProvider):
         data = self._chat_json(system, user)
         results: list[RelationshipCandidate] = []
         for item in data.get("relationships", []):
+            name_a = item.get("entity_a_canonical_name") or ""
+            name_b = item.get("entity_b_canonical_name") or ""
+            # Skip any relationship where either entity name is missing/null
+            if not name_a.strip() or not name_b.strip():
+                logger.debug(
+                    "infer_relationships: skipping item with null entity name: %r", item
+                )
+                continue
             weight = float(item.get("base_weight", 0.5))
             weight = max(0.0, min(1.0, weight))
             results.append(
                 RelationshipCandidate(
-                    entity_a_canonical_name=item["entity_a_canonical_name"],
-                    entity_b_canonical_name=item["entity_b_canonical_name"],
-                    relationship_description=item["relationship_description"],
+                    entity_a_canonical_name=name_a.strip(),
+                    entity_b_canonical_name=name_b.strip(),
+                    relationship_description=item.get("relationship_description", ""),
                     base_weight=weight,
                 )
             )

@@ -214,6 +214,14 @@ def _run(document_id: int, db: Session) -> None:
     rel_candidates = provider.infer_relationships(extracted_entities, raw_text)
 
     for rc in rel_candidates:
+        # Guard: LLM occasionally returns null for one of the entity names
+        if not rc.entity_a_canonical_name or not rc.entity_b_canonical_name:
+            logger.debug(
+                "[pipeline] skipping relationship — null entity name: a=%r b=%r",
+                rc.entity_a_canonical_name,
+                rc.entity_b_canonical_name,
+            )
+            continue
         id_a = entity_id_map.get(rc.entity_a_canonical_name.strip())
         id_b = entity_id_map.get(rc.entity_b_canonical_name.strip())
         if id_a is None or id_b is None:
