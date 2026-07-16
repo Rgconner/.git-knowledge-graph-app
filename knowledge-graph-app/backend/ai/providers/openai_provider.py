@@ -388,6 +388,46 @@ class OpenAIProvider(AIProvider):
         data = self._chat_json(system, user)
         return str(data.get("category", "uncategorized")).strip().lower()
 
+    def generate_document_name(self, text: str) -> str:
+        """
+        Generate a concise, descriptive filename for the document.
+
+        Expected JSON response shape::
+
+            {"name": "Q3 Budget Review Meeting"}
+        """
+        # Use only the first 2000 characters — enough to understand the topic
+        # without wasting tokens on the full body text.
+        excerpt = text[:2000].strip()
+
+        system = (
+            "You are a document naming assistant. "
+            "Given an excerpt from a document, generate a concise, descriptive name "
+            "that captures the subject of the document. "
+            "Rules: "
+            "  - 3 to 8 words maximum. "
+            "  - Title Case. "
+            "  - No special characters except spaces and hyphens. "
+            "  - No file extension. "
+            "  - Capture the main topic, people, project, or event. "
+            "Return ONLY a JSON object with a single key 'name' whose value is the filename string. "
+            "Do not include any explanation outside the JSON object."
+        )
+        user = f"Generate a descriptive filename for this document excerpt:\n\n{excerpt}"
+
+        try:
+            data = self._chat_json(system, user)
+            name = str(data.get("name", "")).strip()
+            if not name:
+                raise ValueError("empty name")
+            # Sanitise: strip characters that are invalid in filenames
+            import re as _re
+            name = _re.sub(r'[^\w\s\-]', '', name).strip()
+            name = _re.sub(r'\s+', ' ', name)
+            return name or "Untitled Document"
+        except Exception:
+            return "Untitled Document"
+
     def rescore_graph(
         self,
         graph_snapshot: dict,

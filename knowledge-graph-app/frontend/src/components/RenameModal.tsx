@@ -160,22 +160,23 @@ export default function RenameModal({
 
         {/* Buttons */}
         <div style={{ display: "flex", gap: "8px", justifyContent: "flex-end" }}>
-          {!required && (
-            <button
-              onClick={onCancel}
-              style={{
-                padding: "6px 16px",
-                fontSize: "13px",
-                background: "#e5e7eb",
-                color: "#374151",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-              }}
-            >
-              Cancel
-            </button>
-          )}
+          {/* Cancel — always available; when required it cancels the whole upload */}
+          <button
+            onClick={onCancel}
+            style={{
+              padding: "6px 16px",
+              fontSize: "13px",
+              background: "#e5e7eb",
+              color: "#374151",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+          >
+            {required ? "Cancel Upload" : "Cancel"}
+          </button>
+
+          {/* Keep original name — only available when rename is optional */}
           {!required && (
             <button
               onClick={() => onConfirm(originalName, alwaysRename)}
@@ -192,6 +193,7 @@ export default function RenameModal({
               Keep original name
             </button>
           )}
+
           <button
             onClick={handleConfirm}
             style={{
@@ -205,7 +207,7 @@ export default function RenameModal({
               cursor: "pointer",
             }}
           >
-            {required ? "Rename & Upload" : "Rename & Upload"}
+            Rename &amp; Upload
           </button>
         </div>
       </div>

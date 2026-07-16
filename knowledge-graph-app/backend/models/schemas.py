@@ -47,6 +47,7 @@ class DocumentSchema(BaseModel):
     id: int
     uploader_user_id: int
     filename: str
+    original_filename: Optional[str] = None   # user-supplied name before AI rename
     file_type: str
     created_at: datetime
     processed_at: Optional[datetime] = None

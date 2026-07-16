@@ -75,6 +75,20 @@ class AIProvider(ABC):
         """
 
     @abstractmethod
+    def generate_document_name(self, text: str) -> str:
+        """
+        Generate a concise, descriptive filename (without extension) for a
+        document based on its content.
+
+        The name should:
+          - Be 3–8 words maximum, title-cased
+          - Capture the subject/topic of the document
+          - Be suitable as an actual filename (no special characters)
+          - Examples: "Q3 Budget Review Meeting", "Project Apollo Kickoff",
+            "Alice Smith Onboarding Plan", "Weekly Status Update 2024-07"
+        """
+
+    @abstractmethod
     def rescore_graph(
         self,
         graph_snapshot: dict,

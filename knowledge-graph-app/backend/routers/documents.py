@@ -117,6 +117,7 @@ async def upload_document(
     doc = Document(
         uploader_user_id=current_user["id"],
         filename=filename,
+        original_filename=filename,   # preserved before AI pipeline renames it
         raw_text=raw_text,
         file_type=file_type,
         processed_at=None,

@@ -107,8 +107,12 @@ add_column("users", "is_admin", "INTEGER NOT NULL DEFAULT 0")
 log.info("Step 2: documents.fingerprint")
 add_column("documents", "fingerprint", "TEXT")
 
-# ── 3. Enum types for watch tables ───────────────────────────────────────────
-log.info("Step 3: enum types")
+# ── 3. documents.original_filename ───────────────────────────────────────────
+log.info("Step 3: documents.original_filename")
+add_column("documents", "original_filename", "VARCHAR(512)")
+
+# ── 4. Enum types for watch tables ───────────────────────────────────────────
+log.info("Step 4: enum types")
 
 if not type_exists("watchsourcetype"):
     cur.execute("CREATE TYPE watchsourcetype AS ENUM ('filesystem', 'github')")
@@ -125,8 +129,8 @@ if not type_exists("watchedfilestatus"):
 else:
     log.info("  SKIP  type watchedfilestatus — already exists")
 
-# ── 4. watch_sources table ───────────────────────────────────────────────────
-log.info("Step 4: watch_sources table")
+# ── 5. watch_sources table ───────────────────────────────────────────────────
+log.info("Step 5: watch_sources table")
 
 if not table_exists("watch_sources"):
     cur.execute("""
@@ -152,8 +156,8 @@ if not table_exists("watch_sources"):
 else:
     log.info("  SKIP  table watch_sources — already exists")
 
-# ── 5. watched_files table ────────────────────────────────────────────────────
-log.info("Step 5: watched_files table")
+# ── 6. watched_files table ────────────────────────────────────────────────────
+log.info("Step 6: watched_files table")
 
 if not table_exists("watched_files"):
     cur.execute("""

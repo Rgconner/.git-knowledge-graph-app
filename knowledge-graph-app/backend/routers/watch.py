@@ -275,6 +275,7 @@ def _ingest_watched_file(wf_id: int, db: Session) -> None:
         doc = Document(
             uploader_user_id=source.owner_user_id,
             filename=wf.filename,
+            original_filename=wf.filename,   # preserved before AI pipeline renames it
             raw_text=raw_text,
             file_type=file_type,
             processed_at=None,

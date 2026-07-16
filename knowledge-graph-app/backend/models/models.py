@@ -79,6 +79,10 @@ class Document(Base):
     id = Column(Integer, primary_key=True, index=True)
     uploader_user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
     filename = Column(String(512), nullable=False)
+    # The original filename as supplied by the user/file system before any
+    # AI-generated rename is applied.  NULL for documents uploaded before
+    # this column was added (legacy rows).
+    original_filename = Column(String(512), nullable=True)
     raw_text = Column(Text, nullable=False)
     file_type = Column(String(64), nullable=False)
     created_at = Column(DateTime, default=func.now(), nullable=False)

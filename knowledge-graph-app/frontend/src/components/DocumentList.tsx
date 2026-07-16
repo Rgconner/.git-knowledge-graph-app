@@ -122,29 +122,54 @@ export default function DocumentList({
       >
         <thead>
           <tr>
-            <th style={{ ...thStyle, width: "28%" }}>Filename</th>
-            <th style={{ ...thStyle, width: "9%" }}>Type</th>
-            <th style={{ ...thStyle, width: "23%" }}>Category</th>
-            <th style={{ ...thStyle, width: "18%" }}>Uploaded</th>
-            <th style={{ ...thStyle, width: "12%" }}>Status</th>
-            <th style={{ ...thStyle, width: "10%" }}>Actions</th>
+            <th style={{ ...thStyle, width: "22%" }}>AI Name</th>
+            <th style={{ ...thStyle, width: "18%" }}>Original Filename</th>
+            <th style={{ ...thStyle, width: "8%" }}>Type</th>
+            <th style={{ ...thStyle, width: "16%" }}>Category</th>
+            <th style={{ ...thStyle, width: "14%" }}>Uploaded</th>
+            <th style={{ ...thStyle, width: "10%" }}>Status</th>
+            <th style={{ ...thStyle, width: "12%" }}>Actions</th>
           </tr>
         </thead>
         <tbody>
           {documents.map((doc) => {
             const status = getStatus(doc);
+            // Before pipeline completes, filename == original_filename
+            const aiName = status !== "processing" && doc.original_filename
+              ? doc.filename
+              : null;
+            const originalName = doc.original_filename ?? doc.filename;
             return (
               <tr key={doc.id}>
+                {/* AI-generated descriptive name */}
                 <td
                   style={{
                     ...tdStyle,
                     overflow: "hidden",
                     textOverflow: "ellipsis",
                     whiteSpace: "nowrap",
+                    fontWeight: aiName ? 500 : 400,
+                    color: aiName ? "#1f2328" : "#9ca3af",
                   }}
-                  title={doc.filename}
+                  title={aiName ?? "Processing…"}
                 >
-                  {doc.filename}
+                  {status === "processing"
+                    ? <span style={{ color: "#9ca3af", fontStyle: "italic" }}>Generating…</span>
+                    : (aiName ?? <span style={{ color: "#9ca3af" }}>—</span>)}
+                </td>
+                {/* Original user-supplied filename */}
+                <td
+                  style={{
+                    ...tdStyle,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                    color: "#57606a",
+                    fontSize: "13px",
+                  }}
+                  title={originalName}
+                >
+                  {originalName}
                 </td>
                 <td style={tdStyle}>{doc.file_type}</td>
                 <td style={{ ...tdStyle, color: "#57606a" }}>

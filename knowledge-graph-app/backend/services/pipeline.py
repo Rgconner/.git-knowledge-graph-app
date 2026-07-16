@@ -285,12 +285,32 @@ def _run(document_id: int, db: Session) -> None:
     logger.info("[pipeline] step 5 complete")
 
     # ------------------------------------------------------------------
-    # Step 6 — Document categorisation
+    # Step 6 — Document categorisation + AI name generation
     # ------------------------------------------------------------------
-    logger.info("[pipeline] step 6 — document categorisation (doc %d)", document_id)
+    logger.info("[pipeline] step 6 — document categorisation + naming (doc %d)", document_id)
 
     ai_category = provider.categorize_document(raw_text)
     doc.ai_category = ai_category
+
+    # Generate a descriptive name from the document content.
+    # Store the user-supplied name in original_filename (if not already set)
+    # then overwrite filename with the AI-generated descriptive name.
+    try:
+        ai_name = provider.generate_document_name(raw_text)
+        if ai_name and ai_name != "Untitled Document":
+            # Preserve the extension from the original filename
+            import os as _os
+            _, ext = _os.path.splitext(doc.filename)
+            # Only save original_filename once — don't overwrite if already set
+            if not doc.original_filename:
+                doc.original_filename = doc.filename
+            doc.filename = ai_name + ext
+            logger.info(
+                "[pipeline] renamed doc %d: '%s' → '%s'",
+                document_id, doc.original_filename, doc.filename,
+            )
+    except Exception as name_exc:
+        logger.warning("[pipeline] name generation failed for doc %d: %s", document_id, name_exc)
 
     logger.info("[pipeline] step 6 complete — category: %s", ai_category)
 

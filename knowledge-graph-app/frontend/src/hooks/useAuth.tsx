@@ -55,7 +55,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const register = useCallback(
     async (name: string, email: string, password: string) => {
       await authApi.register(name, email, password);
-      // Auto-login after successful registration
       await login(email, password);
     },
     [login]

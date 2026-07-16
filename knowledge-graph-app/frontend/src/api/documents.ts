@@ -14,7 +14,8 @@ export interface DuplicateCheckResponse {
 export interface DocumentRecord {
   id: number;
   uploader_user_id: number;
-  filename: string;
+  filename: string;              // AI-generated descriptive name (after pipeline)
+  original_filename: string | null;  // user-supplied name at upload time
   file_type: string;
   created_at: string;
   processed_at: string | null;
