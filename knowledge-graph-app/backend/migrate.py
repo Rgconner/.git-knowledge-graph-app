@@ -111,6 +111,14 @@ add_column("documents", "fingerprint", "TEXT")
 log.info("Step 3: documents.original_filename")
 add_column("documents", "original_filename", "VARCHAR(512)")
 
+# ── 3b. entities graveyard + override columns ─────────────────────────────────
+log.info("Step 3b: entities — graveyard and override columns")
+add_column("entities", "archived",          "INTEGER NOT NULL DEFAULT 0")
+add_column("entities", "archived_at",       "TIMESTAMP")
+add_column("entities", "archive_note",      "TEXT")
+add_column("entities", "label_override",    "VARCHAR(512)")
+add_column("entities", "sentiment_override","DOUBLE PRECISION")
+
 # ── 4. Enum types for watch tables ───────────────────────────────────────────
 log.info("Step 4: enum types")
 

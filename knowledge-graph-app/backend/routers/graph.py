@@ -65,9 +65,22 @@ def _build_entity_node(entity: Entity, display: Optional[NodeDisplay], layer: st
         color = "#999999"
         weight = 0.5
 
+    # Apply sentiment_override if the user has manually set one
+    if entity.sentiment_override is not None:
+        s = entity.sentiment_override
+        if s > 0.2:
+            color = "#4AD94A"
+        elif s < -0.2:
+            color = "#D94A4A"
+        else:
+            color = "#999999"
+
+    # Use label_override if set, otherwise canonical_name
+    label = entity.label_override or entity.canonical_name
+
     return Node(
         id=entity.id,
-        label=entity.canonical_name,
+        label=label,
         type=entity.type.value,
         sentiment_color=color,
         size=weight_to_size(weight),
@@ -117,8 +130,8 @@ def get_team_graph(db: Annotated[Session, Depends(get_db)]) -> GraphPayload:
     All entity nodes use layer="team".  Colors and sizes are pre-computed
     server-side so the frontend is a pure renderer.
     """
-    # --- Entity nodes (joined with NodeDisplay cache) ---
-    entities = db.query(Entity).all()
+    # --- Entity nodes (joined with NodeDisplay cache) — exclude archived ---
+    entities = db.query(Entity).filter(Entity.archived == 0).all()
     display_map: dict[int, NodeDisplay] = {
         nd.entity_id: nd for nd in db.query(NodeDisplay).all()
     }
@@ -178,8 +191,8 @@ def get_personal_graph(
             .all()
         }
 
-    # --- Entity nodes ---
-    entities = db.query(Entity).all()
+    # --- Entity nodes --- exclude archived
+    entities = db.query(Entity).filter(Entity.archived == 0).all()
     display_map: dict[int, NodeDisplay] = {
         nd.entity_id: nd for nd in db.query(NodeDisplay).all()
     }

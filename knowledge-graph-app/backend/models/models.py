@@ -104,6 +104,14 @@ class Entity(Base):
     type = Column(Enum(EntityType), nullable=False, index=True)
     canonical_name = Column(String(512), unique=True, nullable=False, index=True)
     created_at = Column(DateTime, default=func.now(), nullable=False)
+    # Graveyard / archival fields — archived entities are hidden from the graph
+    # but kept in the DB so they can be restored.
+    archived = Column(Integer, default=0, nullable=False)   # 0=active, 1=archived
+    archived_at = Column(DateTime, nullable=True)
+    archive_note = Column(Text, nullable=True)
+    # Manual overrides applied by the user via the right-click menu
+    label_override = Column(String(512), nullable=True)     # replaces canonical_name in display
+    sentiment_override = Column(Float, nullable=True)       # -1.0 to 1.0; None = use AI value
 
     action_items_assigned = relationship(
         "ActionItem", back_populates="assignee_entity", foreign_keys="ActionItem.assignee_entity_id"

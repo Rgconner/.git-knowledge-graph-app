@@ -5,6 +5,7 @@ import { GraphPayload, GraphNode, GraphEdge } from "../api/graph";
 interface Props {
   data: GraphPayload;
   onNodeClick: (node: GraphNode) => void;
+  onNodeRightClick: (node: GraphNode, x: number, y: number) => void;
   onEdgeClick: (edge: GraphEdge) => void;
   resetZoomTrigger: number;
 }
@@ -24,6 +25,7 @@ const HEIGHT = window.innerHeight - 44 - 64; // 44px app tab bar + 64px graph to
 export default function GraphCanvas({
   data,
   onNodeClick,
+  onNodeRightClick,
   onEdgeClick,
   resetZoomTrigger,
 }: Props) {
@@ -187,6 +189,12 @@ export default function GraphCanvas({
       .on("click", (_event, d) => {
         const original = nodeMapRef.current.get(d.id);
         if (original) onNodeClick(original);
+      })
+      .on("contextmenu", (event: MouseEvent, d) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const original = nodeMapRef.current.get(d.id);
+        if (original) onNodeRightClick(original, event.clientX, event.clientY);
       });
 
     nodeContainers.each(function (d) {
