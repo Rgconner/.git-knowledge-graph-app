@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bunge — Technical Requirements Summary</title>
+<style>
+  body {
+    font-family: Calibri, "Segoe UI", sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #000000;
+    margin: 1in 1in 1in 1in;
+  }
+  h1 {
+    font-size: 18pt;
+    font-weight: bold;
+    color: #1F3864;
+    border-bottom: 2px solid #1F3864;
+    padding-bottom: 6px;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 10pt;
+    color: #555555;
+    margin-bottom: 24px;
+  }
+  h2 {
+    font-size: 13pt;
+    font-weight: bold;
+    color: #1F3864;
+    margin-top: 26px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #BDD7EE;
+    padding-bottom: 3px;
+  }
+  h3 {
+    font-size: 11pt;
+    font-weight: bold;
+    color: #2E75B6;
+    margin-top: 14px;
+    margin-bottom: 4px;
+  }
+  p { margin-bottom: 8px; }
+  ul { margin-left: 20px; margin-bottom: 8px; }
+  li { margin-bottom: 5px; }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0 16px 0;
+    font-size: 10.5pt;
+  }
+  th {
+    background-color: #1F3864;
+    color: #FFFFFF;
+    padding: 7px 10px;
+    text-align: left;
+    border: 1px solid #1F3864;
+  }
+  td {
+    padding: 6px 10px;
+    border: 1px solid #BDD7EE;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background-color: #F2F8FD; }
+
+  /* SWOT colours */
+  .sw { background-color: #E9F3FB; }
+  .st { background-color: #FFF2CC; }
+  .wo { background-color: #E2EFDA; }
+  .wt { background-color: #FDECEA; }
+  .swot-label {
+    font-weight: bold;
+    font-size: 10pt;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .swot-table td { width: 50%; vertical-align: top; padding: 10px 12px; }
+
+  .callout {
+    background-color: #EBF3FB;
+    border-left: 4px solid #2E75B6;
+    padding: 8px 12px;
+    margin: 10px 0;
+  }
+  .warning {
+    background-color: #FFF2CC;
+    border-left: 4px solid #F4B942;
+    padding: 8px 12px;
+    margin: 10px 0;
+  }
+
+  .action-table td:first-child { width: 4%; text-align: center; font-weight: bold; color: #1F3864; }
+  .action-table td:nth-child(2) { width: 40%; }
+  .action-table td:nth-child(3) { width: 28%; }
+  .action-table td:nth-child(4) { width: 28%; }
+
+  .footer {
+    margin-top: 40px;
+    padding-top: 10px;
+    border-top: 1px solid #CCCCCC;
+    font-size: 9pt;
+    color: #888888;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h1>Bunge — Technical Requirements Summary</h1>
+<p class="subtitle">
+  Source: Pre-call alignment meeting &nbsp;|&nbsp; 13 July 2026 &nbsp;|&nbsp;
+  Participants: Tiago (Bunge Infrastructure), Kim, Dom, Doug, Shane (IBM)
+</p>
+
+<!-- ═══════════════════════ BACKGROUND ═══════════════════════ -->
+<h2>1. Background &amp; Context</h2>
+<p>This meeting was a preparatory alignment call between the IBM team and Tiago (Bunge) ahead of a broader Wednesday session including Curtis, Eduardo, Richard Broca, and potentially Rob. The purpose was to compare notes on where Bunge's observability, asset management, and consolidation efforts stand before presenting IBM's recommendations to a wider Bunge audience.</p>
+<p>Bunge is simultaneously managing several large-scale initiatives: an <strong>observability and automation journey</strong>, a <strong>data center consolidation</strong> (led by Curtis), a <strong>network consolidation</strong> (led by Ben Davis), a <strong>CMDB/asset management uplift</strong>, and ongoing M&amp;A activity — including two new acquisitions adding up to <strong>16 new locations</strong> (10 + 6 spin-off).</p>
+
+<!-- ═══════════════════════ TECHNICAL REQUIREMENTS ═══════════════════════ -->
+<h2>2. Technical Requirements</h2>
+
+<h3>2.1 Observability &amp; Automation</h3>
+<ul>
+  <li>Data gathering is approximately <strong>75–80% complete</strong>; remaining 20–25% requires scheduled follow-up sessions with application teams, end-user computing teams, and cloud teams.</li>
+  <li>Data center and network data gathering is complete.</li>
+  <li>Requirement for a <strong>consolidated, standardized observability toolset</strong> — currently there is significant fragmentation: multiple tools, different contracts for the same tool type, varying by region and even by country.</li>
+  <li>Tools are being used inconsistently — some only for logging, some only for dashboarding; only a small subset generate actionable alerts tied to the service-and-operations platform.</li>
+  <li>A <strong>dedicated ServiceNow/service-operations-aligned team</strong> is required to work alongside the observability function — the tool alone is insufficient without the right process and people model.</li>
+  <li>The ServiceNow team is currently evaluating a <strong>brownfield vs. greenfield</strong> approach for merging four separate instances — this decision directly gates the observability roadmap.</li>
+  <li>Existing tools in scope for integration or replacement decisions include: <strong>Microsoft Defender for Cloud (ESCON)</strong>, <strong>VMware/Broadcom</strong> upper-layer monitoring, and <strong>Oracle</strong> native capabilities (already licensed).</li>
+</ul>
+
+<h3>2.2 CMDB &amp; Asset Management</h3>
+<ul>
+  <li>CMDB is central to all parallel workstreams — observability, data center consolidation, and network consolidation all depend on it.</li>
+  <li>Planned approach: use <strong>ServiceNow + LeanIX</strong> (both already licensed and integrated) as the CMDB foundation. LeanIX connectivity is already in place — fact sheet updates replicate into the ServiceNow CI database.</li>
+  <li>Current data quality is poor: no single source of truth, no connection to SAP for asset depreciation data, no warranty tracking, and contracts are misclassified (e.g., Oracle DB licensing, Java licensing, and hardware contracts all grouped under one category).</li>
+  <li>Open architectural question: <strong>centralize in ServiceNow + LeanIX</strong>, or introduce a <strong>specialized third-party asset management tool</strong> (e.g., Flexera) that feeds both. No decision made.</li>
+  <li>Any selected asset management tool must support <strong>bi-directional integration with ServiceNow</strong>.</li>
+  <li>Finance/SAP integration is a future requirement: asset depreciation data needs to flow from SAP into the asset management layer.</li>
+  <li>Key dependency: <strong>Robert Van Seiko</strong> (architecture lead) is on vacation — decision is paused until his return.</li>
+</ul>
+
+<h3>2.3 Contract Lifecycle Management (CLM) &amp; Software Asset Management (SAM)</h3>
+<ul>
+  <li>Existing procurement tool has a centralized contract repository, but data quality is unreliable — missing data, wrong classifications, duplicate contracts across the same vendor.</li>
+  <li>Manual remediation has already consumed <strong>25+ hours of Tiago's time</strong> reclassifying contracts.</li>
+  <li>Requirement: an <strong>evergreen, automated SAM/CLM capability</strong> (Flexera identified as a candidate) to clean, classify, and maintain contracts — with value tied directly to contract negotiation leverage.</li>
+  <li>Procurement team is running a parallel CLM review across non-technology towers — Flexera may have applicability beyond IT.</li>
+  <li>Tiago used internal Tableau tooling to build a manual asset database — functional but not sustainable as an ongoing solution.</li>
+</ul>
+
+<h3>2.4 Data Center Consolidation (Curtis's Workstream)</h3>
+<ul>
+  <li>Tiago has limited direct visibility into Curtis's data center consolidation workstream — updates are shared at the weekly Trevor (CTO/boss) meeting level only.</li>
+  <li>CMDB/asset data — specifically <strong>asset depreciation and lifecycle data</strong> — is a shared dependency between Tiago's observability journey and Curtis's consolidation effort.</li>
+  <li>IBM recommendation: highlight the observability capability to Curtis as a starting point, then show how it enables the consolidation effort (depreciation, lifecycle, discovery).</li>
+</ul>
+
+<h3>2.5 M&amp;A &amp; Growth</h3>
+<ul>
+  <li>Two new acquisition/divestiture activities in progress since the last IBM conversation (approximately 6–8 weeks ago).</li>
+  <li>Combined scope: <strong>~16 new locations</strong> (10 from one acquisition, 6 spin-off locations from the other).</li>
+  <li>These are described as smaller than the Viterra–Bunge integration but are still regionally significant and resource-intensive.</li>
+  <li>M&amp;A activity is creating "moving target" conditions that are delaying roadmap decisions.</li>
+</ul>
+
+<!-- ═══════════════════════ SWOT ═══════════════════════ -->
+<h2>3. SWOT Analysis</h2>
+
+<table class="swot-table">
+  <tr>
+    <td class="sw">
+      <span class="swot-label">&#x2714; Strengths</span>
+      <ul>
+        <li>ServiceNow and LeanIX are <strong>already licensed and integrated</strong> — foundation exists</li>
+        <li>LeanIX-to-ServiceNow CI sync is already operational</li>
+        <li>Data center and network data gathering is complete</li>
+        <li>Strong internal awareness of the problem — Tiago has clear visibility of gaps and is actively driving resolution</li>
+        <li>Existing monitoring tools (ESCON, VMware/Broadcom, Oracle) are already licensed, reducing net-new cost</li>
+        <li>Internal Tableau database provides a baseline, even if manual</li>
+      </ul>
+    </td>
+    <td class="wo">
+      <span class="swot-label">&#x25B2; Opportunities</span>
+      <ul>
+        <li><strong>Flexera</strong> could deliver rapid value for contract cleanup and SAM — low-hanging fruit with immediate ROI in contract negotiations</li>
+        <li>Consolidation of fragmented, duplicate tooling contracts across regions represents significant <strong>cost reduction opportunity</strong></li>
+        <li>Procurement team's parallel CLM review could expand Flexera's scope and ROI beyond IT</li>
+        <li>IBM observability capability is a strong fit for Curtis's data center consolidation — depreciation and lifecycle data is a shared win</li>
+        <li>M&amp;A activity (16 new locations) increases urgency and business case for a scalable, evergreen asset management platform</li>
+        <li>Wednesday call with Richard Broca (PMO/influencer) is an opportunity to shape the insource vs. outsource decision</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td class="st">
+      <span class="swot-label">&#x26A0; Weaknesses</span>
+      <ul>
+        <li><strong>Poor data quality</strong> across CMDB, contracts, and asset records — tools cannot deliver insight on bad data</li>
+        <li>No single source of truth for assets, contracts, depreciation, or warranties</li>
+        <li>No SAP integration for financial/asset data</li>
+        <li>Observability tools used inconsistently — logging only, dashboarding only, few generating real alerts</li>
+        <li>ServiceNow instance consolidation (4 → 1) is unresolved and gates the observability roadmap</li>
+        <li>Key architecture decision-maker (Robert Van Seiko) is currently on vacation</li>
+        <li>Resource constraint: Tiago and team are split across run-the-business, M&amp;A, and transformation simultaneously</li>
+      </ul>
+    </td>
+    <td class="wt">
+      <span class="swot-label">&#x26D4; Threats / Risks</span>
+      <ul>
+        <li><strong>Q1 2027 start date is not confirmed</strong> — ServiceNow consolidation dependency could push timelines further right</li>
+        <li>Risk of <strong>double work</strong> if observability journey starts before ServiceNow consolidation approach is decided</li>
+        <li>Ongoing M&amp;A activity creates moving targets — every new acquisition resets scope and data</li>
+        <li>Without dedicated data stewardship resources, tooling investments will continue to degrade in data quality</li>
+        <li>Red Hat/Lightwell positioning risk (from prior Concert discussion) — fragmented IBM messaging could undermine confidence</li>
+        <li>Insource vs. outsource debate (driven by Richard Broca) could delay or redirect IBM engagement</li>
+        <li>Contract misclassification risk — Oracle licensing example shows exposure to incorrect spend categorization</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<!-- ═══════════════════════ ACTION ITEMS ═══════════════════════ -->
+<h2>4. Action Items</h2>
+
+<table class="action-table">
+  <tr>
+    <th>#</th>
+    <th>Action Item</th>
+    <th>Owner</th>
+    <th>Target / Notes</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Schedule follow-up data gathering sessions with application teams, end-user computing, and cloud teams to complete the remaining 20–25% of observability data collection</td>
+    <td>Tiago + Eduardo (Bunge)</td>
+    <td>Near-term — blocks observability roadmap finalization</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Await Robert Van Seiko's return and schedule architecture decision session on one-tool vs. multi-tool strategy (ServiceNow + LeanIX vs. specialized SAM tool)</td>
+    <td>Tiago + Robert Van Seiko (Bunge)</td>
+    <td>After Robert returns from vacation</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Engage Flexera for a scoped demonstration focused on contract cleanup, SAM, and CLM — present a clear picture of client time investment vs. Flexera effort</td>
+    <td>Kim (IBM) + Tiago (Bunge)</td>
+    <td>Pending Robert Van Seiko's return; start with IT scope, expand to procurement if warranted</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Engage Bunge's procurement team in the Flexera/CLM conversation given their parallel contract review across non-technology towers</td>
+    <td>Tiago (Bunge) to connect; Kim (IBM) to follow up</td>
+    <td>Explore broader CLM opportunity beyond IT</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Prepare focused Wednesday call agenda: lead with observability capability highlight for Curtis (data center consolidation), specifically asset depreciation/lifecycle data — do not re-present the full observability landscape</td>
+    <td>Kim, Dom, Doug, Shane (IBM)</td>
+    <td>Before Wednesday 16 July 2026</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Identify and clearly articulate the overlap between the observability journey and Curtis's data center consolidation workstream — prepare a concise 10-minute cross-workstream value narrative</td>
+    <td>Doug (IBM Architect) + Kim (IBM)</td>
+    <td>Before Wednesday 16 July 2026</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Confirm Wednesday attendee list and align on Richard Broca's role (Global PMO, insource/outsource influencer) — prepare messaging sensitive to the insource vs. outsource debate</td>
+    <td>Dom / Kim (IBM)</td>
+    <td>Before Wednesday 16 July 2026</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>Determine ServiceNow consolidation approach (brownfield vs. greenfield, 4 instances → 1) and confirm impact on observability roadmap sequencing and Q1 2027 start date</td>
+    <td>Tiago + Eduardo + ServiceNow team (Bunge)</td>
+    <td>Critical path item — gates entire observability timeline</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>Define and assign dedicated data stewardship resources for ongoing CMDB and contract data quality — tooling investment will not yield value without this</td>
+    <td>Tiago (Bunge) to raise with Trevor</td>
+    <td>Structural/organizational decision required</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>Establish a plan for SAP-to-asset management integration to bring depreciation and financial data into the CMDB/asset layer</td>
+    <td>Tiago + Architecture team (Bunge)</td>
+    <td>Medium-term — dependency on SAP RISE journey and asset tool selection</td>
+  </tr>
+</table>
+
+<!-- ═══════════════════════ ROLES & RESPONSIBILITIES ═══════════════════════ -->
+<h2>5. Roles &amp; Responsibilities Identified</h2>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Organization</th>
+    <th>Role / Responsibility</th>
+    <th>Notes</th>
+  </tr>
+  <tr>
+    <td><strong>Tiago</strong></td>
+    <td>Bunge</td>
+    <td>Infrastructure lead — owns the observability &amp; automation journey; CMDB/asset management strategy; primary IBM point of contact</td>
+    <td>Reports to Trevor; collaborates closely with Eduardo</td>
+  </tr>
+  <tr>
+    <td><strong>Eduardo</strong></td>
+    <td>Bunge</td>
+    <td>Co-leads observability journey with Tiago; project management partner for the observability workstream</td>
+    <td>Working with Richard Broca on PMO aspects</td>
+  </tr>
+  <tr>
+    <td><strong>Curtis</strong></td>
+    <td>Bunge</td>
+    <td>Leads data center consolidation workstream; driving the broader consolidation effort (significantly larger scope than originally anticipated)</td>
+    <td>Limited visibility from Tiago; will be primary focus of Wednesday call</td>
+  </tr>
+  <tr>
+    <td><strong>Ben Davis</strong></td>
+    <td>Bunge</td>
+    <td>Leads network consolidation workstream</td>
+    <td>Parallel to Curtis's data center workstream</td>
+  </tr>
+  <tr>
+    <td><strong>Trevor</strong></td>
+    <td>Bunge</td>
+    <td>CTO / executive sponsor — Tiago and Curtis both report to him; asset management updates reported at weekly Trevor meeting</td>
+    <td>Ultimate decision authority</td>
+  </tr>
+  <tr>
+    <td><strong>Richard Broca</strong></td>
+    <td>Bunge</td>
+    <td>Global PMO lead — project management oversight for observability and data gathering; supporting Trevor on RFP evaluation; key influencer on insource vs. outsource decision</td>
+    <td>Not a final decision maker but described as one of the biggest influencers on the driver's decision; attending Wednesday call</td>
+  </tr>
+  <tr>
+    <td><strong>Robert Van Seiko</strong></td>
+    <td>Bunge</td>
+    <td>Architecture lead — leading the one-tool vs. multi-tool architecture decision for observability and CMDB</td>
+    <td>Currently on vacation; decisions in this area are paused pending his return</td>
+  </tr>
+  <tr>
+    <td><strong>Rob</strong></td>
+    <td>Bunge</td>
+    <td>Senior stakeholder — participated in prior IBM conversations; likely still traveling/returning</td>
+    <td>Attendance at Wednesday call uncertain</td>
+  </tr>
+  <tr>
+    <td><strong>Kim</strong></td>
+    <td>IBM</td>
+    <td>IBM account/client lead — driving Flexera opportunity, coordinating Wednesday call agenda and stakeholder alignment</td>
+    <td>Primary IBM relationship owner for this workstream</td>
+  </tr>
+  <tr>
+    <td><strong>Dom</strong></td>
+    <td>IBM</td>
+    <td>IBM team member — coordinating Wednesday call logistics and attendee management</td>
+    <td>Sent calendar invites to Eduardo, Rob, and others</td>
+  </tr>
+  <tr>
+    <td><strong>Doug</strong></td>
+    <td>IBM</td>
+    <td>IBM architect — technical lead for the observability and asset management solution area; responsible for identifying cross-workstream overlaps for Wednesday's presentation</td>
+    <td>Tiago may not have met Doug previously</td>
+  </tr>
+  <tr>
+    <td><strong>Shane</strong></td>
+    <td>IBM</td>
+    <td>IBM architect (supporting) — assists Doug in the observability solution area</td>
+    <td>Supporting role</td>
+  </tr>
+</table>
+
+<div class="callout">
+<strong>Key Dependency Summary:</strong> The entire observability and asset management roadmap is gated on two decisions — (1) the ServiceNow consolidation approach (brownfield vs. greenfield), and (2) the one-tool vs. multi-tool architecture decision (pending Robert Van Seiko's return). Until these are resolved, the proposed Q1 2027 start date cannot be confirmed.
+</div>
+
+<div class="footer">
+  IBM Internal — Source: Pre-call alignment meeting, 13 July 2026 &nbsp;|&nbsp; Made with IBM Bob
+</div>
+
+</body>
+</html>

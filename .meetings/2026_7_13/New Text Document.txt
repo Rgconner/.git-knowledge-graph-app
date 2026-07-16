@@ -1,0 +1,236 @@
+# Transcript of the Meeting: meeting-87ed2e53-3035-493c-85e1-2df90b073e02 - <AI-Generated Title>
+
+## Date: 7/13/2026
+
+[00:00] Wednesday. Um you know, knowing it's been a while since we've spoken. Um we've had a couple of good conversations with Curtis recently um and a lot of what  
+[00:09] you know, he's working through seems connected with the discussions that we've had with your team. So we thought it'd be helpful to kind of compare notes before we get everyone together. Um but before we dive into anything, you know, I I know last time we spoke with Eduardo and Rob, I think that was our last conversation about a month or a month and a half ago. Um and there was a lot of work underway to get a better handle on the environment. Kind of just curious, Tiago, what's changed, if anything, over the last couple months uh and you know has your attention right now. How th how things are going on your side.  
+[00:43] Well let's let's start with what I'm really seeing uh directly with as my responsibility. Okay. So  
+[00:52] The observability and automation journey is something that I'm working closely with Eduardo.  
+[00:57] And we basically  
+[01:04] Uh we see in the data gathering process.  
+[01:07] We are found we're finding much more than we thought, but it's much more is creating more challenges. If you wish to organized everything.  
+[01:21] Seventy five, eighty percent of the journey for the data gathering. We should have in some secondary meetings that we need to schedule.  
+[01:29] With application team members and user computing and clouds.  
+[01:33] Uh for the data center network we are all set.  
+[01:38] Uh what we learned and understood is that we do have an incredible fragmentation.  
+[01:45] Uh all around.  
+[01:47] multiple tools um  
+[01:50] different contracts for the same type of tool in different regions, even in a country basis.  
+[01:55] Um  
+[01:56] Which is uh I mean this was expected and is it it's the opportunity that we're looking for, right? To consolidate everything and and have some leverages there.  
+[02:05] Um  
+[02:07] The other stuff is related more to process. I mean although we do have a lot of tools, they're not standardized in terms of what they do.  
+[02:15] Some of them are just using it for allergy, others just for dashboarding.  
+[02:20] Um just a few connect and real and really create a  
+[02:24] Two alerts over the service in all platform, for example.  
+[02:27] But this is not a technical restriction.  
+[02:30] It was purely  
+[02:31] at the core of what we can do based it on the service and all development side.  
+[02:36] Depending on the legacy company.  
+[02:38] So this increases our la al alert for the future on it's just not about the tool that we're gonna select and the capabilities that we're looking for, but it's a little bit more than a little  
+[02:46] how we can also change and have a  
+[02:49] Dedicated team that the service and all side.  
+[02:52] That we're gonna work closely to us.  
+[02:54] Yeah.  
+[02:56] But they do have a different challenge. They need to merge four different instances.  
+[03:02] They are discussing right now in the data gathering and how to do it. If it's gonna be a brownfield, greenfield, whatever.  
+[03:09] Okay.  
+[03:10] That said we're gonna have some dependency.  
+[03:14] Cadings in our steps in order to mat these. Otherwise we're gonna start a journey that we're gonna have as a primary bottleneck the service in our integrations. And we don't want to be there.  
+[03:25] We are now taking a broader look, you know, in the general.  
+[03:29] Timeline and asking ourselves what's the better time to do each one of the steps. We don't have a clear vision yet, guys.  
+[03:37] So the proposed Q one two thousand twenty seven for a starting point is not confirmed because of this dependence.  
+[03:45] We don't want to have double work, right?  
+[03:47] So  
+[03:50] That's one of the factors that we discovered during the data gathering requirements, uh gathering steps.  
+[03:58] This is what really I'm seeing directly. Okay.  
+[04:02] For the asset management and some type of useful information to be used in both of the journeys like data center consolidation with Kurtz and network consolidation with Ben Davis.  
+[04:14] I'm kinda weakling format during our weekly meetings with Trevor, our boss.  
+[04:19] So I don't have any more full visibility or even partial visibility on what Kurtz and his team are doing or deciding.  
+[04:27] And  
+[04:28] I mean probably on the Wednesday meeting are gonna be much more a  
+[04:34] Not a contributor, truly.  
+[04:39] Um what we know there will be a dependence.  
+[04:42] Because we have CMDB in the middle of everything.  
+[04:45] Discussion.  
+[04:46] But  
+[04:47] We are right now looking to tackle the CMGB challenge using service in all slash lean IX, which already also had in place.  
+[04:57] They are already licensed. We know the impact so  
+[05:01] That'll be likely our footprint.  
+[05:04] And probably if you decide to go with our asset management tool that we discussed recently in the past with you guys.  
+[05:10] That would be one of the requirements. How this connects with service in all feeds.  
+[05:15] And receives update in both ways.  
+[05:18] And that's all that I know at this point, guys. No decision made. It's just a major architecture.  
+[05:24] Guideline if you wish.  
+[05:26] But we need to build all the foundations in order to be there and decide the next steps.  
+[05:31] So we started also some you know  
+[05:35] discussions with the architecture team over one tool versus multiple tools.  
+[05:42] what we would need to keep existing because either are already in our environment working properly.  
+[05:49] I can quote Ascon for Microsoft stuff, for example, for data monitoring, right?  
+[05:54] Um should we remove ESCON or should it connect the future potential two with ESCON and keep ESCON as the data gathering?  
+[06:03] Same applies to VMware Broadcorn.  
+[06:06] Upper level.  
+[06:08] The center same apply to orders because we do have these capabilities on the license, right?  
+[06:14] So  
+[06:16] Again, no answer, no clear answer so far. And Robert Van Sieco that's leading that went on vacation.  
+[06:25] Oh no where he's  
+[06:29] So with the data gathering and you mentioned Lean IX as well as using the inherent tool within service now, it sounds like um  
+[06:39] Are you are they is that helping you with both discovery and like what's out of  
+[06:46] compli or w out of support, um  
+[06:49] And what's a poor question, Kim. Yeah. That's the poor question, Kim. Because of the data quality that we have today, Surf Cynthia cannot provide this type of insight at all.  
+[07:02] So what we're discussing right now is a matter of data quality.  
+[07:07] Data maintainers or is a matter of the  
+[07:10] What service you know can really do in that aspect.  
+[07:12] Okay.  
+[07:13] So we are kind of mixing these as a potential requirement for the future of the combined  
+[07:19] instance  
+[07:21] On how we're gonna keep this up to date. Lena X connectivity's already in place, so every time that we update a fact sheet.  
+[07:28] With a new hardware dependent software or whatever.  
+[07:32] This is apply it and replicated in the CI database that serves in all site.  
+[07:37] But because we don't have the data.  
+[07:40] Beyond that.  
+[07:42] I mean finance perspective.  
+[07:44] None of those tools are connected to the S P instance, for example, to collect asset depreciation data.  
+[07:50] Um  
+[07:51] Warrants.  
+[07:56] None of these has a uh a single source of truth at this point.  
+[08:00] So what we are discussing is does it make sense to centralize everything.  
+[08:04] Those two combined tools, or should we look for a specialized one that would feed those two?  
+[08:10] That's the main open question right now. Of course, costs.  
+[08:14] Finals perspective, whatever you can name it, it's also the light of the same discussion.  
+[08:19] Uh but we don't have a clear path yet, guys. And this is gonna require a bit of more time for discussion.  
+[08:25] Uh because of the moving targets that we had, right?  
+[08:28] Every time that we start to invest time in a new journey, we need to get back and invest effort in the current run run the business activities or a new MA.  
+[08:39] That is you know, as good to us.  
+[08:41] FYI since we last spoke we do have a diversity and discussion and we have another acquisition discussion. So  
+[08:50] Small ones, not in the same size, okay, we're not talking about the new Vitara bungi.  
+[08:56] But we are easily talking about a region impact with ten new locations and the other one six spin-off locations.  
+[09:04] And and that's time consuming to all of us, as you know.  
+[09:10] Yeah, so I think the big thing with um with this is  
+[09:16] It's obviously going into your contract negotiations as these things come due, right? And that's really where, you know, that tooling can help you. And that's  
+[09:25] I mean it's it would it would help their efforts so much. I mean, this is the one area that I think we could really make a big impact for you guys pretty quick.  
+[09:34] Kim, you are a hundred percent right. But what we are learning over the course of some decisions is that not only the two, but having the appropriate people and resources dedicated to the data.  
+[09:46] quality, as I mentioned it, you know? Uh we do have a centralized repository to our contracts within the existing procurement tool, for example.  
+[09:55] But every time that we go there.  
+[09:58] Uh we find differences, we find missing data, we find wrong  
+[10:02] Classified data.  
+[10:04] I can quote an example.  
+[10:06] We had  
+[10:07] Three different contracts with Oracle.  
+[10:10] Database licensing.  
+[10:12] Which everybody knows.  
+[10:14] We have hardware.  
+[10:16] And then we have uh Java licensing.  
+[10:21] All of them because of the Oracle word combined under the Oracle data base classification.  
+[10:27] Mm-hmm.  
+[10:28] Because this was not conducted by the appropriated personnel.  
+[10:33] So existing AI tooling, if you wish.  
+[10:47] Um I already invested I believe more than twenty five hours in meetings just to correct classify contracts.  
+[10:54] Well, yes. And I think that's where we could really yeah help you, obviously, with both your time and uh just getting getting that all on the same page. So  
+[11:04] You know, at some point I would love to just bring the Flexera folks in to just like you guys tell us all the things you're challenged with and just they can say, yes, we can clean this up. Yes, we can do this more, you know, this is what that process would look like, and how much of it would be your time versus their time.  
+[11:21] in doing that. So  
+[11:22] I don't know.  
+[11:24] Just immediate need wise. I've I I wanna help you guys so bad. Like I know you guys have so much on your plate, and that's the one area that I know would be a would be a big bang for your buck right now. So Yeah. For the Flixir discussion, I just need Robert Van Seiko to get back so we could try to set up some other next steps, guys. That's probably, as you mentioned, one of the quick wings, low hanging fruits.  
+[11:45] And uh but I also we probably need also to engage our procurement team because  
+[11:52] They do have the same challenge. They are reviewing their contracts also, you know for CLM.  
+[12:00] How this could be improved based on the other towers not only.  
+[12:05] Technology, right?  
+[12:07] So  
+[12:08] Flexera may be an opportunity in a broader sense, not only for technology. That's something that we could try to explore as well.  
+[12:15] I agree. And it may be to tackle it, you know, in smaller bites at least at first to just prove it out.  
+[12:22] And then it could you know expand from there and help you guys in a bigger way. But yes.  
+[12:27] And we would love we would love that opportunity. So we did a pretty manual work uh using our existing internal tableau capabilities where we populated a huge database there.  
+[12:39] But the outcome was kind of  
+[12:43] Well yeah, now that'll change between now and January and it will  
+[12:48] And it will also just it's it's evergreen, right? So that's where the tooling helps to just keep you guys as you go on this five year journey to really help you guys stay in lock step with that. And again, it will help you in contract negotiations to say, here's what our here here here here here here here here here here here's what we're showing, you know? And honestly, it ends up discovering a lot more than  
+[13:10] even what you guys realize a lot of times. So  
+[13:13] Anyway, yeah, that would be good. Is that something we should bring up on the Wednesday call or  
+[13:19] What do you  
+[13:21] I guess.  
+[13:22] We have the call Wednesday, Dom. We and  
+[13:25] Uh who all is accepted for that call?  
+[13:28] So that's Richard, Curtis, um I sent to Eduardo and and Rob. I I it sounds like Rob's not gonna be back in town.  
+[13:36] Um and still coming back. So if he can make it great, if he's if he's got a  
+[13:41] pursue other things. That's totally fine. Um  
+[13:44] But w we have a you know a a a solid crew uh and you know, a lot of what  
+[13:49] Curtis is focusing on is um  
+[13:51] Really with the consolidation effort.  
+[13:53] Um that's become a lot bigger of a a a a a a a a a a a conversation than he originally expected.  
+[13:58] Um  
+[14:01] you know, we're we're well organized for that conversation. So we're not gonna be overlapping, we're not gonna be, you know, saying things uh you know  
+[14:09] Two or three different times with everyone on the call.  
+[14:12] Um  
+[14:13] Tiago, I had a quick question about uh since Richard's joining us on Wednesday.  
+[14:19] I I didn't know if you had any insight into kind of what his purview is, um into this whole  
+[14:27] Yeah.  
+[14:28] Are you talking about Richard Broca? Richard Broca, yes.  
+[14:32] So he's Reinal the kind of big project slash PMO  
+[14:38] Global BMO.  
+[14:40] So  
+[14:42] If you're not going to be able to do it.  
+[14:43] Think about it like Eduardo gonna partner with him in order to conduct the observability journey, for example, on a project management perspective.  
+[14:51] But he's also supporting Trevor with a lot of data gathering.  
+[14:56] with you know R F that we are conducting, what to expect from those R F  
+[15:02] Probably one of I would not say decision makers, but one of the biggest influencers on driver's decision.  
+[15:14] Does it make sense or not?  
+[15:17] Uh he's deeply engaged in an in-source versus outsource discussion.  
+[15:24] So he he he's the one supporting driver for Broaderville and also s uh uh helping on the project management offs perspective.  
+[15:32] Thank you.  
+[15:36] So my takeout for Wednesday guys is that because Eduardo and I we read so on the observability capabilities that you know.  
+[15:44] Huge.  
+[15:47] Landscape and capabilities that you guys show it to us.  
+[15:51] I believe that I h highlight for T for Kurtz on that one, if not yet made, could be a good starting point.  
+[15:58] And then from there, turning that one in the  
+[16:01] How we can really can help  
+[16:03] Kurt on the consolidation.  
+[16:05] Starting with  
+[16:07] I said.  
+[16:09] Depreciation, you know.  
+[16:14] That may be one of the things that he would like to see, I'm assuming.  
+[16:20] And from there we can perhaps use ten minutes.  
+[16:25] We should not tackle again observability, guys.  
+[16:34] If there is or there are dependencies between the  
+[16:42] crossing information with observability, then it's worth to mention.  
+[16:47] And how these would interact.  
+[16:49] Um  
+[16:50] Bring value to the decision to us.  
+[16:55] Yeah, and I do think there are some overlaps and Doug is my architect for this area, so I don't know that you've met him before, but um  
+[17:04] Shane Shane is also helps in this area, but he's the overall architect, so  
+[17:09] Um I think there are s some overlaps, so we'll discuss internally, hey, what  
+[17:14] You know, let's not show the whole bigger picture, but uh  
+[17:18] Very specifically.  
+[17:21] Yeah, what you're trying to tackle and what Curtis is trying to tackle right now as far as data center move. Um, and we'll go from there.  
+[17:29] If if you wish, Kim, my feedback for you guys, last time that we spoke.  
+[17:33] You show it the full footprint, then you're able to nail down, you know.  
+[17:39] Hey, this is where the observability journey is.  
+[17:44] Everything outside that can connect, can bring value, but not required.  
+[17:54] Should I acquire this pool, you know, set of tools and processes? No, this is not how it works. You're gonna extract ninety percent of your value.  
+[18:04] From here.  
+[18:05] The other satellite star uh satellite stuff, they are kind of ten percent that could bring or add more volume.  
+[18:12] Yeah.  
+[18:13] Yeah, makes sense. Thank you for that.  
+[18:19] Um, Doug, did you have anything to add from that perspective or we  
+[18:23] I I think we're good as far as what we should look at for Wednesday's call.  
+[18:29] Yeah. No, I think I think we're good.  
+[18:35] All right. Well this has been really helpful for me, Tiago, to you know, see where you guys are at or not at.  
+[18:46] And then yeah, you know, knowing that there's, you know, interest in still being able to help you guys with that consolidation effort would be good.  
+[18:54] Um  
+[18:55] And then what what we can tackle and  
+[18:58] Obviously we'll ask a lot of questions on Wednesday as well, um, with Robert joining.  
+[19:05] Yeah, I don't know if Robert is gonna be present on Wednesday.  
+[19:11] I think he's still coming back from vacation.  
+[19:14] Oh Curtis.  
+[19:17] Two or three weeks if I'm not wrong.  
+[19:23] Uh.  
+[19:25] With his song?  
+[19:27] And that's as far as I know.  
+[19:34] Awesome.  
+[19:36] Yeah, all right. Well well thanks so much, Tiago. We'll we'll convene internally and and uh d d d d d d drop a good game plan for Wednesday, but this was super helpful. Um really, really helpful context.  
+[19:46] Um  
+[19:47] And yeah, uh there's nothing else, we'll uh  
+[19:50] We'll adjourn and  
+[19:51] And meet on Wednesday.  
+[19:53] See you guys on Wednesday.  
+[19:55] Have a great week.  
+[19:57] You too. Take care. See ya. Bye.  
+[25:47] What's it?  
