@@ -43,6 +43,7 @@ from models.schemas import (
 from routers.deps import CurrentUser
 from services.extractor import extract_text
 from services.pipeline import run_pipeline
+from services.similarity import compute_fingerprint, fingerprint_to_json
 from services.watcher import scan_source
 
 logger = logging.getLogger(__name__)
@@ -270,13 +271,14 @@ def _ingest_watched_file(wf_id: int, db: Session) -> None:
         raw_text = extract_text(wf.filename, raw_bytes)
         file_type = Path(wf.filename).suffix.lower().lstrip(".") or "unknown"
 
-        # Create the Document record
+        # Create the Document record (with fingerprint for fast duplicate checks)
         doc = Document(
             uploader_user_id=source.owner_user_id,
             filename=wf.filename,
             raw_text=raw_text,
             file_type=file_type,
             processed_at=None,
+            fingerprint=fingerprint_to_json(compute_fingerprint(raw_text)),
         )
         db.add(doc)
         db.flush()  # get doc.id

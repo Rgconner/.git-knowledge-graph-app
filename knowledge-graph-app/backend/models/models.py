@@ -84,6 +84,9 @@ class Document(Base):
     created_at = Column(DateTime, default=func.now(), nullable=False)
     processed_at = Column(DateTime, nullable=True)
     ai_category = Column(String(255), nullable=True)
+    # MinHash fingerprint stored as compact JSON (list of 128 ints, ~1.5 KB).
+    # NULL on legacy rows — the duplicate check falls back to computing on-the-fly.
+    fingerprint = Column(Text, nullable=True)
 
     uploader = relationship("User", back_populates="documents")
     action_items = relationship("ActionItem", back_populates="document")

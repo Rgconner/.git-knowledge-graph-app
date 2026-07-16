@@ -21,7 +21,7 @@ from models.schemas import DocumentDetailSchema, DocumentSchema
 from routers.deps import CurrentUser
 from services.extractor import extract_text
 from services.pipeline import run_pipeline
-from services.similarity import find_duplicates
+from services.similarity import compute_fingerprint, fingerprint_to_json, find_duplicates
 
 logger = logging.getLogger(__name__)
 
@@ -71,9 +71,18 @@ async def check_duplicate(
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
 
-    # Load all existing documents for this user's corpus (all team documents)
-    existing = db.query(Document.id, Document.filename, Document.raw_text).all()
-    existing_tuples = [(row.id, row.filename, row.raw_text) for row in existing]
+    # Load only the lightweight columns needed for duplicate detection.
+    # raw_text is fetched only for legacy rows that lack a stored fingerprint.
+    existing = db.query(
+        Document.id,
+        Document.filename,
+        Document.raw_text,
+        Document.fingerprint,
+    ).all()
+    existing_tuples = [
+        (row.id, row.filename, row.raw_text, row.fingerprint)
+        for row in existing
+    ]
 
     matches = find_duplicates(candidate_text, existing_tuples, threshold=threshold)
 
@@ -111,6 +120,7 @@ async def upload_document(
         raw_text=raw_text,
         file_type=file_type,
         processed_at=None,
+        fingerprint=fingerprint_to_json(compute_fingerprint(raw_text)),
     )
     db.add(doc)
     db.commit()
