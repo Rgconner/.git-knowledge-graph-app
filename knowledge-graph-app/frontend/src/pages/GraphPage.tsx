@@ -50,10 +50,24 @@ export default function GraphPage() {
   // Incrementing this number triggers a zoom reset in GraphCanvas
   const [resetZoomTrigger, setResetZoomTrigger] = useState(0);
 
+  // Incrementing this triggers a data reload (used after archive/restore/edit)
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+  const triggerRefresh = useCallback(() => setRefreshTrigger((n) => n + 1), []);
+
   // Track the latest fetch so stale responses from slow requests are discarded
   const fetchSeqRef = useRef(0);
 
-  async function loadGraph(mode: ViewMode, currentLayer: "team" | "personal") {
+  // loadGraph stored in a ref so callbacks always call the latest version
+  // without creating stale closures.
+  const viewModeRef = useRef(viewMode);
+  const layerRef    = useRef(layer);
+  viewModeRef.current = viewMode;
+  layerRef.current    = layer;
+
+  const loadGraph = useCallback(async (
+    mode: ViewMode,
+    currentLayer: "team" | "personal",
+  ) => {
     const seq = ++fetchSeqRef.current;
     setLoading(true);
     setError(null);
@@ -62,8 +76,9 @@ export default function GraphPage() {
       let data: GraphPayload;
       if (mode === "documents") {
         data = await fetchDocumentGraph();
-        // Also load team graph in background for drill-through
-        fetchTeamGraph().then((tg) => { if (seq === fetchSeqRef.current) setTeamGraphData(tg); });
+        fetchTeamGraph().then((tg) => {
+          if (seq === fetchSeqRef.current) setTeamGraphData(tg);
+        });
       } else {
         data = currentLayer === "team"
           ? await fetchTeamGraph()
@@ -76,11 +91,12 @@ export default function GraphPage() {
     } finally {
       if (seq === fetchSeqRef.current) setLoading(false);
     }
-  }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Reload whenever viewMode, layer, or refreshTrigger changes
   useEffect(() => {
     loadGraph(viewMode, layer);
-  }, [viewMode, layer]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [viewMode, layer, refreshTrigger, loadGraph]);
 
   const handleViewModeChange = useCallback((mode: ViewMode) => {
     setViewMode(mode);
@@ -119,13 +135,13 @@ export default function GraphPage() {
       await archiveNode(archiveTarget.id, { note: archiveNote.trim() || undefined });
       setArchiveTarget(null);
       setArchiveNote("");
-      await loadGraph(viewMode, layer);
+      triggerRefresh();          // ← clean reactive reload, no stale closure
     } catch (err) {
       console.error("Archive failed:", err);
     } finally {
       setArchiving(false);
     }
-  }, [archiveTarget, archiveNote, viewMode, layer]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [archiveTarget, archiveNote, triggerRefresh]);
 
   const handleNodeClick = useCallback((node: GraphNode) => {
     if (node.type === "document" && node.document_id != null) {
@@ -163,9 +179,9 @@ export default function GraphPage() {
         console.error("Weight hint submit failed:", e);
       }
       setSelectedEdge(null);
-      await loadGraph(viewMode, layer);
+      triggerRefresh();   // ← use trigger pattern, not stale loadGraph call
     },
-    [viewMode, layer] // eslint-disable-line react-hooks/exhaustive-deps
+    [triggerRefresh]
   );
 
   // Label lookups for WeightHintModal
@@ -301,7 +317,7 @@ export default function GraphPage() {
       {editNode && (
         <NodeEditModal
           node={editNode}
-          onSaved={() => loadGraph(viewMode, layer)}
+          onSaved={triggerRefresh}
           onClose={() => setEditNode(null)}
         />
       )}
@@ -363,7 +379,7 @@ export default function GraphPage() {
       <GraveyardPanel
         open={graveyardOpen}
         onClose={() => setGraveyardOpen(false)}
-        onRestored={() => loadGraph(viewMode, layer)}
+        onRestored={triggerRefresh}
       />
 
       {/* Graveyard floating button */}
