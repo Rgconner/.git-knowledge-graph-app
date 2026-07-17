@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$id": "https://docs.spansh.co.uk/schema/factions.schema.json",
+  "title": "Spansh Systems",
+  "description": "Dump of multiple brief factions with one entry per faction.  Pretty printed to show one system per line.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "description": "Name of the faction.",
+        "type": "string"
+      },
+      "allegiance": {
+        "description": "Allegiance of the faction.",
+        "type": [
+          "string",
+          "null"
+        ],
+        "enum": [
+          null,
+          "Alliance",
+          "Empire",
+          "Federation",
+          "Frontline Solutions",
+          "Guardian",
+          "Independent",
+          "Pilots Federation",
+          "Thargoid"
+        ]
+      },
+      "government": {
+        "description": "Government type of the faction.",
+        "type": [
+          "string",
+          "null"
+        ],
+        "enum": [
+          null,
+          "Anarchy",
+          "Communism",
+          "Confederacy",
+          "Cooperative",
+          "Corporate",
+          "Democracy",
+          "Dictatorship",
+          "Engineer",
+          "Feudal",
+          "Megaconstruction",
+          "None",
+          "Patronage",
+          "Prison",
+          "Prison Colony",
+          "Private Ownership",
+          "Theocracy"
+        ]
+      },
+      "systems": {
+        "description": "Systems which the faction has a presence in.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "systemName": {
+              "description": "Name of the system the faction is present in.",
+              "type": "string"
+            },
+            "systemId64": {
+              "description": "The ID64 of the system the faction is present in.",
+              "type": "integer",
+              "minimum": 0
+            },
+            "isControllingFaction": {
+              "description": "Does the faction controls the system?",
+              "type": "boolean"
+            },
+            "coords": {
+              "description": "Coordinates of the system.",
+              "type": "object",
+              "properties": {
+                "x": {
+                  "description": "X coordinate of the system.",
+                  "type": "number"
+                },
+                "y": {
+                  "description": "Y coordinate of the system.",
+                  "type": "number"
+                },
+                "z": {
+                  "description": "Z coordinate of the system.",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "x",
+                "y",
+                "z"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "systemName",
+            "systemId64",
+            "coords"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "name",
+      "systems"
+    ],
+    "additionalProperties": false
+  }
+}
