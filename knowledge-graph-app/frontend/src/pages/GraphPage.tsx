@@ -9,6 +9,7 @@ import {
   fetchDocumentGraph,
   submitWeightHint,
 } from "../api/graph";
+// WeightHintRequest kept for handleWeightHintSubmit type annotation
 import { archiveNode } from "../api/nodes";
 import GraphCanvas from "../graph/GraphCanvas";
 import GraphToolbar, { ViewMode } from "../components/GraphToolbar";
@@ -50,53 +51,52 @@ export default function GraphPage() {
   // Incrementing this number triggers a zoom reset in GraphCanvas
   const [resetZoomTrigger, setResetZoomTrigger] = useState(0);
 
-  // Incrementing this triggers a data reload (used after archive/restore/edit)
+  // Incrementing this triggers a data reload after mutations (archive/restore/edit/hint)
   const [refreshTrigger, setRefreshTrigger] = useState(0);
   const triggerRefresh = useCallback(() => setRefreshTrigger((n) => n + 1), []);
 
-  // Track the latest fetch so stale responses from slow requests are discarded
-  const fetchSeqRef = useRef(0);
-
-  // loadGraph stored in a ref so callbacks always call the latest version
-  // without creating stale closures.
-  const viewModeRef = useRef(viewMode);
-  const layerRef    = useRef(layer);
-  viewModeRef.current = viewMode;
-  layerRef.current    = layer;
-
-  const loadGraph = useCallback(async (
-    mode: ViewMode,
-    currentLayer: "team" | "personal",
-  ) => {
-    const seq = ++fetchSeqRef.current;
-    setLoading(true);
-    setError(null);
-    setDrillDocNode(null);
-    try {
-      let data: GraphPayload;
-      if (mode === "documents") {
-        data = await fetchDocumentGraph();
-        fetchTeamGraph().then((tg) => {
-          if (seq === fetchSeqRef.current) setTeamGraphData(tg);
-        });
-      } else {
-        data = currentLayer === "team"
-          ? await fetchTeamGraph()
-          : await fetchPersonalGraph();
-        if (seq === fetchSeqRef.current) setTeamGraphData(data);
-      }
-      if (seq === fetchSeqRef.current) setGraphData(data);
-    } catch (e: unknown) {
-      if (seq === fetchSeqRef.current) setError(String(e));
-    } finally {
-      if (seq === fetchSeqRef.current) setLoading(false);
-    }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Reload whenever viewMode, layer, or refreshTrigger changes
+  // Reload whenever viewMode, layer, or refreshTrigger changes.
+  // Uses an AbortController so that if a newer fetch starts before the
+  // previous one finishes, the stale response is discarded without
+  // blocking the new one.
   useEffect(() => {
-    loadGraph(viewMode, layer);
-  }, [viewMode, layer, refreshTrigger, loadGraph]);
+    const controller = new AbortController();
+    let cancelled = false;
+
+    async function run() {
+      setLoading(true);
+      setError(null);
+      setDrillDocNode(null);
+      try {
+        let data: GraphPayload;
+        if (viewMode === "documents") {
+          data = await fetchDocumentGraph();
+          if (!cancelled) {
+            fetchTeamGraph().then((tg) => {
+              if (!cancelled) setTeamGraphData(tg);
+            });
+          }
+        } else {
+          data = layer === "team"
+            ? await fetchTeamGraph()
+            : await fetchPersonalGraph();
+          if (!cancelled) setTeamGraphData(data);
+        }
+        if (!cancelled) setGraphData(data);
+      } catch (e: unknown) {
+        if (!cancelled) setError(String(e));
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+
+    run();
+
+    return () => {
+      cancelled = true;
+      controller.abort();
+    };
+  }, [viewMode, layer, refreshTrigger]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleViewModeChange = useCallback((mode: ViewMode) => {
     setViewMode(mode);
@@ -217,7 +217,7 @@ export default function GraphPage() {
           zIndex: 90,
         }}>
           <button
-            onClick={() => { setDrillDocNode(null); loadGraph("documents", layer); }}
+            onClick={() => { setDrillDocNode(null); setViewMode("documents"); }}
             style={{ background: "none", border: "none", color: "#1e40af", cursor: "pointer", fontSize: 13, padding: 0, fontWeight: 600 }}
           >
             ← Documents
